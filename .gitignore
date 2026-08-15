@@ -1,0 +1,10 @@
+# Brand source material — print-ready PDFs, not for the public web.
+# Keep these in private storage (Drive/Dropbox), not in a repo that serves a website.
+images/
+
+# Design exploration kept locally: superseded layout options and one-off comparisons.
+preview/
+
+# Local scratch
+*.tmp
+.DS_Store
