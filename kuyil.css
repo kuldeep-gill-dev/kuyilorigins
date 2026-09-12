@@ -105,7 +105,7 @@ img{max-width:100%}
   background:linear-gradient(to top,rgba(36,16,18,.72) 0%,rgba(36,16,18,.34) 55%,rgba(36,16,18,0) 100%)}
 /* Group portrait: bias the crop down so faces are never cut, and keep the caption
    in the ground area below them rather than across the subjects. */
-.band-low img{object-position:center 76%}
+.band-low img{object-position:center 38%}
 .band-low::after{background:linear-gradient(to bottom,rgba(36,16,18,.14) 0%,rgba(36,16,18,0) 34%,rgba(36,16,18,.66) 100%)}
 
 /* ---------------- figures ---------------- */
