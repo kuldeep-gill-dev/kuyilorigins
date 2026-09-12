@@ -49,3 +49,52 @@
     alert('Something went wrong. Please try again, or email hello@kuyilorigins.com directly.');
   }
 })();
+
+/* Care, In Practice — carousel */
+(function () {
+  var viewport = document.getElementById('careViewport');
+  var track = document.getElementById('careTrack');
+  var dotsWrap = document.getElementById('careDots');
+  var prevBtn = document.getElementById('carePrev');
+  var nextBtn = document.getElementById('careNext');
+  if (!viewport || !track || !dotsWrap) return;
+
+  var slides = Array.prototype.slice.call(track.children);
+  var dots = slides.map(function (_, i) {
+    var b = document.createElement('button');
+    b.className = 'care-dot';
+    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    b.addEventListener('click', function () { goTo(i); });
+    dotsWrap.appendChild(b);
+    return b;
+  });
+
+  function setActive(i) {
+    dots.forEach(function (d, idx) { d.classList.toggle('active', idx === i); });
+  }
+
+  function current() {
+    var left = viewport.scrollLeft, idx = 0, best = Infinity;
+    slides.forEach(function (s, i) {
+      var d = Math.abs(s.offsetLeft - left);
+      if (d < best) { best = d; idx = i; }
+    });
+    return idx;
+  }
+
+  function goTo(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    viewport.scrollTo({ left: slides[i].offsetLeft, behavior: 'smooth' });
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current() - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current() + 1); });
+
+  var scrollTimer;
+  viewport.addEventListener('scroll', function () {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function () { setActive(current()); }, 80);
+  });
+
+  setActive(0);
+})();

@@ -4,12 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kuyil Origins — Specialty Indian Coffee</title>
-<meta name="description" content="Kuyil Origins brings exceptional coffees from Indian estates to the United States. Green coffee for roasters, and roasted coffee for the cup.">
+<meta name="description" content="Meet the producers, places and growing traditions behind our coffees. Green coffee for roasters and roasted coffee for the cup, sourced from Indian estates.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Kuyil Origins — Specialty Indian Coffee">
-<meta property="og:description" content="Telling the stories of India through its specialty coffees. Atlanta, Georgia.">
+<meta property="og:description" content="Distinctive coffees. Rooted in people and place. Telling the stories of India through its specialty coffee.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kuyilorigins.com/">
+<meta property="og:image" content="https://kuyilorigins.com/assets/estate-picking.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Rokkitt:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,177 +22,191 @@
 <nav class="nav">
   <div class="nav-in">
     <a class="nav-brand" href="index.html">
-      <img class="nb-mark" src="assets/label-mark-maroon.svg" alt="">
-      <span class="nb-text">
-        <img class="nb-word" src="assets/label-word-maroon.svg" alt="Kuyil Origins">
-        <span class="nb-tag">Specialty Indian Coffee</span>
-      </span>
+      <img class="nb-lockup" src="assets/kuyil-lockup.svg" alt="Kuyil Origins">
+      <span class="nb-tag">Specialty Indian Coffee</span>
     </a>
     <ul class="nav-links">
-      <li><a class="on" href="index.html">Home</a></li>
-      <li><a href="wholesale.html">Wholesale</a></li>
-      <li><a href="roasted.html">Roasted Coffee</a></li>
+      <li><a href="producers.html">Our Producers</a></li>
+      <li><a href="roasted.html">For Your Cup</a></li>
+      <li><a href="wholesale.html">For Roasters</a></li>
       <li><a class="btn btn-sm" href="#" onclick="openModal();return false;">Inquire</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
-<section class="phead" style="padding-top:70px">
-  <div class="rise" style="max-width:660px;margin:0 auto">
-    <div class="lockup">
-      <img class="hero-logo" src="assets/label-lockup-maroon.svg" alt="Kuyil Origins">
-      <div class="logo-tag">Specialty Indian Coffee</div>
+<!-- ===== HERO: cinematic, full-bleed ===== -->
+<section class="hero">
+  <video class="hero-bg" autoplay muted loop playsinline poster="assets/hero-cherries.jpg">
+    <source src="assets/hero-cherries.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+  <div class="hero-in">
+    <div class="hero-txt rise">
+      <div class="eyebrow">Kuyil Origins</div>
+      <div class="hero-tag">Specialty Indian Coffee</div>
+      <h1>Telling the stories of India through its specialty coffee.</h1>
+      <div class="split-rule"></div>
+      <p>Meet the producers, places, and growing traditions behind our coffees. Sourced from
+        Indian estates for roasters and coffee lovers, with roots in Atlanta.</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#coffees">Explore the Coffees</a>
+        <a class="btn btn-inv" href="producers.html">Meet the Producers</a>
+      </div>
     </div>
-    <div class="dotline"></div>
-    <p style="font-size:29px;font-weight:300;line-height:1.42;letter-spacing:-.005em;max-width:560px;margin:0 auto">
-      Telling the stories of India through its specialty coffees.</p>
-    <p class="lead" style="max-width:490px;margin:22px auto 38px">Exceptional coffees from Indian
-      estates &mdash; for roasters by the sack, and for your kitchen by the bag.</p>
-    <a class="btn btn-solid" href="#" onclick="openModal();return false;">Inquire Now</a>
-    <div class="where" style="margin-top:40px">Atlanta, Georgia</div>
   </div>
+  <div class="hero-credit">Coffee in fruit &middot; Harley Estate</div>
 </section>
 
-<div class="band" style="margin-top:62px">
-  <img src="assets/hero-hands.jpg" alt="A farmer's cupped hands holding coffee beans">
-</div>
-
-<!-- ===== TWO PATHS ===== -->
-<section class="sec">
+<!-- ===== TWO COFFEE PATHWAYS ===== -->
+<section class="sec" id="coffees">
   <div class="sec-head">
-    <div class="eyebrow">Two Ways to Buy</div>
-    <h2>However you take your coffee.</h2>
-    <p>We supply green coffee to roasters, and we roast a small selection for people who
+    <div class="eyebrow">Our Coffees</div>
+    <h2>Two ways to find them.</h2>
+    <p>Green coffee by the sack for roasters, and a small roasted selection for people who
       simply want to drink it.</p>
   </div>
   <div class="paths">
     <a class="path" href="wholesale.html">
       <div class="pnum">For Roasters</div>
-      <h3>Wholesale Green Coffee</h3>
-      <p>Green coffee from our partner estates in Karnataka, with clear provenance from estate
-        to roastery. Samples available on request.</p>
-      <div class="go">Explore wholesale</div>
+      <h3>Green Coffee</h3>
+      <p>Current green coffees from our Karnataka estates, with estate, variety, process,
+        harvest and altitude on every lot. Samples on request.</p>
+      <div class="go">See lots and request samples</div>
     </a>
     <a class="path" href="roasted.html">
-      <div class="pnum">For Everyone</div>
+      <div class="pnum">For Your Cup</div>
       <h3>Roasted Coffee</h3>
-      <p>A small, rotating selection of our estate coffees, roasted in Atlanta and sold by
-        the bag. Single origin, always traceable.</p>
-      <div class="go">Explore roasted coffee</div>
+      <p>A small, rotating selection of the same estate coffees, roasted in Atlanta. Ordering
+        is by direct inquiry while our shop is being set up.</p>
+      <div class="go">See the coffees</div>
     </a>
   </div>
 </section>
 
-<!-- ===== VISION ===== -->
-<section class="sec sec-alt">
-  <div class="split">
-    <figure class="figure split-img">
-      <div class="fr"><img class="warm" src="assets/hero-cherries.jpg"
-        alt="Freshly harvested coffee cherries"></div>
-      <figcaption>Harvest &middot; Karnataka</figcaption>
-    </figure>
-    <div class="split-txt">
-      <div class="eyebrow">Our Vision</div>
-      <h2>An origin still rarely seen on American menus.</h2>
-      <div class="split-rule"></div>
-      <p>India's specialty sector is growing quickly, and its best lots deserve a place in
-        American roasteries. Kuyil Origins is the bridge &mdash; bringing exceptional coffees
-        from Indian estates to the United States, and honoring the people, the land and the
-        craft behind every cup.</p>
-      <p>We are small by design. Every lot is chosen through estate visits and direct
-        conversations with producers, and we can tell you exactly where it came from.</p>
-      <div class="vals-inline">
-        <span>Relationships</span><span>Transparency</span><span>Heritage</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== HOW WE WORK ===== -->
-<section class="sec">
+<!-- ===== CARE, IN PRACTICE =====
+     Each slide is documented by a photograph from the named estate.
+     Do not add a slide here without a verified source. -->
+<section class="sec sec-alt" id="care">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">What We're Building</div>
-      <h2>How we work</h2>
-      <p>Four areas of focus as we prepare for launch.</p>
+      <div class="eyebrow">Care, In Practice</div>
+      <h2>What care looks like on the estate.</h2>
+      <p>Six specifics from the estates we buy from, rather than a badge.</p>
     </div>
-    <div class="b-grid">
-      <div class="b-cell">
-        <svg viewBox="0 0 40 40" fill="none">
-          <path d="M7 19h26a13 13 0 01-26 0z" stroke="#811429" stroke-width="1.2" stroke-linejoin="round"/>
-          <ellipse cx="18" cy="11" rx="5.5" ry="3.4" stroke="#B7986E" stroke-width="1.2"/>
-          <path d="M23 9.6l9-3.2" stroke="#B7986E" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M12 35h16" stroke="#811429" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-        <h3>Educational Cuppings</h3>
-        <p>Hosting tastings that put Indian origin profiles in front of roasters and buyers.</p>
+
+    <div class="care-carousel">
+      <button class="care-arrow care-prev" id="carePrev" aria-label="Previous slide">&#8249;</button>
+      <div class="care-viewport" id="careViewport">
+        <div class="care-track" id="careTrack">
+
+          <figure class="care">
+            <div class="fr"><img src="assets/care-shade.jpg"
+              alt="Rows of coffee growing beneath tall silver oak shade trees at Ratnagiri Estate"></div>
+            <div class="care-txt">
+              <h3>Shade left standing</h3>
+              <p>Coffee grows in rows beneath mature silver oak, with the canopy kept to regulate
+                light and temperature over the bushes rather than cleared for yield.</p>
+              <figcaption>Ratnagiri Estate</figcaption>
+            </div>
+          </figure>
+
+          <figure class="care">
+            <div class="fr"><img src="assets/estate-picking.jpg"
+              alt="A picker's hands selecting ripe red coffee cherries from a branch"></div>
+            <div class="care-txt">
+              <h3>Picked in multiple passes</h3>
+              <p>Every block is picked several times through the season instead of once. Only
+                fully ripe cherry is taken on each pass, so unripe and overripe fruit is left for
+                the next round rather than stripped all at once.</p>
+              <figcaption>Ratnagiri Estate</figcaption>
+            </div>
+          </figure>
+
+          <figure class="care">
+            <div class="fr"><img src="assets/care-fermentation.jpg"
+              alt="A digital pH meter reading 4.46 held in a tank of fermenting coffee mucilage"></div>
+            <div class="care-txt">
+              <h3>Fermentation measured, not timed</h3>
+              <p>pH is read through the tank cycle &mdash; 4.46 on this lot &mdash; so fermentation is
+                stopped at a decided point instead of a fixed number of hours.</p>
+              <figcaption>Ratnagiri Estate</figcaption>
+            </div>
+          </figure>
+
+          <figure class="care">
+            <div class="fr"><img src="assets/care-drying.jpg"
+              alt="Coffee parchment drying in thin layers on raised mesh beds under a covered tunnel"></div>
+            <div class="care-txt">
+              <h3>Dried slowly, on raised beds</h3>
+              <p>Parchment is dried in thin layers on raised beds under cover and turned by hand,
+                keeping drying even and out of direct midday sun.</p>
+              <figcaption>Ratnagiri Estate</figcaption>
+            </div>
+          </figure>
+
+          <figure class="care">
+            <div class="fr"><img src="assets/care-sorting.jpg"
+              alt="Workers hand-sorting dried green coffee spread on a tiled floor after milling"></div>
+            <div class="care-txt">
+              <h3>Sorted by hand after processing</h3>
+              <p>Once parchment is milled, each lot is hand-sorted again on top of the machine
+                pass &mdash; broken, insect-damaged and discolored beans pulled out by eye to get
+                as close to defect-free as the lot allows.</p>
+              <figcaption>Ratnagiri Estate</figcaption>
+            </div>
+          </figure>
+
+          <figure class="care">
+            <div class="fr"><img src="assets/pepper-intercrop.jpg"
+              alt="A hand holding spikes of green and ripening black pepper picked on the estate"></div>
+            <div class="care-txt">
+              <h3>Grown under working forest</h3>
+              <p>Coffee shares the block with pepper vines and standing timber instead of growing
+                alone. The mixed canopy holds moisture and shelters more birds and insects, and
+                gives the estate more than one crop to lean on.</p>
+              <figcaption>Ratnagiri Estate</figcaption>
+            </div>
+          </figure>
+
+        </div>
       </div>
-      <div class="b-cell">
-        <svg viewBox="0 0 40 40" fill="none">
-          <circle cx="15.5" cy="20" r="9" stroke="#811429" stroke-width="1.2"/>
-          <circle cx="24.5" cy="20" r="9" stroke="#B7986E" stroke-width="1.2"/>
-        </svg>
-        <h3>Roaster Collaboration</h3>
-        <p>Working alongside local roasters to develop and place Indian offerings.</p>
-      </div>
-      <div class="b-cell">
-        <svg viewBox="0 0 40 40" fill="none">
-          <path d="M20 15C20 9.5 15.5 6 10 6c0 5.5 4.5 9 10 9z" stroke="#811429" stroke-width="1.2"/>
-          <path d="M20 15c0-5.5 4.5-9 10-9 0 5.5-4.5 9-10 9z" stroke="#B7986E" stroke-width="1.2"/>
-          <path d="M20 16v18" stroke="#811429" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="0.1 3.6"/>
-        </svg>
-        <h3>Transparent Sourcing</h3>
-        <p>Origin-focused sourcing with clear provenance from estate to roaster.</p>
-      </div>
-      <div class="b-cell">
-        <svg viewBox="0 0 40 40" fill="none">
-          <circle cx="27" cy="12" r="4.5" stroke="#B7986E" stroke-width="1.2"/>
-          <path d="M4 30c4.5-7 8-10.5 12-10.5S23 23 27.5 30" stroke="#811429" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M18 30c4-5.6 6.8-8.4 10-8.4 2.6 0 5 1.9 8 6.4" stroke="#811429" stroke-width="1.2" stroke-linecap="round" opacity=".55"/>
-          <path d="M5 34h30" stroke="#811429" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-        <h3>Estate Stories</h3>
-        <p>Sharing the people, places and practices behind every lot we carry.</p>
-      </div>
+      <button class="care-arrow care-next" id="careNext" aria-label="Next slide">&#8250;</button>
     </div>
+    <div class="care-dots" id="careDots"></div>
   </div>
 </section>
 
-<!-- ===== QUOTE ===== -->
-<section class="quote">
-  <div class="quote-in">
+<!-- ===== STATEMENT ===== -->
+<section class="statement">
+  <div class="statement-in">
     <div class="dots"></div>
-    <blockquote>We are building lasting relationships between Indian coffee producers and the American specialty coffee community.</blockquote>
-    <div class="attrib">Rooted in Origin</div>
+    <blockquote>Distinctive coffees. Rooted in people and place.</blockquote>
   </div>
 </section>
 
-<!-- ===== CONNECT ===== -->
-<section class="connect" id="connect">
-  <div class="connect-in">
-    <div class="connect-l">
-      <div class="eyebrow">Get in Touch</div>
-      <h2>Let's Connect</h2>
-      <p>We'd love to hear from you. Reach out for samples, inquiries, or partnerships.</p>
-      <a class="btn" href="#" onclick="openModal();return false;">Inquire Now</a>
-    </div>
-    <div class="connect-r">
-      <a class="ci" href="mailto:hello@kuyilorigins.com">
-        <svg viewBox="0 0 14 14" fill="none"><path d="M1 3h12v8H1z" stroke="#811429" stroke-width="1"/><polyline points="1,3 7,8.5 13,3" stroke="#811429" stroke-width="1"/></svg>
-        <div><span class="ci-l">Email</span><span class="ci-v">hello@kuyilorigins.com</span></div>
-      </a>
-      <a class="ci" href="tel:+15306324590">
-        <svg viewBox="0 0 14 14" fill="none"><path d="M2 1.5h4l1 3-1.8 1.2S6 8.5 8.3 10.8L9.5 9l3 1v4S11.5 15 9.5 13 3 8 1.5 5 2 1.5 2 1.5z" stroke="#811429" stroke-width="1" stroke-linejoin="round"/></svg>
-        <div><span class="ci-l">Phone</span><span class="ci-v">530-632-4590</span></div>
-      </a>
-      <div class="ci">
-        <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="#811429" stroke-width="1"/><path d="M2 13c0-2.8 2.2-4.5 5-4.5s5 1.7 5 4.5" stroke="#811429" stroke-width="1" stroke-linecap="round"/></svg>
-        <div><span class="ci-l">Founder</span><span class="ci-v">Sukhpreet Gill</span></div>
-      </div>
-      <div class="ci">
-        <svg viewBox="0 0 14 14" fill="none"><path d="M7 1C4.8 1 3 2.8 3 5c0 3.5 4 8 4 8s4-4.5 4-8c0-2.2-1.8-4-4-4z" stroke="#811429" stroke-width="1"/><circle cx="7" cy="5" r="1.2" stroke="#811429" stroke-width="1"/></svg>
-        <div><span class="ci-l">Location</span><span class="ci-v">Atlanta, Georgia, USA</span></div>
+<!-- ===== FOUNDER / ATLANTA ===== -->
+<section class="sec" id="story">
+  <div class="split">
+    <!-- PHOTO SLOT: the brief asks for a photograph of Sukhpreet at an estate or cupping
+         coffee. None was in the September 2026 batch, so a verified estate photograph stands
+         here in the meantime. Swap the src when a founder portrait is available. -->
+    <figure class="figure split-img">
+      <div class="fr"><img src="assets/blossom.jpg"
+        alt="Coffee branches in white blossom on the estate"></div>
+      <figcaption>Coffee in flower &middot; Ratnagiri Estate</figcaption>
+    </figure>
+    <div class="split-txt">
+      <div class="eyebrow">Our Story</div>
+      <h2>From Indian estates, by way of Atlanta.</h2>
+      <div class="split-rule"></div>
+      <p>Kuyil Origins was founded by Sukhpreet Gill, who selects every lot in person. Each
+        coffee comes out of time spent on the estate: walking the blocks, cupping with the
+        people who grew it, and understanding the decisions behind the crop.</p>
+      <p>Atlanta is where that work meets a community &mdash; the roasters, buyers and drinkers
+        we share these coffees with.</p>
+      <div class="invite">
+        <a class="btn btn-solid" href="#" onclick="openModal();return false;">Get in Touch</a>
+        <span>Or email <a href="mailto:hello@kuyilorigins.com">hello@kuyilorigins.com</a></span>
       </div>
     </div>
   </div>
@@ -205,16 +220,35 @@
         <img src="assets/label-mark-cream.svg" alt="">
         <img class="foot-word" src="assets/label-word-cream.svg" alt="Kuyil Origins">
       </div>
-      <ul class="foot-nav">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="wholesale.html">Wholesale</a></li>
-        <li><a href="roasted.html">Roasted Coffee</a></li>
-        <li><a href="mailto:hello@kuyilorigins.com">Contact</a></li>
-      </ul>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <div class="fc-h">Coffees</div>
+          <ul>
+            <li><a href="wholesale.html">For Roasters</a></li>
+            <li><a href="roasted.html">For Your Cup</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <div class="fc-h">Kuyil</div>
+          <ul>
+            <li><a href="producers.html">Our Producers</a></li>
+            <li><a href="index.html#care">Our Approach</a></li>
+            <li><a href="index.html#story">Our Story</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <div class="fc-h">Contact</div>
+          <ul>
+            <li><a href="mailto:hello@kuyilorigins.com">hello@kuyilorigins.com</a></li>
+            <li><a href="tel:+15306324590">530-632-4590</a></li>
+            <li class="fc-plain">Atlanta, Georgia, USA</li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="foot-bot">
       <div class="copy">© 2026 Kuyil Origins. All rights reserved.</div>
-      <div class="foot-meta">Atlanta, Georgia &nbsp;·&nbsp; hello@kuyilorigins.com</div>
+      <div class="foot-meta">Sukhpreet Gill, Founder</div>
     </div>
   </div>
 </footer>
@@ -230,12 +264,12 @@
     <div class="m-body">
       <form id="ef" action="https://formspree.io/f/mlgayldn" method="POST">
         <div class="f-row">
-          <div class="f"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
-          <div class="f"><label>Company / Roastery</label><input type="text" name="company" placeholder="Optional"></div>
+          <div class="f"><label for="i-name">Name</label><input id="i-name" type="text" name="name" placeholder="Your name" required></div>
+          <div class="f"><label for="i-co">Company / Roastery</label><input id="i-co" type="text" name="company" placeholder="Optional"></div>
         </div>
-        <div class="f"><label>Email</label><input type="email" name="email" placeholder="you@example.com" required></div>
-        <div class="f"><label>Inquiry type</label>
-          <select name="enquiry_type" required>
+        <div class="f"><label for="i-email">Email</label><input id="i-email" type="email" name="email" placeholder="you@example.com" required></div>
+        <div class="f"><label for="i-type">Inquiry type</label>
+          <select id="i-type" name="enquiry_type" required>
             <option value="" disabled selected>Select one</option>
             <option>Wholesale green coffee</option>
             <option>Request a sample</option>
@@ -245,7 +279,7 @@
             <option>General question</option>
           </select>
         </div>
-        <div class="f"><label>Message</label><textarea name="message" placeholder="Tell us what you're looking for..."></textarea></div>
+        <div class="f"><label for="i-msg">Message</label><textarea id="i-msg" name="message" placeholder="Tell us what you're looking for..."></textarea></div>
         <div class="sub-row">
           <span class="priv">We'll reply within 1&ndash;2 business days.</span>
           <button type="submit" class="send">Send Inquiry</button>
