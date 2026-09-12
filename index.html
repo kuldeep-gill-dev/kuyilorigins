@@ -84,45 +84,95 @@
 </section>
 
 <!-- ===== CARE, IN PRACTICE =====
-     Each example below is documented by a photograph from the named estate.
-     Do not add an item here without a verified source. -->
+     Each slide is documented by a photograph from the named estate.
+     Do not add a slide here without a verified source. -->
 <section class="sec sec-alt" id="care">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">Care, In Practice</div>
       <h2>What care looks like on the estate.</h2>
-      <p>Three specifics from the estates we buy from, rather than a badge.</p>
+      <p>Six specifics from the estates we buy from, rather than a badge.</p>
     </div>
-    <div class="care-grid">
 
-      <figure class="care">
-        <div class="fr"><img src="assets/care-shade.jpg"
-          alt="Rows of coffee growing beneath tall silver oak shade trees at Ratnagiri Estate"></div>
-        <h3>Shade left standing</h3>
-        <p>Coffee grows in rows beneath mature silver oak, with the canopy kept to regulate
-          light and temperature over the bushes rather than cleared for yield.</p>
-        <figcaption>Ratnagiri Estate</figcaption>
-      </figure>
+    <div class="care-carousel">
+      <button class="care-arrow care-prev" id="carePrev" aria-label="Previous slide">&#8249;</button>
+      <div class="care-viewport" id="careViewport">
+        <div class="care-track" id="careTrack">
 
-      <figure class="care">
-        <div class="fr"><img src="assets/care-fermentation.jpg"
-          alt="A digital pH meter reading 4.46 held in a tank of fermenting coffee mucilage"></div>
-        <h3>Fermentation measured, not timed</h3>
-        <p>pH is read through the tank cycle &mdash; 4.46 on this lot &mdash; so fermentation is
-          stopped at a decided point instead of a fixed number of hours.</p>
-        <figcaption>Ratnagiri Estate</figcaption>
-      </figure>
+          <figure class="care">
+            <div class="fr"><img src="assets/care-shade.jpg"
+              alt="Rows of coffee growing beneath tall silver oak shade trees at Ratnagiri Estate"></div>
+            <div class="care-txt">
+              <h3>Shade left standing</h3>
+              <p>Coffee grows in rows beneath mature silver oak, with the canopy kept to regulate
+                light and temperature over the bushes rather than cleared for yield.</p>
+              <figcaption>Ratnagiri Estate</figcaption>
+            </div>
+          </figure>
 
-      <figure class="care">
-        <div class="fr"><img src="assets/care-drying.jpg"
-          alt="Coffee parchment drying in thin layers on raised mesh beds under a covered tunnel"></div>
-        <h3>Dried slowly, on raised beds</h3>
-        <p>Parchment is dried in thin layers on raised beds under cover and turned by hand,
-          keeping drying even and out of direct midday sun.</p>
-        <figcaption>Ratnagiri Estate</figcaption>
-      </figure>
+          <figure class="care">
+            <div class="fr"><img src="assets/estate-picking.jpg"
+              alt="A picker's hands selecting ripe red coffee cherries from a branch"></div>
+            <div class="care-txt">
+              <h3>Picked in multiple passes</h3>
+              <p>Every block is picked several times through the season instead of once. Only
+                fully ripe cherry is taken on each pass, so unripe and overripe fruit is left for
+                the next round rather than stripped all at once.</p>
+              <figcaption>Ratnagiri Estate</figcaption>
+            </div>
+          </figure>
 
+          <figure class="care">
+            <div class="fr"><img src="assets/care-fermentation.jpg"
+              alt="A digital pH meter reading 4.46 held in a tank of fermenting coffee mucilage"></div>
+            <div class="care-txt">
+              <h3>Fermentation measured, not timed</h3>
+              <p>pH is read through the tank cycle &mdash; 4.46 on this lot &mdash; so fermentation is
+                stopped at a decided point instead of a fixed number of hours.</p>
+              <figcaption>Ratnagiri Estate</figcaption>
+            </div>
+          </figure>
+
+          <figure class="care">
+            <div class="fr"><img src="assets/care-drying.jpg"
+              alt="Coffee parchment drying in thin layers on raised mesh beds under a covered tunnel"></div>
+            <div class="care-txt">
+              <h3>Dried slowly, on raised beds</h3>
+              <p>Parchment is dried in thin layers on raised beds under cover and turned by hand,
+                keeping drying even and out of direct midday sun.</p>
+              <figcaption>Ratnagiri Estate</figcaption>
+            </div>
+          </figure>
+
+          <figure class="care">
+            <div class="fr"><img src="assets/care-sorting.jpg"
+              alt="Workers hand-sorting dried green coffee spread on a tiled floor after milling"></div>
+            <div class="care-txt">
+              <h3>Sorted by hand after processing</h3>
+              <p>Once parchment is milled, each lot is hand-sorted again on top of the machine
+                pass &mdash; broken, insect-damaged and discolored beans pulled out by eye to get
+                as close to defect-free as the lot allows.</p>
+              <figcaption>Ratnagiri Estate</figcaption>
+            </div>
+          </figure>
+
+          <figure class="care">
+            <div class="fr"><img src="assets/pepper-intercrop.jpg"
+              alt="A hand holding spikes of green and ripening black pepper picked on the estate"></div>
+            <div class="care-txt">
+              <h3>Grown under working forest</h3>
+              <p>Coffee shares the block with pepper vines and standing timber instead of growing
+                alone. The mixed canopy holds moisture and shelters more birds and insects, and
+                gives the estate more than one crop to lean on.</p>
+              <figcaption>Ratnagiri Estate</figcaption>
+            </div>
+          </figure>
+
+        </div>
+      </div>
+      <button class="care-arrow care-next" id="careNext" aria-label="Next slide">&#8250;</button>
     </div>
+    <div class="care-dots" id="careDots"></div>
   </div>
 </section>
 
