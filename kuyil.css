@@ -121,15 +121,34 @@ img{max-width:100%}
 .split-txt p{font-size:15px;font-weight:300;line-height:2;color:var(--body);margin-bottom:18px}
 .split-rule{width:44px;height:2px;background:var(--kraft);margin-bottom:26px}
 
-/* ---------------- split hero (home) ---------------- */
-.hero{padding:84px 32px 96px}
-.hero-in{max-width:1144px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;
-  gap:72px;align-items:center}
-.hero-txt h1{font-family:'Rokkitt',Georgia,serif;font-size:54px;font-weight:400;
-  line-height:1.14;letter-spacing:-.008em;color:var(--maroon);margin-bottom:26px}
-.hero-txt p{font-size:16px;font-weight:300;line-height:1.95;color:var(--body);max-width:460px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
-.hero-img .fr{aspect-ratio:4/5}
+/* ---------------- cinematic hero (home) ---------------- */
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:94vh;
+  display:flex;align-items:center;padding:150px 32px 110px;
+  background:#241012 url(assets/hero-cherries.jpg) center 40%/cover no-repeat}
+.hero-bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;
+  object-fit:cover;object-position:center 40%}
+.hero-scrim{position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(115deg,rgba(19,8,10,.86) 0%,rgba(19,8,10,.58) 44%,rgba(19,8,10,.22) 72%,rgba(19,8,10,.4) 100%),
+    linear-gradient(to top,rgba(19,8,10,.5) 0%,rgba(19,8,10,0) 32%)}
+.hero-in{position:relative;max-width:1144px;margin:0 auto;width:100%}
+.hero-txt{max-width:600px}
+.hero-txt .eyebrow{font-size:15px;letter-spacing:.36em;color:var(--kraft-lt);margin-bottom:12px}
+.hero-tag{font-size:13px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(246,244,236,.7);margin-bottom:24px}
+.hero-txt h1{font-family:'Rokkitt',Georgia,serif;font-size:60px;font-weight:400;
+  line-height:1.13;letter-spacing:-.008em;color:var(--paper);margin-bottom:26px;
+  text-shadow:0 4px 30px rgba(0,0,0,.3)}
+.hero-txt .split-rule{background:var(--kraft-lt)}
+.hero-txt p{font-size:17px;font-weight:300;line-height:1.9;color:rgba(246,244,236,.88);max-width:480px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px}
+.hero .btn{border-color:rgba(246,244,236,.55);color:var(--paper)}
+.hero .btn:hover{background:var(--paper);color:var(--maroon);border-color:var(--paper)}
+.hero .btn-solid{background:var(--maroon);border-color:var(--maroon);color:var(--paper)}
+.hero .btn-solid:hover{background:var(--maroon-dk);border-color:var(--maroon-dk);color:var(--paper)}
+.hero-credit{position:absolute;right:26px;bottom:20px;z-index:1;font-size:10px;
+  font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(246,244,236,.62)}
+@media(prefers-reduced-motion:reduce){.hero-bg{display:none}}
 
 /* ---------------- producer cards ---------------- */
 .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
@@ -353,11 +372,8 @@ img{max-width:100%}
   .c-grid{grid-template-columns:1fr}
   .phead h1{font-size:36px}
   .sec h2{font-size:28px}
-  /* hero: text first, then image */
-  .hero{padding:52px 24px 72px}
-  .hero-in{grid-template-columns:1fr;gap:44px}
+  .hero{min-height:82vh;padding:120px 24px 72px}
   .hero-txt h1{font-size:40px}
-  .hero-img .fr{aspect-ratio:16/11}
   .prod-grid{grid-template-columns:repeat(2,1fr);gap:34px 26px}
   .care-grid{grid-template-columns:1fr;gap:44px}
   .care .fr{aspect-ratio:16/10}
@@ -387,10 +403,10 @@ img{max-width:100%}
   .sub-row{flex-direction:column;align-items:stretch;text-align:center}
   .send{width:100%}
   .foot-top{flex-direction:column;gap:24px}
-  /* deliberate mobile crops: portrait sources need a taller box, not a letterbox */
-  .hero{padding:38px 22px 60px}
+  .hero{min-height:78vh;padding:100px 22px 56px}
   .hero-txt h1{font-size:31px}
-  .hero-img .fr{aspect-ratio:4/5}
+  .hero-bg{display:none}
+  .hero-credit{right:16px;bottom:14px;font-size:9px}
   .prod-grid{grid-template-columns:1fr;gap:40px}
   .pcard .fr,.pf-ph{aspect-ratio:3/2}
   .pf-tall{aspect-ratio:4/5}
