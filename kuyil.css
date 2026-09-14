@@ -349,6 +349,7 @@ img{max-width:100%}
 /* ---------------- estates ---------------- */
 .e-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
 .est{border-top:2px solid var(--maroon);padding-top:22px}
+.est svg{width:26px;height:26px;display:block;margin-bottom:16px}
 .est h3{font-size:19px;font-weight:600;color:var(--maroon);margin-bottom:12px;
   letter-spacing:-.005em;line-height:1.25}
 .est p{font-size:13.5px;font-weight:300;line-height:1.85;color:var(--body)}
