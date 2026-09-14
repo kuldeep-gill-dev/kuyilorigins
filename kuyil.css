@@ -480,7 +480,7 @@ img{max-width:100%}
   .nav-brand .nb-lockup{height:50px}
   .nb-lockup-light img:first-child{height:32px}
   .nb-lockup-light .nb-word-light{height:15px}
-  .nav-brand .nb-tag{display:none}
+  .nav-brand .nb-tag{font-size:11px;letter-spacing:.06em;max-width:96px}
   .statement{padding:72px 24px}
   .statement blockquote{font-size:26px}
   .phead{padding-top:52px}
