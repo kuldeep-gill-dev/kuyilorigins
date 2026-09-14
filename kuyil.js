@@ -50,6 +50,44 @@
   }
 })();
 
+/* Transparent-over-hero nav: solidify once scrolled */
+(function () {
+  var nav = document.querySelector('.nav.nav-overlay');
+  if (!nav) return;
+  function update() {
+    nav.classList.toggle('is-scrolled', window.scrollY > 40);
+  }
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+})();
+
+/* Mobile nav menu toggle */
+(function () {
+  var nav = document.querySelector('.nav');
+  var toggle = document.getElementById('navToggle');
+  var links = document.querySelector('.nav-links');
+  if (!nav || !toggle || !links) return;
+
+  function setOpen(open) {
+    toggle.classList.toggle('open', open);
+    links.classList.toggle('open', open);
+    nav.classList.toggle('menu-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  toggle.addEventListener('click', function () {
+    setOpen(!links.classList.contains('open'));
+  });
+
+  links.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { setOpen(false); });
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1000) setOpen(false);
+  });
+})();
+
 /* Care, In Practice — editorial carousel */
 (function () {
   var viewport = document.getElementById('careViewport');
