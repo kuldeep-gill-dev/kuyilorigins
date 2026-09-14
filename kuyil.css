@@ -172,9 +172,27 @@ img{max-width:100%}
   max-width:1080px;margin:0 auto}
 .split.flip .split-img{order:2}
 .split-img .fr{aspect-ratio:4/5}
+.split-txt h1{font-size:42px;font-weight:600;color:var(--ink);letter-spacing:-.012em;
+  line-height:1.15;margin-bottom:22px}
 .split-txt h2{margin-bottom:22px}
+.split-txt .region{font-size:10.5px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink);opacity:.64;margin:-14px 0 20px}
 .split-txt p{font-size:15px;font-weight:300;line-height:2;color:var(--body);margin-bottom:18px}
 .split-rule{width:44px;height:2px;background:var(--kraft);margin-bottom:26px}
+.split-desc{margin-top:6px;font-size:10.5px;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--maroon);opacity:.85}
+.split-img-stack{display:flex;flex-direction:column;gap:18px}
+.split-img-stack .fr{aspect-ratio:16/11}
+.split-img-stack .fr.fr-sm{aspect-ratio:16/9}
+
+/* ---------------- closing image band ---------------- */
+.closing-band{position:relative;isolation:isolate;min-height:54vh;display:flex;
+  align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:90px 32px}
+.closing-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.closing-band::after{content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(36,16,18,.5) 0%,rgba(36,16,18,.42) 50%,rgba(36,16,18,.58) 100%)}
+.closing-band h2{font-family:'Rokkitt',Georgia,serif;font-weight:400;font-size:38px;
+  color:var(--paper);max-width:780px;line-height:1.32;text-shadow:0 4px 30px rgba(0,0,0,.4)}
 
 /* ---------------- our story: three moments ---------------- */
 .story-moments{display:flex;flex-direction:column;gap:104px;margin-top:74px}
@@ -365,6 +383,9 @@ img{max-width:100%}
   transition:border-color .3s,box-shadow .3s,transform .3s}
 .path:hover{border-color:rgba(129,20,41,.42);box-shadow:0 12px 34px rgba(36,16,18,.09);
   transform:translateY(-3px)}
+.path .fr{aspect-ratio:16/10;overflow:hidden;margin-bottom:26px}
+.path .fr img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.path:hover .fr img{transform:scale(1.04)}
 .path .pnum{font-size:10.5px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;
   color:var(--maroon);margin-bottom:18px}
 .path h3{font-size:27px;font-weight:600;color:var(--ink);margin-bottom:14px;
