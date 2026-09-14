@@ -124,6 +124,19 @@ img{max-width:100%}
 .split-txt p{font-size:15px;font-weight:300;line-height:2;color:var(--body);margin-bottom:18px}
 .split-rule{width:44px;height:2px;background:var(--kraft);margin-bottom:26px}
 
+/* ---------------- our story: three moments ---------------- */
+.story-moments{display:flex;flex-direction:column;gap:104px;margin-top:74px}
+.story-num{font-family:'Rokkitt',Georgia,serif;font-style:italic;font-size:15px;
+  color:var(--kraft);opacity:.85;margin-bottom:10px}
+.split-txt h3{font-size:30px;font-weight:600;color:var(--ink);letter-spacing:-.01em;
+  margin-bottom:20px}
+.story-mark .fr{aspect-ratio:4/5;background:var(--paper-2);display:flex;
+  align-items:center;justify-content:center;padding:56px}
+.story-mark .fr img{width:auto;height:auto;max-width:58%;object-fit:contain}
+.story-close{max-width:640px;margin:96px auto 0;text-align:center}
+.story-close p{font-size:16px;font-weight:300;line-height:1.95;color:var(--body)}
+.story-close .invite{justify-content:center;margin-top:30px}
+
 /* ---------------- cinematic hero (home) ---------------- */
 .hero{position:relative;isolation:isolate;overflow:hidden;min-height:96vh;
   display:flex;align-items:center;padding:190px 32px 150px;
@@ -384,6 +397,9 @@ img{max-width:100%}
   .split{grid-template-columns:1fr;gap:40px}
   .split.flip .split-img{order:0}
   .split-img .fr{aspect-ratio:16/10}
+  .story-mark .fr{aspect-ratio:16/10}
+  .story-moments{gap:64px;margin-top:52px}
+  .story-close{margin-top:64px}
   .statement blockquote{font-size:32px}
   .nav-brand .nb-lockup{height:64px}
   .nav-brand .nb-tag{font-size:15px;max-width:120px}
