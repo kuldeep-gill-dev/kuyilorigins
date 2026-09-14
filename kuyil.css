@@ -517,7 +517,7 @@ img{max-width:100%}
   .sub-row{flex-direction:column;align-items:stretch;text-align:center}
   .send{width:100%}
   .foot-top{flex-direction:column;gap:24px}
-  .hero{min-height:78vh;padding:120px 22px 68px}
+  .hero{min-height:100vh;padding:120px 22px 68px}
   .hero-txt h1{font-size:31px}
   .hero-credit{right:16px;bottom:14px;font-size:9px}
   .prod-grid{grid-template-columns:1fr;gap:40px}
@@ -528,4 +528,13 @@ img{max-width:100%}
   .care-arrow{font-size:22px}
   .foot-cols{grid-template-columns:1fr;gap:26px}
   .values-l{justify-content:center}
+}
+/* Dynamic viewport height: on mobile browsers where the address bar
+   shows/hides on scroll, 100vh is based on the tallest state, which can
+   leave a gap. 100dvh tracks the actual visible area so the hero always
+   fills the first screen with no peek of the next section underneath. */
+@supports (height: 100dvh) {
+  @media(max-width:600px){
+    .hero{min-height:100dvh}
+  }
 }
