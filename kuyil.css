@@ -502,7 +502,6 @@ img{max-width:100%}
   .foot-top{flex-direction:column;gap:24px}
   .hero{min-height:78vh;padding:120px 22px 68px}
   .hero-txt h1{font-size:31px}
-  .hero-bg{display:none}
   .hero-credit{right:16px;bottom:14px;font-size:9px}
   .prod-grid{grid-template-columns:1fr;gap:40px}
   .pcard .fr,.pf-ph{aspect-ratio:3/2}
