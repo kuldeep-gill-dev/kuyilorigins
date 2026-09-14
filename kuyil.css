@@ -63,8 +63,7 @@ img{max-width:100%}
   backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line);
   transition:background .35s ease,border-color .35s ease}
 .nav.nav-overlay{position:fixed;left:0;right:0;
-  background:linear-gradient(to bottom,rgba(10,4,5,.4) 0%,rgba(10,4,5,0) 100%);
-  border-bottom-color:transparent;backdrop-filter:none}
+  background:transparent;border-bottom-color:transparent;backdrop-filter:none}
 .nav.nav-overlay.is-scrolled,.nav.nav-overlay.menu-open{background:rgba(246,244,236,.94);
   backdrop-filter:saturate(140%) blur(8px);border-bottom-color:var(--line)}
 .nav-in{position:relative;max-width:1144px;margin:0 auto;padding:0 32px;min-height:var(--nav-h);
@@ -92,6 +91,7 @@ img{max-width:100%}
 .nav.nav-overlay:not(.is-scrolled):not(.menu-open) .nav-links a{color:var(--cream);opacity:.85}
 .nav.nav-overlay:not(.is-scrolled):not(.menu-open) .nav-links a:hover{opacity:1;color:var(--kraft-lt)}
 .nav.nav-overlay:not(.is-scrolled):not(.menu-open) .nav-links a.on{color:var(--kraft-lt);border-bottom-color:var(--kraft-lt)}
+.nav.nav-overlay:not(.is-scrolled):not(.menu-open) .nav-links a:not(.nav-contact){display:none}
 .nav-links .nav-contact{opacity:1;background:var(--kraft-lt);color:var(--ink);border:none;
   border-radius:2px;padding:11px 24px;font-size:11px;letter-spacing:.16em;font-weight:600}
 .nav-links .nav-contact:hover{background:var(--kraft);opacity:1;color:var(--ink)}
