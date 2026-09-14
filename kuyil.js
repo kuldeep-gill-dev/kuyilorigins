@@ -88,13 +88,13 @@
   });
 })();
 
-/* Care, In Practice — editorial carousel */
-(function () {
-  var viewport = document.getElementById('careViewport');
-  var track = document.getElementById('careTrack');
-  var counter = document.getElementById('careCounter');
-  var prevBtn = document.getElementById('carePrev');
-  var nextBtn = document.getElementById('careNext');
+/* Editorial carousels — Care, In Practice / The Mark */
+function initEditorialCarousel(ids) {
+  var viewport = document.getElementById(ids.viewport);
+  var track = document.getElementById(ids.track);
+  var counter = document.getElementById(ids.counter);
+  var prevBtn = document.getElementById(ids.prev);
+  var nextBtn = document.getElementById(ids.next);
   if (!viewport || !track || !counter) return;
 
   var slides = Array.prototype.slice.call(track.children);
@@ -130,4 +130,13 @@
   });
 
   setActive(0);
-})();
+}
+
+initEditorialCarousel({
+  viewport: 'careViewport', track: 'careTrack',
+  prev: 'carePrev', next: 'careNext', counter: 'careCounter'
+});
+initEditorialCarousel({
+  viewport: 'markViewport', track: 'markTrack',
+  prev: 'markPrev', next: 'markNext', counter: 'markCounter'
+});

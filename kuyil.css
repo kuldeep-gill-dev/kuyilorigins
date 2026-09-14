@@ -158,10 +158,30 @@ img{max-width:100%}
   color:var(--kraft);opacity:.85;margin-bottom:10px}
 .split-txt h3{font-size:30px;font-weight:600;color:var(--ink);letter-spacing:-.01em;
   margin-bottom:20px}
-.story-mark .fr{aspect-ratio:4/5;background:var(--paper-2);display:flex;
-  align-items:center;justify-content:center;padding:56px}
-.story-mark .fr img{width:auto;height:auto;max-width:58%;object-fit:contain}
 .story-close{max-width:640px;margin:96px auto 0;text-align:center}
+
+/* ---------------- our story: the mark carousel ---------------- */
+.mark-moment{max-width:1080px;width:100%;min-width:0;margin:0 auto}
+.mark-head{margin-bottom:44px}
+.mark-head h3{font-size:30px;font-weight:600;color:var(--ink);letter-spacing:-.01em;margin-bottom:20px}
+.mark-viewport{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.mark-viewport::-webkit-scrollbar{display:none}
+.mark-track{display:flex;min-width:0}
+.mark-slide{flex:0 0 100%;min-width:0;scroll-snap-align:start;display:grid;
+  grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:4px 2px;box-sizing:border-box}
+.mark-img{width:100%;min-width:0;aspect-ratio:4/3;background:var(--paper-2);
+  border:1px solid rgba(183,152,110,.5);display:flex;align-items:center;justify-content:center;
+  padding:24px;box-sizing:border-box}
+.mark-img img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+.mark-txt{min-width:0}
+.mark-txt h4{font-size:24px;font-weight:600;color:var(--ink);margin-bottom:16px;line-height:1.32}
+.mark-txt p{font-size:15px;font-weight:300;line-height:1.9;color:var(--body)}
+.mark-final{gap:80px}
+.mark-final .mark-img{aspect-ratio:4/5;padding:44px;max-width:340px;justify-self:center}
+.mark-final .mark-txt h4{font-size:27px;margin-bottom:18px}
+.mark-final .mark-txt p{margin-bottom:16px}
+.mark-controls{display:flex;align-items:center;justify-content:center;gap:26px;margin-top:38px}
 .story-close p{font-size:16px;font-weight:300;line-height:1.95;color:var(--body)}
 .story-close .invite{justify-content:center;margin-top:30px}
 
@@ -433,7 +453,10 @@ img{max-width:100%}
   .split{grid-template-columns:1fr;gap:40px}
   .split.flip .split-img{order:0}
   .split-img .fr{aspect-ratio:16/10}
-  .story-mark .fr{aspect-ratio:16/10}
+  .mark-slide{grid-template-columns:1fr;gap:28px}
+  .mark-final{gap:36px}
+  .mark-img{max-width:340px;margin:0 auto}
+  .mark-final .mark-img{max-width:240px}
   .story-moments{gap:64px;margin-top:52px}
   .story-close{margin-top:64px}
   .statement blockquote{font-size:32px}
