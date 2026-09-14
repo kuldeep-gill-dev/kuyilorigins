@@ -117,8 +117,13 @@ img{max-width:100%}
 .nav-peek-menu li{border-bottom:1px solid var(--line)}
 .nav-peek-menu li:last-child{border-bottom:none}
 .nav-peek-menu a{display:block;padding:13px 2px;font-size:12.5px;font-weight:500;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--ink);opacity:.8;text-decoration:none}
-.nav-peek-menu a:hover{color:var(--maroon);opacity:1}
+  letter-spacing:.12em;text-transform:uppercase;color:var(--maroon);opacity:.8;text-decoration:none}
+.nav-peek-menu a:hover{opacity:1}
+/* .nav-links a (line 91-92) styles the pre-scroll header cream and outranks the rule
+   above by specificity since .nav-peek-menu sits inside .nav-links; match it here
+   so the dropdown text stays maroon instead of cream-on-cream. */
+.nav.nav-overlay:not(.is-scrolled):not(.menu-open) .nav-peek-menu a{color:var(--maroon);opacity:.8}
+.nav.nav-overlay:not(.is-scrolled):not(.menu-open) .nav-peek-menu a:hover{color:var(--maroon-dk);opacity:1}
 .nav-peek:hover .nav-peek-menu{display:block}
 @media(max-width:1000px){.nav-peek{display:none !important}}
 
