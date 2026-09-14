@@ -120,8 +120,32 @@ function initEditorialCarousel(ids) {
     viewport.scrollTo({ left: slides[i].offsetLeft, behavior: 'smooth' });
   }
 
-  if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current() - 1); });
-  if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current() + 1); });
+  var AUTO_MS = 8000;
+  var autoTimer = null;
+
+  function stopAuto() {
+    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+  }
+
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(function () {
+      var next = current() + 1;
+      if (next >= total) next = 0;
+      goTo(next);
+    }, AUTO_MS);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current() - 1); startAuto(); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current() + 1); startAuto(); });
+
+  // Hovering (mouse) pauses autoplay and resumes when the cursor leaves --
+  // a natural "reading" pause on desktop. On touch there's no equivalent
+  // "still there" signal, so a tap/swipe stops autoplay for good instead
+  // of silently resuming a moment later while someone is mid-read.
+  viewport.addEventListener('mouseenter', stopAuto);
+  viewport.addEventListener('mouseleave', startAuto);
+  viewport.addEventListener('touchstart', stopAuto, { passive: true, once: true });
 
   var scrollTimer;
   viewport.addEventListener('scroll', function () {
@@ -130,6 +154,7 @@ function initEditorialCarousel(ids) {
   });
 
   setActive(0);
+  startAuto();
 }
 
 initEditorialCarousel({
