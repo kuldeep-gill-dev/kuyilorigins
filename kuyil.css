@@ -184,6 +184,33 @@ img{max-width:100%}
 .split-rule{width:44px;height:2px;background:var(--kraft);margin-bottom:26px}
 .split-desc{margin-top:6px;font-size:10.5px;font-weight:500;letter-spacing:.22em;
   text-transform:uppercase;color:var(--maroon);opacity:.85}
+/* owner note on the producers page */
+.owner-note{display:flex;gap:20px;align-items:flex-start;margin-top:28px;padding-top:26px;
+  border-top:1px solid var(--line)}
+.owner-note .fr{flex:0 0 104px;aspect-ratio:4/5;overflow:hidden;border:1px solid rgba(183,152,110,.5)}
+.owner-note .fr img{display:block;width:100%;height:100%;object-fit:cover}
+.on-label{font-size:10.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--maroon);margin-bottom:10px}
+.split-txt .owner-note p{font-size:14px;line-height:1.9;margin-bottom:0}
+.split-txt .btn{margin-top:28px}
+/* estate detail pages */
+.owner-solo{max-width:760px;margin:0 auto}
+.owner-solo p{font-size:15px;font-weight:300;line-height:2;color:var(--body);margin-bottom:18px}
+.owner-solo h2{margin-bottom:22px}
+.estate-copy{max-width:760px;margin:0 auto}
+.estate-copy p{font-size:15px;font-weight:300;line-height:2;color:var(--body);margin-bottom:18px}
+.gallery{columns:3;column-gap:22px;max-width:1080px;margin:0 auto}
+.gallery figure{break-inside:avoid;margin:0 0 26px}
+.gallery .fr{aspect-ratio:auto}
+.gallery img{height:auto}
+.estate-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:8px}
+.estate-nav{display:flex;justify-content:space-between;gap:24px;max-width:1080px;margin:0 auto;
+  padding-top:34px;border-top:1px solid var(--line)}
+.estate-nav a{font-size:10.5px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--maroon);text-decoration:none}
+.estate-nav a:hover{text-decoration:underline}
+@media(max-width:900px){.gallery{columns:2}}
+@media(max-width:560px){.gallery{columns:1}.owner-note{flex-direction:column}}
 .split-img-stack{display:flex;flex-direction:column;gap:18px}
 .split-img-stack .fr{aspect-ratio:16/11}
 .split-img-stack .fr.fr-sm{aspect-ratio:16/9}
