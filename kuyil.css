@@ -9,7 +9,7 @@
   --maroon:#811429; --maroon-dk:#6A1122; --ink:#241012;
   --paper:#F6F4EC; --paper-2:#EFEBDE; --cream:#F1EFE5; --kraft:#B7986E; --kraft-lt:#D4BC98;
   --body:rgba(36,16,18,.72); --body-2:rgba(36,16,18,.64); --line:rgba(36,16,18,.13);
-  --nav-h:92px;
+  --nav-h:92px; --edge:clamp(32px,4vw,72px);
 }
 
 html{scroll-behavior:smooth}
@@ -69,7 +69,7 @@ img{max-width:100%}
   -webkit-transform:translateZ(0);transform:translateZ(0);will-change:background-color}
 .nav.nav-overlay.is-scrolled,.nav.nav-overlay.menu-open{background:rgba(246,244,236,.94);
   backdrop-filter:saturate(140%) blur(8px);border-bottom-color:var(--line)}
-.nav-in{position:relative;max-width:1144px;margin:0 auto;padding:0 32px;min-height:var(--nav-h);
+.nav-in{position:relative;max-width:none;margin:0 auto;padding:0 var(--edge);min-height:var(--nav-h);
   display:flex;align-items:center;justify-content:space-between;gap:24px}
 .nav-brand{display:flex;align-items:center;gap:18px;text-decoration:none;color:inherit;flex-shrink:0}
 .nb-logo{display:flex;align-items:center}
@@ -98,6 +98,8 @@ img{max-width:100%}
 .nav-links .nav-contact{opacity:1;background:var(--kraft-lt);color:var(--ink);border:none;
   border-radius:2px;padding:11px 24px;font-size:11px;letter-spacing:.16em;font-weight:600}
 .nav-links .nav-contact:hover{background:var(--kraft);opacity:1;color:var(--ink)}
+/* Contact button is mobile-menu only for now (desktop pop-up planned). */
+@media(min-width:1001px){.nav-links li:has(> .nav-contact),.nav-links .nav-contact{display:none}}
 .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;
   width:32px;height:32px;background:none;border:none;cursor:pointer;padding:0;
   flex-shrink:0;color:var(--ink)}
@@ -230,7 +232,7 @@ img{max-width:100%}
 
 /* ---------------- cinematic hero (home) ---------------- */
 .hero{position:relative;isolation:isolate;overflow:hidden;min-height:96vh;
-  display:flex;align-items:center;padding:190px 32px 150px;
+  display:flex;align-items:center;padding:190px var(--edge) 150px;
   background:#241012 url(assets/hero-cherries.jpg) 26% 30%/cover no-repeat}
 .hero-bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;
   object-fit:cover;object-position:30% 48%;
@@ -239,7 +241,7 @@ img{max-width:100%}
   background:
     linear-gradient(100deg,rgba(13,5,6,.92) 0%,rgba(13,5,6,.84) 40%,rgba(13,5,6,.32) 58%,rgba(13,5,6,.08) 74%,rgba(13,5,6,.22) 100%),
     linear-gradient(to top,rgba(13,5,6,.55) 0%,rgba(13,5,6,0) 30%)}
-.hero-in{position:relative;max-width:1144px;margin:0 auto;width:100%}
+.hero-in{position:relative;max-width:none;margin:0 auto;width:100%}
 .hero-txt{max-width:600px}
 .hero-tag{font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
   color:var(--kraft-lt);margin-bottom:16px}
@@ -257,7 +259,7 @@ img{max-width:100%}
 .hero-credit{position:absolute;right:26px;bottom:20px;z-index:1;font-size:10px;
   font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(246,244,236,.62)}
 @media(prefers-reduced-motion:reduce){.hero-bg{display:none}}
-.hero.hero-page{min-height:62vh;padding:150px 32px 110px}
+.hero.hero-page{min-height:62vh;padding:150px var(--edge) 110px}
 
 /* ---------------- producer cards ---------------- */
 .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
