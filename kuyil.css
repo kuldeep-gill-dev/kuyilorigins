@@ -167,6 +167,7 @@ img{max-width:100%}
 .figure{margin:0}
 .figure .fr{position:relative;overflow:hidden;border:1px solid rgba(183,152,110,.5)}
 .figure img{display:block;width:100%;height:100%;object-fit:cover}
+.figure .fr,.pcard .fr,.care .fr,.path .fr{background:var(--paper-2)}
 .figure figcaption{margin-top:14px;font-size:10px;font-weight:500;letter-spacing:.26em;
   text-transform:uppercase;color:var(--ink);opacity:.62}
 
@@ -306,7 +307,7 @@ img{max-width:100%}
 .hero-credit{position:absolute;right:26px;bottom:20px;z-index:1;font-size:10px;
   font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(246,244,236,.62)}
 @media(prefers-reduced-motion:reduce){.hero-bg{display:none}}
-.hero.hero-page{min-height:62vh;padding:150px var(--edge) 110px}
+.hero.hero-page{background:#241012;min-height:62vh;padding:150px var(--edge) 110px}
 
 /* ---------------- producer cards ---------------- */
 .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
