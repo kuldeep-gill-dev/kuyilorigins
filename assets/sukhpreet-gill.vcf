@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Gill;Sukhpreet;;;
+FN:Sukhpreet Gill
+ORG:Kuyil Origins
+TITLE:Founder
+EMAIL;TYPE=work:hello@kuyilorigins.com
+TEL;TYPE=work,voice:+15306324590
+URL:https://kuyilorigins.com
+ADR;TYPE=work:;;Atlanta;GA;;USA
+NOTE:Specialty Indian Coffee — kuyilorigins.com
+END:VCARD
