@@ -26,11 +26,17 @@
     <p class="bc-line">Telling the stories of India through its specialty coffee &mdash;
       sourced from estates we know, for roasters and coffee drinkers in the United States.</p>
 
+    <div class="bc-info">
+      <a href="tel:+15306324590">530.632.4590</a>
+      <a href="mailto:hello@kuyilorigins.com">hello@kuyilorigins.com</a>
+    </div>
+
     <div class="bc-actions">
-      <a class="btn btn-solid" href="/assets/sukhpreet-gill.vcf" download>Save My Contact</a>
+      <a class="btn btn-solid" id="vcfBtn" href="/assets/sukhpreet-gill.vcf">Save My Contact</a>
       <a class="btn" href="mailto:hello@kuyilorigins.com">Email Me</a>
       <a class="btn" href="tel:+15306324590">Call Me</a>
     </div>
+    <p class="bc-auto-note" id="autoNote">Adding Sukhpreet to your contacts&hellip;</p>
 
     <div class="bc-links">
       <a href="/index.html">Website</a>
@@ -40,6 +46,26 @@
     </div>
   </div>
 </div>
+
+<script>
+  // Prompt the native "Add Contact" screen automatically on arrival, without
+  // replacing the page the visitor landed on. Falls back silently to the
+  // visible "Save My Contact" button if the browser blocks the auto-open.
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      var a = document.createElement('a');
+      a.href = '/assets/sukhpreet-gill.vcf';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }, 500);
+    setTimeout(function () {
+      var n = document.getElementById('autoNote');
+      if (n) n.style.display = 'none';
+    }, 4000);
+  });
+</script>
 
 </body>
 </html>
