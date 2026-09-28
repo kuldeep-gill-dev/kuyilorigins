@@ -4,8 +4,20 @@
   var form = document.getElementById('ef');
   if (!ov) return;
 
-  window.openModal = function (preset) {
+  window.openModal = function (preset, ctx) {
     ov.classList.add('active');
+    // ctx = { estate, coffee, lot, request, message } -- tags the inquiry with exactly what was asked about
+    ['estate', 'coffee', 'lot', 'request_type'].forEach(function (n) {
+      var el = form && form.querySelector('[name="' + n + '"]');
+      if (el) el.value = ctx ? (ctx[n === 'request_type' ? 'request' : n] || '') : '';
+    });
+    var line = document.getElementById('ctxLine');
+    if (line) {
+      line.textContent = ctx ? [ctx.request, ctx.coffee, ctx.estate].filter(Boolean).join(' \u00b7 ') : '';
+      line.style.display = ctx ? 'block' : 'none';
+    }
+    var msgEl = document.getElementById('i-msg');
+    if (msgEl && ctx && ctx.message != null) msgEl.value = ctx.message;
     document.body.style.overflow = 'hidden';
     if (preset) {
       var sel = ov.querySelector('select[name="enquiry_type"]');

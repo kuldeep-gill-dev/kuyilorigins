@@ -4,7 +4,9 @@
   var grid = document.getElementById('estateGrid');
   if (!cat || !grid) return;
 
-  var STATUS = { available: '', limited: 'Limited release', soldout: 'Sold out', soon: 'Coming soon' };
+  var ROASTER = grid.getAttribute('data-mode') === 'roaster';
+  var STATUS = { available: '', limited: 'Limited release', soldout: 'Sold out', soon: 'Coming soon', inquire: 'Ask for availability' };
+  if (ROASTER) STATUS.available = 'Available';
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -26,12 +28,16 @@
       '<h2>' + esc(cat.intro.title) + '</h2><p>' + esc(cat.intro.body) + '</p>';
   }
 
+  var upd = document.getElementById('catUpdated');
+  if (upd && cat.updated) upd.textContent = 'Inventory and availability updated ' + cat.updated;
+
   grid.innerHTML = cat.estates.map(function (e) {
     var n = e.coffees.length;
     return '<article class="pcard pcard-open" tabindex="0" role="button" data-estate="' + esc(e.id) + '" aria-label="' + esc(e.name) + ' — explore coffees">' +
-      '<div class="fr"><img src="' + esc(e.image) + '" alt="' + esc(e.imageAlt) + '" loading="lazy" decoding="async"></div>' +
+      '<div class="fr"><img src="' + esc(ROASTER && e.roasterImage || e.image) + '" alt="' + esc(ROASTER && e.roasterImageAlt || e.imageAlt) + '" loading="lazy" decoding="async"></div>' +
       '<h3>' + esc(e.name) + '</h3><div class="region">' + esc(e.location) + '</div>' +
       '<p>' + esc(e.summary) + '</p>' +
+      (ROASTER ? '<div class="cx-count">' + (n ? n + (n === 1 ? ' coffee' : ' coffees') : 'Ask what\u2019s coming') + '</div>' : '') +
       '<span class="go">Explore coffees</span></article>';
   }).join('');
 
@@ -70,7 +76,7 @@
     setBack('All estates', close);
     var cards = e.coffees.length ? '<div class="cx-coffees">' + e.coffees.map(function (c) {
       return '<button type="button" class="cx-ccard" data-coffee="' + esc(c.id) + '">' +
-        '<div class="cx-cc-top"><h4>' + esc(c.name) + '</h4>' + badge(c.status) + '</div>' +
+        '<div class="cx-cc-top"><h4>' + esc(c.name) + '</h4>' + badge(ROASTER ? (c.roaster || {}).status : c.status) + '</div>' +
         '<div class="cx-meta">' + [c.process, c.variety].filter(Boolean).map(esc).join(' &middot; ') + '</div>' +
         (c.notes.length ? '<ul class="cx-notes">' + c.notes.slice(0, 4).map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>' : '') +
         '<span class="cx-more">Explore this coffee</span></button>';
@@ -90,6 +96,7 @@
   function coffeeView(e, c) {
     state.coffee = c;
     setBack('Back to ' + e.name.replace(/ (Estate|Plantations)$/, '') + ' coffees', function () { estateView(e); });
+    if (ROASTER) return roasterView(e, c);
     var f = c.formats || {};
     var meta = [c.process, c.variety, c.region].filter(Boolean).map(esc).join(' <i>|</i> ');
     var html = '<header class="cx-head"><div class="cx-kicker">' + esc(e.name) + '</div>' +
@@ -122,6 +129,88 @@
     }
     html += '</div>';
     show(html);
+  }
+
+
+  /* ---- roaster (green, wholesale) coffee view ---- */
+  function row(k, v) { return v ? '<div><dt>' + k + '</dt><dd>' + esc(v) + '</dd></div>' : ''; }
+
+  function roasterView(e, c) {
+    var r = c.roaster || {}, fw = r.forward || {}, st = r.status || 'inquire';
+    var meta = [c.process, c.variety, c.region].filter(Boolean).map(esc).join(' <i>|</i> ');
+    var specs = c.specs ? Object.keys(c.specs).map(function (k) { return row(esc(k), c.specs[k]); }).join('') : '';
+    var html = '<header class="cx-head"><div class="cx-kicker">' + esc(e.name) + '</div>' +
+      '<h2 id="cxTitle">' + esc(c.name) + '</h2>' +
+      (meta ? '<div class="cx-loc">' + meta + '</div>' : '') +
+      (c.lot ? '<div class="cx-loc">Lot ' + esc(c.lot) + '</div>' : '') +
+      (c.notes.length ? '<ul class="cx-notes cx-notes-lg">' + c.notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>' : '') +
+      (c.story ? '<p class="cx-desc">' + esc(c.story) + '</p>' : '') +
+      (specs ? '<dl class="cx-rows">' + specs + '</dl>' : '') + '</header><div class="cx-choose">';
+
+    /* current availability */
+    var open_ = st === 'available' || st === 'limited';
+    var head = { available: 'Available now', limited: 'Limited — available now', soldout: 'Current availability', soon: 'Coming soon', inquire: 'Current availability' }[st];
+    var rows = '';
+    if (open_) {
+      rows += row('U.S. inventory', r.lbsAvailable != null && r.lbsAvailable !== '' ? r.lbsAvailable + ' lb remaining' : '');
+      rows += row('Bag size', r.bagSize);
+      rows += row('Price', r.pricePerLb != null && r.pricePerLb !== '' ? '$' + r.pricePerLb + ' / lb' + (r.priceNote ? ' — ' + r.priceNote : '') : r.priceNote);
+    }
+    html += '<div class="cx-fmt"><div class="cx-fmt-top"><div class="cx-fmt-h">' + head + '</div>' + badge(st) + '</div>';
+    if (st === 'soldout') html += '<p class="cx-fmt-p"><strong>Current lot sold out.</strong></p>';
+    if (st === 'inquire') html += '<p class="cx-fmt-p">Ask us for current U.S. inventory, pricing and bag sizes.</p>';
+    if (st === 'soon') html += '<p class="cx-fmt-p">This coffee is on its way. Tell us if you’d like it reserved for you.</p>';
+    if (rows) html += '<dl class="cx-rows">' + rows + '</dl>';
+    if (r.note) html += '<p class="cx-fmt-p">' + esc(r.note) + '</p>';
+    if (open_ || st === 'inquire') {
+      html += '<button type="button" class="cx-btn cx-cart" data-req="inventory">' + (open_ ? 'Request this coffee' : 'Ask about availability') + ' →</button>';
+    } else {
+      html += '<div class="cx-wantnext"><div class="cx-fmt-h">Want this coffee in the next shipment?</div>' +
+        '<p class="cx-fmt-p">If you’re interested in this coffee, tell us what quantity you may need. Your interest helps us plan future shipments with the producer.</p>' +
+        '<button type="button" class="cx-btn cx-cart" data-req="interest">Request this coffee →</button></div>';
+    }
+    html += '</div>';
+
+    /* forward order */
+    if (fw.available) {
+      var conf = fw.confirmed === true ? 'Confirmed with producer' : fw.confirmed === false ? 'Pending producer confirmation' : '';
+      var frows = row('Crop', fw.crop) + row('Expected U.S. arrival', fw.arrival) + row('Minimum quantity', fw.minimum) +
+        row('Estimated available', fw.estimatedLbs != null && fw.estimatedLbs !== '' ? fw.estimatedLbs + ' lb' : '') +
+        row('Indicative price', fw.indicativePrice) + row('Commitment deadline', fw.deadline) +
+        row('Deposit', fw.deposit) + row('Producer status', conf);
+      var fhead = open_ ? 'Need more? Planning ahead?' : st === 'soldout' ? 'Forward availability' : 'Forward order';
+      var fp = open_ ? 'Interested in a larger volume, or the next shipment? Forward order this coffee.'
+        : 'Forward interest is open. Tell us how much you may need so we can include your interest when planning our next purchase with ' + e.name + '.';
+      html += '<div class="cx-fmt"><div class="cx-fmt-top"><div class="cx-fmt-h">' + fhead + '</div><span class="cx-badge">Forward order</span></div>' +
+        '<p class="cx-fmt-p">' + fp + '</p>' + (frows ? '<dl class="cx-rows">' + frows + '</dl>' : '') +
+        (fw.notes ? '<p class="cx-fmt-p">' + esc(fw.notes) + '</p>' : '') +
+        '<button type="button" class="cx-btn cx-cart" data-req="forward">Discuss a forward order →</button></div>';
+    }
+
+    /* samples */
+    if (r.samples && r.samples.available) {
+      html += '<div class="cx-fmt"><div class="cx-fmt-top"><div class="cx-fmt-h">Samples</div></div>' +
+        '<p class="cx-fmt-p">' + esc(r.samples.note || 'Cup it before you commit — we’ll send a sample.') + '</p>' +
+        '<button type="button" class="cx-btn cx-cart" data-req="sample">Request a sample →</button></div>';
+    }
+    html += '</div>';
+    show(html);
+  }
+
+  var REQ = {
+    inventory: { preset: 'Current inventory request', label: 'Current inventory request', msg: 'Quantity I may need (lb): ' },
+    interest:  { preset: 'Sold-out coffee interest', label: 'Sold-out coffee interest', msg: 'Quantity I may need (lb) for the next shipment: ' },
+    forward:   { preset: 'Forward order', label: 'Forward order', msg: 'Quantity I’m planning for (lb / bags), and timing: ' },
+    sample:    { preset: 'Request a sample', label: 'Sample request', msg: 'Shipping address / roastery, and anything you’d like us to know: ' }
+  };
+
+  function requestCoffee(kind) {
+    var e = state.estate, c = state.coffee, q = REQ[kind];
+    close();
+    window.openModal(q.preset, {
+      estate: e.name, coffee: c.name, lot: c.lot || '', request: q.label,
+      message: q.msg
+    });
   }
 
   function formatBlock(key, title, blurb, fmt, c, cta) {
@@ -199,6 +288,9 @@
       });
       return;
     }
+    if ((t = ev.target.closest('[data-req]'))) {
+      return requestCoffee(t.getAttribute('data-req'));
+    }
     if ((t = ev.target.closest('[data-add]'))) {
       var sel = t.closest('.cx-fmt').querySelector('.cx-size.on');
       return addToCart(t.getAttribute('data-add'), sel ? +sel.getAttribute('data-size') : 0);
@@ -206,7 +298,7 @@
     if ((t = ev.target.closest('[data-ask]'))) {
       ev.preventDefault();
       var what = t.getAttribute('data-ask');
-      close(); window.openModal('Roasted coffee');
+      close(); window.openModal(ROASTER ? 'Wholesale green coffee' : 'Roasted coffee');
       var msg = document.getElementById('i-msg');
       if (msg) msg.value = 'I’d like to hear more about: ' + what + '.';
     }

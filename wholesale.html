@@ -136,16 +136,17 @@
   </div>
 </section>
 
-<!-- ===== ESTATES ===== -->
-<section class="sec">
+<!-- ===== ESTATES + COFFEES ===== -->
+<section class="sec" id="coffees">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head" id="estateIntro">
       <div class="eyebrow">Where Our Coffee Comes From</div>
-      <h2>Four estates in Karnataka</h2>
-      <div class="where" style="margin-top:14px">Karnataka, India &nbsp;·&nbsp; 2026 harvest</div>
+      <h2>Explore green coffee by producer</h2>
+      <p>Choose an estate to see its coffees, current U.S. inventory, samples, and forward-order availability.</p>
     </div>
+    <p class="cx-updated" id="catUpdated"></p>
 
-    <div class="prod-grid">
+    <div class="prod-grid" id="estateGrid" data-mode="roaster">
       <article class="pcard">
         <div class="fr"><img src="assets/ratnagiri-sorting.jpg"
           alt="Workers hand-sorting green coffee spread across the floor at Ratnagiri Estate" loading="lazy" decoding="async"></div>
@@ -179,6 +180,7 @@
           practices.</p>
       </article>
     </div>
+
 
     <p class="e-note">Every coffee begins with time spent at the estate and conversations with
       the people who grew it. <a href="producers.html">Meet the Producers</a>.</p>
@@ -260,6 +262,8 @@
     </div>
     <div class="m-body">
       <form id="ef" action="https://formspree.io/f/mlgayldn" method="POST">
+        <div class="ctx-line" id="ctxLine" style="display:none"></div>
+        <input type="hidden" name="estate"><input type="hidden" name="coffee"><input type="hidden" name="lot"><input type="hidden" name="request_type">
         <div class="f-row">
           <div class="f"><label for="i-name">Name</label><input id="i-name" type="text" name="name" placeholder="Your name" required></div>
           <div class="f"><label for="i-co">Company / Roastery</label><input id="i-co" type="text" name="company" placeholder="Optional"></div>
@@ -270,6 +274,9 @@
             <option value="" disabled selected>Select one</option>
             <option>Wholesale green coffee</option>
             <option>Request a sample</option>
+            <option>Current inventory request</option>
+            <option>Sold-out coffee interest</option>
+            <option>Forward order</option>
             <option>Roasted coffee</option>
             <option>Partnership / sourcing</option>
             <option>Educational cupping</option>
@@ -296,5 +303,7 @@
 </div>
 
 <script src="kuyil.js"></script>
+<script src="coffee-data.js"></script>
+<script src="coffee-explorer.js"></script>
 </body>
 </html>

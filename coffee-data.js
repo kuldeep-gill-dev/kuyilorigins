@@ -18,10 +18,22 @@
  * PARTNER ROASTERS: add as many cards as you like to `partners`. Set
  *   `available: false` to hide one without deleting it. `url` opens in a new tab.
  *
+ * ROASTER (GREEN) VIEW — For Roasters page. Per coffee, `roaster` holds everything that
+ *   changes often. Blank / null / missing fields are simply not shown.
+ *     status    'available' | 'limited' | 'soldout' | 'soon' | 'inquire'  (inquire = "ask us")
+ *     lbsAvailable, bagSize, pricePerLb (number, $/lb), priceNote, samples {available, note},
+ *     note (free text under the availability block)
+ *     forward { available:true/false, crop, arrival, minimum, estimatedLbs, indicativePrice,
+ *               deadline, deposit, notes, confirmed: true | false | null }
+ *   Optional coffee-level `lot` (lot number) and `specs` {Harvest:'..', Altitude:'..'} are shown
+ *   and sent with every request. Update `updated` below when you change inventory.
+ *
  * CART: buttons call window.KuyilCart.add(item) if the checkout defines it. Until
  *   then they open the inquiry form with the coffee and size pre-filled.
  */
 window.KUYIL_CATALOG = {
+  updated: '',   /* e.g. 'October 2026' \u2014 shown on the roaster page when set */
+
   intro: {
     eyebrow: 'Discover Coffee Through Its Origin',
     title: 'Every Kuyil coffee begins with a producer.',
@@ -35,15 +47,17 @@ window.KUYIL_CATALOG = {
       location: 'Karnataka, India',
       image: 'assets/ratnagiri-shade-pruning.jpg',
       imageAlt: 'A worker high in a shade tree at Ratnagiri Estate, managing the canopy over the coffee',
+      roasterImage: 'assets/ratnagiri-sorting.jpg',
+      roasterImageAlt: 'Workers hand-sorting green coffee spread across the floor at Ratnagiri Estate',
       summary: 'Experimental by instinct, with processing decisions made lot by lot and the people behind those trials driving what the coffee becomes.',
       description: 'Ratnagiri turns a heritage plantation into a laboratory for Indian specialty coffee. Carbonic maceration, honey, anaerobic and yeast-fermented lots are handled one at a time, always in service of a clean, expressive cup that still tastes of place.',
       pageUrl: 'ratnagiri.html',
       coffees: [
-        /* TODO: replace these two placeholders with the real Ratnagiri lots. */
         {
-          id: 'ratnagiri-lot-1',
-          name: 'Ratnagiri Lot One',
-          process: '', variety: '', region: 'Karnataka',
+          id: 'ratnagiri-hydro-honey',
+          name: 'Ratnagiri Hydro Honey',
+          lot: '',
+          process: 'Hydro honey', variety: '', region: 'Karnataka',
           notes: [],
           story: '',
           status: 'soon',
@@ -51,12 +65,24 @@ window.KUYIL_CATALOG = {
             roasted: { status: 'soon', sizes: [{ label: '12 oz', price: null }] },
             green: { status: 'soon', sizes: [{ label: '5 lb', price: null }, { label: '10 lb', price: null }, { label: '30 lb', price: null }] },
             partners: []
+          },
+          roaster: {
+            status: 'available',
+            lbsAvailable: null,     /* e.g. 58 */
+            bagSize: '', pricePerLb: null, priceNote: '',
+            samples: { available: true, note: '' },
+            note: '',
+            forward: {
+              available: true, crop: 'Next harvest', arrival: 'May\u2013June 2027', minimum: '1 bag',
+              estimatedLbs: null, indicativePrice: '', deadline: '', deposit: '', notes: '', confirmed: false
+            }
           }
         },
         {
-          id: 'ratnagiri-lot-2',
-          name: 'Ratnagiri Lot Two',
-          process: '', variety: '', region: 'Karnataka',
+          id: 'ratnagiri-thermal-shock-natural',
+          name: 'Ratnagiri Thermal Shock Natural',
+          lot: '',
+          process: 'Thermal shock, natural', variety: '', region: 'Karnataka',
           notes: [],
           story: '',
           status: 'soon',
@@ -64,6 +90,14 @@ window.KUYIL_CATALOG = {
             roasted: { status: 'soon', sizes: [{ label: '12 oz', price: null }] },
             green: { status: 'soon', sizes: [{ label: '5 lb', price: null }, { label: '10 lb', price: null }, { label: '30 lb', price: null }] },
             partners: []
+          },
+          roaster: {
+            status: 'soldout',
+            samples: { available: false },
+            forward: {
+              available: true, crop: 'Next harvest', arrival: 'May\u2013June 2027', minimum: '1 bag',
+              estimatedLbs: null, indicativePrice: '', deadline: '', deposit: '', notes: '', confirmed: false
+            }
           }
         }
       ]
@@ -75,6 +109,8 @@ window.KUYIL_CATALOG = {
       location: 'Karnataka, India',
       image: 'assets/mysore-cherries-farm.jpg',
       imageAlt: 'A Robusta coffee bush heavy with ripening cherries growing in the field at Mysore Plantations',
+      roasterImage: 'assets/mysore-picking.jpg',
+      roasterImageAlt: 'Hands picking a cluster of ripe red coffee cherries at Mysore Plantations',
       summary: 'Women-owned, and treating Robusta as a specialty coffee in its own right rather than a commodity to be blended away.',
       description: 'A family plantation since 1942, now run by its third generation. Mysore grows shade-grown specialty Robusta with the care usually given to fine Arabica, with about 90 percent of the workforce women.',
       pageUrl: 'mysore.html',
@@ -90,6 +126,11 @@ window.KUYIL_CATALOG = {
             roasted: { status: 'soon', sizes: [{ label: '12 oz', price: null }] },
             green: { status: 'soon', sizes: [{ label: '5 lb', price: null }, { label: '10 lb', price: null }, { label: '30 lb', price: null }] },
             partners: []
+          },
+          roaster: {
+            status: 'inquire',
+            samples: { available: true, note: '' },
+            forward: { available: false }
           }
         },
         {
@@ -103,6 +144,11 @@ window.KUYIL_CATALOG = {
             roasted: { status: 'soon', sizes: [{ label: '12 oz', price: null }] },
             green: { status: 'soon', sizes: [{ label: '5 lb', price: null }, { label: '10 lb', price: null }, { label: '30 lb', price: null }] },
             partners: []
+          },
+          roaster: {
+            status: 'inquire',
+            samples: { available: true, note: '' },
+            forward: { available: false }
           }
         }
       ]
@@ -114,6 +160,8 @@ window.KUYIL_CATALOG = {
       location: 'Sakleshpur, Karnataka, India',
       image: 'assets/harley-estate-path.jpg',
       imageAlt: 'A shaded path through palms and coffee at Harley Estate',
+      roasterImage: 'assets/harley-cherries.jpg',
+      roasterImageAlt: 'Ripe coffee cherries being picked by hand at Harley Estate',
       summary: 'Women-led, with conservation shaping how the land is managed and a clear estate identity behind the coffee we selected.',
       description: 'About 500 acres in the Malnad hills, surrounded by forest and waterfalls, with coffee grown under silver oak, fig and jackfruit and processed with spring water from the estate itself.',
       pageUrl: 'harley.html',
@@ -147,6 +195,11 @@ window.KUYIL_CATALOG = {
                 available: true
               }
             ]
+          },
+          roaster: {
+            status: 'inquire',
+            samples: { available: true, note: '' },
+            forward: { available: false }
           }
         }
       ]
@@ -158,6 +211,8 @@ window.KUYIL_CATALOG = {
       location: 'Chikmagalur, Karnataka, India',
       image: 'assets/balanoor-picking.jpg',
       imageAlt: 'A picker in a blue headscarf selecting ripe cherries at Balanoor Plantations',
+      roasterImage: 'assets/balanoor-green-trays.jpg',
+      roasterImageAlt: 'A worker checking coffee on green drying trays at Balanoor Plantations',
       summary: 'A long estate history in Karnataka, with sustainability practices that shape the coffees it produces today.',
       description: 'A historic estate group in the Koppa and Chikmagalur belt, with its own wet mill and curing works, Rainforest Alliance certified Arabica and a certified organic block.',
       pageUrl: 'balanoor.html',
