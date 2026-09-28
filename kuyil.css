@@ -764,3 +764,10 @@ img{max-width:100%}
 .ctx-line{background:var(--paper-2);border-left:2px solid var(--maroon);padding:10px 14px;margin-bottom:22px;
   font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--maroon)}
 @media(max-width:700px){.cx-rows>div{grid-template-columns:1fr;gap:2px}}
+
+.cx-tag{font-size:16px;font-weight:300;font-style:italic;color:var(--body);margin-top:10px}
+.cx-score{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.cx-score b{font-size:30px;font-weight:600;color:var(--maroon)}
+.cx-score span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--body-2)}
+.cx-profile{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);opacity:.75;margin:0 0 18px}
+.cx-h4{font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--maroon);margin:26px 0 8px}

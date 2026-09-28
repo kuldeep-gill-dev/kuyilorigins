@@ -77,7 +77,7 @@
     var cards = e.coffees.length ? '<div class="cx-coffees">' + e.coffees.map(function (c) {
       return '<button type="button" class="cx-ccard" data-coffee="' + esc(c.id) + '">' +
         '<div class="cx-cc-top"><h4>' + esc(c.name) + '</h4>' + badge(ROASTER ? (c.roaster || {}).status : c.status) + '</div>' +
-        '<div class="cx-meta">' + [c.process, c.variety].filter(Boolean).map(esc).join(' &middot; ') + '</div>' +
+        '<div class="cx-meta">' + [c.variety, c.process].filter(Boolean).map(esc).join(' &middot; ') + (c.score ? ' &middot; ' + esc(c.score) : '') + '</div>' +
         (c.notes.length ? '<ul class="cx-notes">' + c.notes.slice(0, 4).map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>' : '') +
         '<span class="cx-more">Explore this coffee</span></button>';
     }).join('') + '</div>' :
@@ -92,18 +92,32 @@
       '<h3 class="cx-sub">Explore coffees from ' + esc(e.name.replace(/ (Estate|Plantations)$/, '')) + '</h3>' + cards);
   }
 
+  /* ---- shared coffee detail (cupping, process, roast) ---- */
+  function detailHead(e, c) {
+    var meta = [c.process, c.variety, c.region].filter(Boolean).map(esc).join(' <i>|</i> ');
+    var specs = c.specs ? Object.keys(c.specs).map(function (k) { return row(esc(k), c.specs[k]); }).join('') : '';
+    return '<header class="cx-head"><div class="cx-kicker">' + esc(e.name) + '</div>' +
+      '<h2 id="cxTitle">' + esc(c.name) + '</h2>' +
+      (c.tagline ? '<div class="cx-tag">' + esc(c.tagline) + '</div>' : '') +
+      (meta ? '<div class="cx-loc">' + meta + '</div>' : '') +
+      (c.lot ? '<div class="cx-loc">Lot ' + esc(c.lot) + '</div>' : '') +
+      (c.score ? '<div class="cx-score"><b>' + esc(c.score) + '</b><span>Cupping score</span></div>' : '') +
+      (c.notes.length ? '<ul class="cx-notes cx-notes-lg">' + c.notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>' : '') +
+      (c.cupProfile ? '<p class="cx-profile">' + esc(c.cupProfile) + '</p>' : '') +
+      (c.story ? '<p class="cx-desc">' + esc(c.story) + '</p>' : '') +
+      (c.processStory ? '<h4 class="cx-h4">The process</h4><p class="cx-desc">' + esc(c.processStory) + '</p>' : '') +
+      (specs ? '<dl class="cx-rows">' + specs + '</dl>' : '') +
+      (c.roastDirection && ROASTER ? '<h4 class="cx-h4">Roast direction</h4><p class="cx-desc">' + esc(c.roastDirection) + '</p>' : '') +
+      '</header>';
+  }
+
   /* ---- coffee view ---- */
   function coffeeView(e, c) {
     state.coffee = c;
     setBack('Back to ' + e.name.replace(/ (Estate|Plantations)$/, '') + ' coffees', function () { estateView(e); });
     if (ROASTER) return roasterView(e, c);
     var f = c.formats || {};
-    var meta = [c.process, c.variety, c.region].filter(Boolean).map(esc).join(' <i>|</i> ');
-    var html = '<header class="cx-head"><div class="cx-kicker">' + esc(e.name) + '</div>' +
-      '<h2 id="cxTitle">' + esc(c.name) + '</h2>' +
-      (meta ? '<div class="cx-loc">' + meta + '</div>' : '') +
-      (c.notes.length ? '<ul class="cx-notes cx-notes-lg">' + c.notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>' : '') +
-      (c.story ? '<p class="cx-desc">' + esc(c.story) + '</p>' : '') + '</header>';
+    var html = detailHead(e, c);
 
     var blocks = '';
     if (f.roasted) blocks += formatBlock('roasted', 'Roasted coffee', f.roasted.blurb || 'Roasted in small batches for Kuyil Origins.', f.roasted, c, 'Add to Cart');
@@ -137,15 +151,7 @@
 
   function roasterView(e, c) {
     var r = c.roaster || {}, fw = r.forward || {}, st = r.status || 'inquire';
-    var meta = [c.process, c.variety, c.region].filter(Boolean).map(esc).join(' <i>|</i> ');
-    var specs = c.specs ? Object.keys(c.specs).map(function (k) { return row(esc(k), c.specs[k]); }).join('') : '';
-    var html = '<header class="cx-head"><div class="cx-kicker">' + esc(e.name) + '</div>' +
-      '<h2 id="cxTitle">' + esc(c.name) + '</h2>' +
-      (meta ? '<div class="cx-loc">' + meta + '</div>' : '') +
-      (c.lot ? '<div class="cx-loc">Lot ' + esc(c.lot) + '</div>' : '') +
-      (c.notes.length ? '<ul class="cx-notes cx-notes-lg">' + c.notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>' : '') +
-      (c.story ? '<p class="cx-desc">' + esc(c.story) + '</p>' : '') +
-      (specs ? '<dl class="cx-rows">' + specs + '</dl>' : '') + '</header><div class="cx-choose">';
+    var html = detailHead(e, c) + '<div class="cx-choose">';
 
     /* current availability */
     var open_ = st === 'available' || st === 'limited';

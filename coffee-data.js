@@ -44,7 +44,7 @@ window.KUYIL_CATALOG = {
     {
       id: 'ratnagiri',
       name: 'Ratnagiri Estate',
-      location: 'Karnataka, India',
+      location: 'Bababudangiri, Chikmagalur, Karnataka, India',
       image: 'assets/ratnagiri-shade-pruning.jpg',
       imageAlt: 'A worker high in a shade tree at Ratnagiri Estate, managing the canopy over the coffee',
       roasterImage: 'assets/ratnagiri-sorting.jpg',
@@ -55,11 +55,17 @@ window.KUYIL_CATALOG = {
       coffees: [
         {
           id: 'ratnagiri-hydro-honey',
-          name: 'Ratnagiri Hydro Honey',
+          name: 'Hydro Honey',
+          tagline: 'A clean, expressive honey coffee with approachable fruit and sweetness.',
           lot: '',
-          process: 'Hydro honey', variety: '', region: 'Karnataka',
-          notes: [],
-          story: '',
+          process: 'Hydro Honey', variety: 'Catuai', region: 'Bababudangiri, Chikmagalur, Karnataka',
+          score: '84.5',
+          notes: ['Peach', 'Florals', 'Lemon citrus', 'Brown sugar'],
+          cupProfile: 'Bright · Juicy · Silky',
+          story: 'A bright and expressive Catuai from Ratnagiri Estate with honey-like sweetness, lively citrus acidity and a clean, silky finish.',
+          processStory: 'The coffee is processed using a honey-style method, retaining fruit mucilage around the seed during drying. This helps build sweetness, texture and layered fruit character while preserving clarity in the cup.',
+          roastDirection: 'Light-medium to medium is a good starting point to preserve the citrus, florals and sweetness.',
+          specs: {},
           status: 'soon',
           formats: {
             roasted: { status: 'soon', sizes: [{ label: '12 oz', price: null }] },
@@ -79,12 +85,25 @@ window.KUYIL_CATALOG = {
           }
         },
         {
-          id: 'ratnagiri-thermal-shock-natural',
-          name: 'Ratnagiri Thermal Shock Natural',
-          lot: '',
-          process: 'Thermal shock, natural', variety: '', region: 'Karnataka',
-          notes: [],
-          story: '',
+          id: 'ratnagiri-lot-42-carbonic-natural',
+          name: 'Lot 42 Carbonic Natural',
+          tagline: 'Experimental showcase single origin — expressive, fermentation-forward and clearly differentiated.',
+          lot: '42',
+          process: '54-hour Carbonic Natural', variety: 'SLN 6', region: 'Bababudangiri, Chikmagalur, Karnataka',
+          score: '85',
+          notes: ['Red grape', 'Strawberry', 'Baker’s chocolate'],
+          cupProfile: 'Intense fermentation-driven sweetness · Medium-high acidity · Medium-heavy body · Silky, dry, wine-like finish',
+          story: 'A 54-hour carbonic natural from Ratnagiri’s GIRI Patte block. SLN 6 cherries harvested at 24.9 Brix undergo controlled fermentation in a CO₂-rich environment before being slow-dried on raised beds for 30 days.',
+          processStory: 'SLN 6 cherries from Ratnagiri Estate’s GIRI Patte block are harvested at 24.9 Brix. After floater removal, the cherries are placed in stainless-steel fermenters and allowed to ferment for 54 hours in a carbon-dioxide-rich environment. The whole cherries are then transferred directly to raised beds and slowly dried for approximately 30 days with constant stirring to encourage even drying.',
+          roastDirection: 'Medium roast, with enough development to support the juicy body and grape sweetness while preserving the layered red-fruit character. Suited to pour-over, a seasonal single origin or a featured coffee.',
+          specs: {
+            'Producer lot': 'RT-LOT-42-CARBONIC NATURALS',
+            'Block': 'GIRI Patte',
+            'Elevation': '4,450 ft',
+            'Fermentation': '54 hours, CO₂-rich, stainless-steel fermenters',
+            'Cherry Brix': '24.9',
+            'Drying': 'Raised beds, about 30 days, constant stirring',
+          },
           status: 'soon',
           formats: {
             roasted: { status: 'soon', sizes: [{ label: '12 oz', price: null }] },
@@ -92,35 +111,41 @@ window.KUYIL_CATALOG = {
             partners: []
           },
           roaster: {
-            status: 'soldout',
-            samples: { available: false },
-            forward: {
-              available: true, crop: 'Next harvest', arrival: 'May\u2013June 2027', minimum: '1 bag',
-              estimatedLbs: null, indicativePrice: '', deadline: '', deposit: '', notes: '', confirmed: false
-            }
+            status: 'inquire',
+            lbsAvailable: null,     /* e.g. 58 */
+            bagSize: '', pricePerLb: null, priceNote: '',
+            samples: { available: true, note: '' },
+            note: '',
+            forward: { available: false }
           }
         }
       ]
     },
-
     {
       id: 'mysore',
       name: 'Mysore Plantations',
-      location: 'Karnataka, India',
+      location: 'Karnataka Highlands, Western Ghats, India',
       image: 'assets/mysore-cherries-farm.jpg',
       imageAlt: 'A Robusta coffee bush heavy with ripening cherries growing in the field at Mysore Plantations',
       roasterImage: 'assets/mysore-picking.jpg',
       roasterImageAlt: 'Hands picking a cluster of ripe red coffee cherries at Mysore Plantations',
       summary: 'Women-owned, and treating Robusta as a specialty coffee in its own right rather than a commodity to be blended away.',
-      description: 'A family plantation since 1942, now run by its third generation. Mysore grows shade-grown specialty Robusta with the care usually given to fine Arabica, with about 90 percent of the workforce women.',
+      description: 'A third-generation family plantation, woman-owned and managed, focused on specialty Robusta. About 90 percent of the workforce are women, and the coffee grows in a shade-grown, diversified farming system.',
       pageUrl: 'mysore.html',
       coffees: [
         {
-          id: 'mysore-washed-robusta',
-          name: 'Washed Robusta',
-          process: 'Washed', variety: 'Robusta', region: 'Karnataka',
-          notes: ['Brown sugar', 'Red apple', 'Walnut', 'Cinnamon'],
-          story: 'A clean, sweet, medium-length Robusta that cups at 84.5. Selective harvesting and careful handling after picking give it a structure most people don’t expect from the species.',
+          id: 'mysore-honey-robusta',
+          name: 'Honey Robusta',
+          tagline: 'Specialty Robusta — a softer, sweeter expression of the species.',
+          lot: '',
+          process: 'Honey, sun-dried', variety: 'Robusta (Coffea canephora)', region: 'Karnataka Highlands, Western Ghats',
+          score: '84',
+          notes: ['Honey', 'Yellow stone fruit', 'Brown sugar'],
+          cupProfile: 'Sweet · Fruity · Chocolate finish',
+          story: 'A honey-processed specialty Robusta showing a softer and sweeter expression of the species, with honeyed sweetness, yellow stone fruit and brown sugar leading into a chocolate-driven finish.',
+          processStory: 'After harvest, the skin and part of the fruit pulp are removed while a layer of mucilage remains around the seed. The coffee is then sun-dried with that mucilage intact, encouraging additional sweetness, fruit character and texture compared with a fully washed Robusta.',
+          roastDirection: '',
+          specs: {},
           status: 'soon',
           formats: {
             roasted: { status: 'soon', sizes: [{ label: '12 oz', price: null }] },
@@ -129,16 +154,26 @@ window.KUYIL_CATALOG = {
           },
           roaster: {
             status: 'inquire',
+            lbsAvailable: null,     /* e.g. 58 */
+            bagSize: '', pricePerLb: null, priceNote: '',
             samples: { available: true, note: '' },
+            note: '',
             forward: { available: false }
           }
         },
         {
-          id: 'mysore-honey-robusta',
-          name: 'Honey Sun-Dried Robusta',
-          process: 'Honey, sun-dried', variety: 'Robusta', region: 'Karnataka',
-          notes: ['Honey', 'Yellow stone fruit', 'Brown sugar'],
-          story: 'Dried in the sun with some of the fruit left on, this Robusta cups at 84 with a rounded sweetness. Another argument for taking Robusta seriously on its own terms.',
+          id: 'mysore-washed-robusta',
+          name: 'Washed Robusta',
+          tagline: 'Clean specialty Robusta — an accessible single origin.',
+          lot: '',
+          process: 'Washed', variety: 'Robusta (Coffea canephora)', region: 'Karnataka Highlands, Western Ghats',
+          score: '84.5',
+          notes: ['Brown sugar', 'Red apple', 'Walnut', 'Cinnamon'],
+          cupProfile: 'Clean · Structured · Sweet-tart',
+          story: 'A clean and structured specialty Robusta from Mysore Plantations, with brown-sugar sweetness, red apple, walnut and gentle cinnamon-like spice.',
+          processStory: 'The harvested cherries are pulped to remove the fruit. The coffee is then fermented so the remaining mucilage can break down, washed clean and dried. This produces a cleaner, more structured expression of Robusta with less fermentation-driven fruit character than the honey-processed lot.',
+          roastDirection: '',
+          specs: {},
           status: 'soon',
           formats: {
             roasted: { status: 'soon', sizes: [{ label: '12 oz', price: null }] },
@@ -147,50 +182,51 @@ window.KUYIL_CATALOG = {
           },
           roaster: {
             status: 'inquire',
+            lbsAvailable: null,     /* e.g. 58 */
+            bagSize: '', pricePerLb: null, priceNote: '',
             samples: { available: true, note: '' },
+            note: '',
             forward: { available: false }
           }
         }
       ]
     },
-
     {
       id: 'harley',
       name: 'Harley Estate',
-      location: 'Sakleshpur, Karnataka, India',
+      location: 'Sakleshpur, Hassan District, Karnataka, India',
       image: 'assets/harley-estate-path.jpg',
       imageAlt: 'A shaded path through palms and coffee at Harley Estate',
       roasterImage: 'assets/harley-cherries.jpg',
       roasterImageAlt: 'Ripe coffee cherries being picked by hand at Harley Estate',
       summary: 'Women-led, with conservation shaping how the land is managed and a clear estate identity behind the coffee we selected.',
-      description: 'About 500 acres in the Malnad hills, surrounded by forest and waterfalls, with coffee grown under silver oak, fig and jackfruit and processed with spring water from the estate itself.',
+      description: 'A women-led, conservation-focused estate in the Western Ghats, with research-driven farming across about 500 acres of forest, waterfalls and shade-grown coffee.',
       pageUrl: 'harley.html',
       coffees: [
         {
           id: 'harley-banana-black-honey',
           name: 'Banana Black Honey',
-          process: 'Black honey', variety: '', region: 'Sakleshpur, Karnataka',
-          notes: [],
-          story: 'A honey-processed lot associated with banana leaf during drying. It sparks curiosity straight away, but we ask it to be judged first by the cup and by how clearly the process is documented.',
-          status: 'available',
+          tagline: 'Flagship premium experimental coffee.',
+          lot: '',
+          process: 'Banana Black Honey / Banana Co-Ferment', variety: 'Chandragiri', region: 'Sakleshpur, Hassan District, Karnataka',
+          score: '85',
+          notes: ['Brown sugar', 'Yellow fruit', 'Honey graham cracker'],
+          cupProfile: 'Bright · Sweet · Syrupy',
+          story: 'A playful but balanced Chandragiri from Harley Estate. Black-honey processing and banana co-fermentation create a syrupy coffee with yellow-fruit character, brown-sugar sweetness and a gentle banana expression that does not overpower the cup.',
+          processStory: 'Ripe cherries are processed as a black honey, retaining a substantial amount of fruit mucilage around the seed. Banana is introduced during fermentation, creating a fruit-associated co-fermentation environment before the coffee is carefully dried with the sticky mucilage still intact.',
+          roastDirection: '',
+          specs: {},
+          status: 'soon',
           formats: {
-            roasted: null,
-            green: {
-              status: 'available',
-              blurb: 'Unroasted coffee for home roasters and coffee enthusiasts who want to roast the coffee themselves.',
-              sizes: [
-                { label: '5 lb', price: null },
-                { label: '10 lb', price: null },
-                { label: '30 lb', price: null }
-              ]
-            },
+            roasted: { status: 'soon', sizes: [{ label: '12 oz', price: null }] },
+            green: { status: 'soon', sizes: [{ label: '5 lb', price: null }, { label: '10 lb', price: null }, { label: '30 lb', price: null }] },
             partners: [
               {
                 roaster: 'Kin Coffee',
                 logo: '',
                 description: 'The same Kuyil-origin coffee, roasted through the perspective of one of our roasting partners.',
-                product: 'Banana Black Honey — Harley Estate',
-                url: '',            /* TODO: paste Kin’s product page URL */
+                product: 'Banana Black Honey \u2014 Harley Estate',
+                url: '',            /* TODO: paste Kin\u2019s product page URL */
                 roast: '',
                 available: true
               }
@@ -198,13 +234,15 @@ window.KUYIL_CATALOG = {
           },
           roaster: {
             status: 'inquire',
+            lbsAvailable: null,     /* e.g. 58 */
+            bagSize: '', pricePerLb: null, priceNote: '',
             samples: { available: true, note: '' },
+            note: '',
             forward: { available: false }
           }
         }
       ]
     },
-
     {
       id: 'balanoor',
       name: 'Balanoor Plantations',
@@ -214,9 +252,42 @@ window.KUYIL_CATALOG = {
       roasterImage: 'assets/balanoor-green-trays.jpg',
       roasterImageAlt: 'A worker checking coffee on green drying trays at Balanoor Plantations',
       summary: 'A long estate history in Karnataka, with sustainability practices that shape the coffees it produces today.',
-      description: 'A historic estate group in the Koppa and Chikmagalur belt, with its own wet mill and curing works, Rainforest Alliance certified Arabica and a certified organic block.',
+      description: 'A family-owned estate since 1937 and a long-standing Chikmagalur producer, with its own wet mill, curing works and warehousing, and strong traceability and processing control.',
       pageUrl: 'balanoor.html',
-      coffees: []
+      coffees: [
+        {
+          id: 'balanoor-selection-9',
+          name: 'Selection 9',
+          tagline: 'An approachable, variety-led everyday specialty.',
+          lot: '',
+          process: 'Washed', variety: 'Selection 9 (SL9 / Sln.9)', region: 'Chikmagalur, Karnataka',
+          score: '82',
+          notes: ['Brown sugar', 'Green apple', 'Nutty'],
+          cupProfile: 'Balanced · Approachable · Structured',
+          story: 'A washed Selection 9 from one of Karnataka’s long-standing coffee estates. Brown-sugar sweetness and green-apple acidity meet a gentle nutty character in an approachable, structured cup.',
+          processStory: 'A washed, variety-forward coffee intended to show the character of Selection 9 with clarity and structure.',
+          roastDirection: '',
+          specs: {
+            'Acidity': 'Mild malic',
+            'Body': 'Medium to thin',
+            'Finish': 'Dry, short',
+          },
+          status: 'soon',
+          formats: {
+            roasted: { status: 'soon', sizes: [{ label: '12 oz', price: null }] },
+            green: { status: 'soon', sizes: [{ label: '5 lb', price: null }, { label: '10 lb', price: null }, { label: '30 lb', price: null }] },
+            partners: []
+          },
+          roaster: {
+            status: 'inquire',
+            lbsAvailable: null,     /* e.g. 58 */
+            bagSize: '', pricePerLb: null, priceNote: '',
+            samples: { available: true, note: '' },
+            note: '',
+            forward: { available: false }
+          }
+        }
+      ]
     }
   ]
 };
