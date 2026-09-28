@@ -34,7 +34,7 @@
   grid.innerHTML = cat.estates.map(function (e) {
     var n = e.coffees.length;
     return '<article class="pcard pcard-open" tabindex="0" role="button" data-estate="' + esc(e.id) + '" aria-label="' + esc(e.name) + ' — explore coffees">' +
-      '<div class="fr"><img src="' + esc(ROASTER && e.roasterImage || e.image) + '" alt="' + esc(ROASTER && e.roasterImageAlt || e.imageAlt) + '" loading="lazy" decoding="async"></div>' +
+      '<div class="fr"><img' + (e.imagePos ? ' style="object-position:' + esc(e.imagePos) + '"' : '') + ' src="' + esc(ROASTER && e.roasterImage || e.image) + '" alt="' + esc(ROASTER && e.roasterImageAlt || e.imageAlt) + '" loading="lazy" decoding="async"></div>' +
       '<h3>' + esc(e.name) + '</h3><div class="region">' + esc(e.location) + '</div>' +
       '<p>' + esc(e.summary) + '</p>' +
       (ROASTER ? '<div class="cx-count">' + (n ? n + (n === 1 ? ' coffee' : ' coffees') : 'Ask what\u2019s coming') + '</div>' : '') +
@@ -88,7 +88,7 @@
       '<div class="cx-loc">' + esc(e.location) + '</div>' +
       '<p class="cx-desc">' + esc(e.description) + '</p>' +
       '<a class="cx-link" href="' + esc(e.pageUrl) + '">Read the estate story</a></header>' +
-      '<div class="cx-img"><img src="' + esc(e.image) + '" alt="' + esc(e.imageAlt) + '"></div>' +
+      '<div class="cx-img"><img' + (e.imagePos ? ' style="object-position:' + esc(e.imagePos) + '"' : '') + ' src="' + esc(ROASTER && e.roasterImage || e.image) + '" alt="' + esc(ROASTER && e.roasterImageAlt || e.imageAlt) + '"></div>' +
       '<h3 class="cx-sub">Explore coffees from ' + esc(e.name.replace(/ (Estate|Plantations)$/, '')) + '</h3>' + cards);
   }
 
