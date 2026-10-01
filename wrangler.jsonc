@@ -1,0 +1,9 @@
+{
+  // Cloudflare Workers static-assets site. No build step: the repo root is the site.
+  "name": "kuyilorigins",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./",
+    "not_found_handling": "404-page"
+  }
+}

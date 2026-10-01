@@ -1,0 +1,9 @@
+# Never publish repo internals or deploy config as part of the website.
+.git
+.github
+.assetsignore
+wrangler.jsonc
+wrangler.toml
+node_modules
+.wrangler
+.gitignore

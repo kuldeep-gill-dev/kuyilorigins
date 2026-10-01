@@ -8,3 +8,6 @@ preview/
 # Local scratch
 *.tmp
 .DS_Store
+
+# Wrangler local scratch (dry runs, dev server)
+.wrangler/
