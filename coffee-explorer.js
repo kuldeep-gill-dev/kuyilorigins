@@ -211,7 +211,7 @@
     /* ordering terms */
     if (TERMS) {
       var tr = row('Pricing', 'Available on request. Contact us.') + row('Minimum order', TERMS.minOrderLb + ' lb. Sold in ' + TERMS.stepLb + ' lb bags.') +
-        row('Volume pricing', TERMS.tier1Pct + '% off orders of ' + TERMS.tier1FromLb + ' lb or more (' + Math.round(TERMS.tier1FromLb / TERMS.stepLb) + ' bags), ' + TERMS.tier2Pct + '% off orders of ' + TERMS.tier2FromLb + ' lb or more (' + Math.round(TERMS.tier2FromLb / TERMS.stepLb) + ' bags)' + (TERMS.mixLots ? ', mixing any of our coffees' : '')) +
+        row('Volume pricing', TERMS.tier1Pct + '% off orders of ' + TERMS.tier1FromLb + ' lb or more, ' + TERMS.tier2Pct + '% off orders of ' + TERMS.tier2FromLb + ' lb or more' + (TERMS.mixLots ? ', mixing any of our coffees' : '')) +
         row('Forward orders', 'Negotiable, from ' + TERMS.forwardMinLb + ' lb') + (TERMS.customSourcing ? row('Custom sourcing', 'Special coffees can be sourced and forward-ordered for individual roasters. Contact us for more information.') : '');
       html += '<div class="cx-fmt"><div class="cx-fmt-top"><div class="cx-fmt-h">Ordering terms</div></div><dl class="cx-rows">' + tr + '</dl></div>';
     }
