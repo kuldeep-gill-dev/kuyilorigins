@@ -6,10 +6,11 @@ window.KUYIL_AVAILABILITY = {
     "stepLb": 5,
     "tier1FromLb": 50,
     "tier1Pct": 5.0,
-    "tier2OverLb": 132,
+    "tier2FromLb": 135,
     "tier2Pct": 8.0,
     "mixLots": true,
-    "forwardMinLb": 132
+    "forwardMinLb": 132,
+    "customSourcing": true
   },
   "coffees": {
     "ratnagiri-hydro-honey": {
