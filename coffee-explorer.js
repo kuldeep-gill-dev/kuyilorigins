@@ -110,7 +110,7 @@
     var cards = e.coffees.length ? '<div class="cx-coffees">' + e.coffees.map(function (c) {
       return '<button type="button" class="cx-ccard" data-coffee="' + esc(c.id) + '">' +
         '<div class="cx-cc-top"><h4>' + esc(c.name) + '</h4>' + badge(ROASTER ? (c.roaster || {}).status : c.status) + '</div>' +
-        '<div class="cx-meta">' + [c.variety, c.process].filter(Boolean).map(esc).join(' &middot; ') + (c.score ? ' &middot; ' + esc(c.score) : '') + '</div>' +
+        '<div class="cx-meta">' + [c.variety, c.process].filter(Boolean).map(esc).join(' &middot; ') + '</div>' +
         (c.notes.length ? '<ul class="cx-notes">' + c.notes.slice(0, 4).map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>' : '') +
         '<span class="cx-more">Explore this coffee</span></button>';
     }).join('') + '</div>' :
@@ -134,7 +134,6 @@
       (c.tagline ? '<div class="cx-tag">' + esc(c.tagline) + '</div>' : '') +
       (meta ? '<div class="cx-loc">' + meta + '</div>' : '') +
       (c.lot ? '<div class="cx-loc">Lot ' + esc(c.lot) + '</div>' : '') +
-      (c.score ? '<div class="cx-score"><b>' + esc(c.score) + '</b><span>Cupping score</span></div>' : '') +
       (c.notes.length ? '<ul class="cx-notes cx-notes-lg">' + c.notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>' : '') +
       (c.cupProfile ? '<p class="cx-profile">' + esc(c.cupProfile) + '</p>' : '') +
       (c.story ? '<p class="cx-desc">' + esc(c.story) + '</p>' : '') +
