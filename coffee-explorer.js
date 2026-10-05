@@ -192,7 +192,6 @@
     if (open_) {
       rows += row('U.S. inventory', r.lbsAvailable != null && r.lbsAvailable !== '' ? r.lbsAvailable + ' lb remaining' : '');
       rows += row('Bag size', r.bagSize);
-      rows += row('Price', r.pricePerLb != null && r.pricePerLb !== '' ? '$' + r.pricePerLb + ' / lb' + (r.priceNote ? ' — ' + r.priceNote : '') : r.priceNote);
     }
     html += '<div class="cx-fmt"><div class="cx-fmt-top"><div class="cx-fmt-h">' + head + '</div>' + badge(st) + '</div>';
     if (st === 'soldout') html += '<p class="cx-fmt-p"><strong>Current lot sold out.</strong></p>';
@@ -211,7 +210,7 @@
 
     /* ordering terms */
     if (TERMS) {
-      var tr = (r.pricePerLb ? row('List price', '$' + r.pricePerLb + ' per lb green') : '') + row('Minimum order', TERMS.minOrderLb + ' lb (one bag), in steps of ' + TERMS.stepLb + ' lb') +
+      var tr = row('Pricing', 'Available on request. Contact us.') + row('Minimum order', TERMS.minOrderLb + ' lb (one bag), in steps of ' + TERMS.stepLb + ' lb') +
         row('Volume pricing', TERMS.tier1Pct + '% off orders of ' + TERMS.tier1FromLb + ' lb or more (' + Math.round(TERMS.tier1FromLb / TERMS.stepLb) + ' bags), ' + TERMS.tier2Pct + '% off orders of ' + TERMS.tier2FromLb + ' lb or more (' + Math.round(TERMS.tier2FromLb / TERMS.stepLb) + ' bags)' + (TERMS.mixLots ? ', mixing any of our coffees' : '')) +
         row('Forward orders', 'Negotiable, from ' + TERMS.forwardMinLb + ' lb') + (TERMS.customSourcing ? row('Custom sourcing', 'Special coffees can be sourced and forward-ordered for individual roasters. Contact us for more information.') : '');
       html += '<div class="cx-fmt"><div class="cx-fmt-top"><div class="cx-fmt-h">Ordering terms</div></div><dl class="cx-rows">' + tr + '</dl></div>';
@@ -268,7 +267,7 @@
       var off = !orderable(st);
       return '<button type="button" class="cx-size' + (i === firstOk ? ' on' : '') + (off ? ' off' : '') + '"' +
         (off ? ' disabled' : '') + ' data-size="' + i + '" aria-pressed="' + (i === firstOk) + '">' +
-        '<b>' + esc(s.label) + '</b><span>' + (off ? STATUS[st] : money(s.price)) + '</span></button>';
+        '<b>' + esc(s.label) + '</b><span>' + (off ? (st === 'soon' && s.price != null ? money(s.price) + ' \u00b7 soon' : STATUS[st]) : money(s.price)) + '</span></button>';
     }).join('');
     var dead = firstOk < 0;
     return '<div class="cx-fmt" data-format="' + key + '">' +
