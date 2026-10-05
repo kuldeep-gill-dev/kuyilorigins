@@ -4,6 +4,39 @@
   var grid = document.getElementById('estateGrid');
   if (!cat || !grid) return;
 
+  /* ---- live availability (availability.js is rebuilt from the inventory sheet) ---- */
+  var av = window.KUYIL_AVAILABILITY;
+  if (av && av.coffees) {
+    cat.estates.forEach(function (e) {
+      e.coffees.forEach(function (c) {
+        var a = av.coffees[c.id];
+        if (!a) return;
+        c.roaster = c.roaster || {};
+        c.roaster.status = a.status;
+        c.roaster.lbsAvailable = a.lbsAvailable;
+        if (a.pricePerLb != null) c.roaster.pricePerLb = a.pricePerLb;
+        c.status = a.status;
+        if (c.roaster.forward && av.terms) c.roaster.forward.minimum = av.terms.forwardMinLb + ' lb (about 60 kg)';
+        if (c.formats) {
+          if (c.formats.green) {
+            c.formats.green.status = a.status;
+            (c.formats.green.sizes || []).forEach(function (s) {
+              var lb = parseFloat(s.label);
+              if (a.pricePerLb != null && lb) s.price = Math.round(lb * a.pricePerLb);
+            });
+          }
+          if (a.roasted && c.formats.roasted) {
+            c.formats.roasted.status = a.roasted.status;
+            if (a.roasted.price != null && c.formats.roasted.sizes && c.formats.roasted.sizes[0]) c.formats.roasted.sizes[0].price = a.roasted.price;
+          } else if (!a.roasted) {
+            c.formats.roasted = null;
+          }
+        }
+      });
+    });
+  }
+  var TERMS = av && av.terms;
+
   var ROASTER = grid.getAttribute('data-mode') === 'roaster';
   var STATUS = { available: '', limited: 'Limited release', soldout: 'Sold out', soon: 'Coming soon', inquire: 'Ask for availability' };
   if (ROASTER) STATUS.available = 'Available';
@@ -176,6 +209,14 @@
         '<button type="button" class="cx-btn cx-cart" data-req="interest">Request this coffee →</button></div>';
     }
     html += '</div>';
+
+    /* ordering terms */
+    if (TERMS) {
+      var tr = (r.pricePerLb ? row('List price', '$' + r.pricePerLb + ' per lb green') : '') + row('Minimum order', TERMS.minOrderLb + ' lb (one bag), in steps of ' + TERMS.stepLb + ' lb') +
+        row('Volume pricing', TERMS.tier1Pct + '% off orders of ' + TERMS.tier1FromLb + ' lb or more, ' + TERMS.tier2Pct + '% off orders over ' + TERMS.tier2OverLb + ' lb' + (TERMS.mixLots ? ', mixing any of our coffees' : '')) +
+        row('Forward orders', 'Negotiable, from ' + TERMS.forwardMinLb + ' lb');
+      html += '<div class="cx-fmt"><div class="cx-fmt-top"><div class="cx-fmt-h">Ordering terms</div></div><dl class="cx-rows">' + tr + '</dl></div>';
+    }
 
     /* forward order */
     if (fw.available) {
