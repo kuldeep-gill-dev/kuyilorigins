@@ -1,6 +1,6 @@
 /* Written by update_availability.py from the financials workbook. Do not edit by hand. */
 window.KUYIL_AVAILABILITY = {
-  "updated": "2026-10-05",
+  "updated": "2026-10-13",
   "terms": {
     "minOrderLb": 5,
     "stepLb": 5,
@@ -16,7 +16,7 @@ window.KUYIL_AVAILABILITY = {
     "ratnagiri-hydro-honey": {
       "status": "soon",
       "lbsAvailable": null,
-      "pricePerLb": 14,
+      "pricePerLb": 13,
       "roasted": {
         "status": "soon",
         "bagsAvailable": null,
@@ -26,7 +26,7 @@ window.KUYIL_AVAILABILITY = {
     "ratnagiri-lot-42-carbonic-natural": {
       "status": "soon",
       "lbsAvailable": null,
-      "pricePerLb": 14
+      "pricePerLb": 13
     },
     "harley-banana-black-honey": {
       "status": "soon",
@@ -36,17 +36,17 @@ window.KUYIL_AVAILABILITY = {
     "balanoor-selection-9": {
       "status": "soon",
       "lbsAvailable": null,
-      "pricePerLb": 10
+      "pricePerLb": 9.5
     },
     "mysore-honey-robusta": {
       "status": "soon",
       "lbsAvailable": null,
-      "pricePerLb": 8
+      "pricePerLb": 7
     },
     "mysore-washed-robusta": {
       "status": "soon",
       "lbsAvailable": null,
-      "pricePerLb": 8,
+      "pricePerLb": 7,
       "roasted": {
         "status": "soon",
         "bagsAvailable": null,
