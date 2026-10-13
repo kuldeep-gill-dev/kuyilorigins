@@ -16,7 +16,7 @@ window.KUYIL_AVAILABILITY = {
     "ratnagiri-hydro-honey": {
       "status": "soon",
       "lbsAvailable": null,
-      "pricePerLb": 13,
+      "pricePerLb": 14,
       "roasted": {
         "status": "soon",
         "bagsAvailable": null,
@@ -26,7 +26,7 @@ window.KUYIL_AVAILABILITY = {
     "ratnagiri-lot-42-carbonic-natural": {
       "status": "soon",
       "lbsAvailable": null,
-      "pricePerLb": 13
+      "pricePerLb": 14
     },
     "harley-banana-black-honey": {
       "status": "soon",
