@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#6B1B28">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Kuyil pocket guide</title>
+<style>
+:root{--bg:#FBF9F4;--surface:#fff;--fg:#2A1A1D;--muted:#6C5C5F;--line:#E2D8CC;--accent:#6B1B28;--accent-ink:#fff;
+--serif:Georgia,'Times New Roman',serif;--mono:'Courier New',Courier,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#17100F;--surface:#211817;--fg:#F2E9E4;--muted:#B5A39F;--line:#3A2D2B;--accent:#E3A3AF;--accent-ink:#2A0F15;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:16px;line-height:1.45;padding:20px 16px 40px;padding-top:max(20px,env(safe-area-inset-top))}
+.wrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
+header{border-bottom:1px solid var(--accent);padding-bottom:12px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:28px;line-height:1.1;margin:4px 0 0;font-weight:600}
+.sub{color:var(--muted);font-size:14px;margin-top:4px}
+h2{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.cards{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px}
+.name{font-weight:600;font-size:18px}.estate{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.meta{grid-column:1/-1;font-size:14px}.notes{grid-column:1/-1;font-size:14px;color:var(--muted);font-style:italic}
+.price{text-align:right;font-family:var(--mono);font-weight:700;font-size:20px;color:var(--accent);line-height:1.1}
+.price small{display:block;font-weight:400;font-size:11px;color:var(--muted)}
+.stock{grid-column:1/-1;font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:6px;margin-top:6px}
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:6px 14px 14px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 84px 76px;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+.row .lab{min-width:0}.row .lab span{display:block;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.row output{font-family:var(--mono);text-align:right;font-size:14px}
+input[type=number]{width:100%;font-family:var(--mono);font-size:16px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);text-align:right}
+input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.totals{display:flex;flex-direction:column;gap:6px;margin-top:12px;font-family:var(--mono);font-size:14px}
+.totals div{display:flex;justify-content:space-between;gap:12px}
+.totals .grand{font-size:20px;font-weight:700;color:var(--accent);border-top:1px solid var(--accent);padding-top:8px}
+.hint{font-size:13px;color:var(--muted);margin-top:8px}
+button{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:11px 14px;margin-top:12px;width:100%}
+dl{margin:0;display:grid;grid-template-columns:minmax(0,120px) minmax(0,1fr)}
+dt,dd{margin:0;padding:9px 0;border-bottom:1px solid var(--line)}
+dt{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);padding-right:10px}
+dd{font-size:15px}
+.foot{font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;overflow-wrap:anywhere}
+</style>
+</head><body>
+<div class="wrap">
+<header><div class="eyebrow">Kuyil Origins · green coffee</div><h1>Pocket guide</h1><div class="sub">Prices per lb · availability from the first shipment</div></header>
+<section><h2>The six coffees</h2><div class="cards" id="cards"></div></section>
+<section><h2>Quote calculator</h2><div class="calc"><div id="rows"></div>
+<div class="totals"><div><span>Total lb</span><span id="tLb">0</span></div><div><span>Subtotal</span><span id="tSub">$0.00</span></div><div><span id="discLabel">Volume discount</span><span id="tDisc">$0.00</span></div><div class="grand"><span>Estimated total</span><span id="tTot">$0.00</span></div></div>
+<div class="hint" id="hint">Minimum order 5 lb. 5% off at 50 lb, 8% off at 135 lb, on the whole order.</div>
+<button type="button" id="copyBtn">Copy quote text</button><div class="hint" id="copyMsg" aria-live="polite"></div></div></section>
+<section><h2>Terms</h2><dl>
+<dt>Minimum</dt><dd>5 lb. Mix any coffees.</dd>
+<dt>Volume</dt><dd>5% off at 50 lb or more. 8% off at 135 lb or more. Applies to the whole order.</dd>
+<dt>Forward orders</dt><dd>From 132 lb, next harvest or next shipment. Terms agreed directly.</dd>
+<dt>Custom sourcing</dt><dd>We can source a special coffee for one roaster.</dd>
+<dt>Samples</dt><dd>On request.</dd></dl></section>
+<section><h2>Arriving</h2><dl>
+<dt>This shipment</dt><dd>1,020 kg, all six coffees. Leaves Nhava Sheva, India 13 Oct 2026. Due at Savannah, GA about 7 Nov 2026.</dd>
+<dt>Ready to ship</dt><dd>Estimated late November 2026, after customs and delivery to our warehouse. Confirmed in the written quote.</dd>
+<dt>Next harvest</dt><dd>Forward orders open. Hydro Honey next crop expected May to June 2027 (from 132 lb). Other coffees: ask.</dd>
+<dt>Quantities</dt><dd>Pounds shown are green coffee available from this shipment, before orders. Not reserved until the order is confirmed.</dd></dl></section>
+<div class="foot">hello@kuyilorigins.com · 530-632-4590 · Availability, pricing, payment and delivery are confirmed in your written quote.</div>
+</div>
+<script src="../../availability.js"></script>
+<script>
+var COFFEES=[
+{id:'hh',site:'ratnagiri-hydro-honey',name:'Hydro Honey',estate:'Ratnagiri Estate',meta:'Catuai \u00b7 hydro honey \u00b7 limited-release small lot',notes:'Peach, florals, lemon citrus, brown sugar',price:14,lb:265},
+{id:'l42',site:'ratnagiri-lot-42-carbonic-natural',name:'Lot 42 Carbonic Natural',estate:'Ratnagiri Estate',meta:'SLN 6 \u00b7 54-hour carbonic natural \u00b7 single block',notes:'Red grape, strawberry, baker\u2019s chocolate',price:14,lb:529},
+{id:'bbh',site:'harley-banana-black-honey',name:'Banana Black Honey',estate:'Harley Estate',meta:'Chandragiri \u00b7 banana co-ferment, black honey',notes:'Brown sugar, yellow fruit, honey graham cracker',price:12,lb:265},
+{id:'s9',site:'balanoor-selection-9',name:'Selection 9',estate:'Balanoor Plantations',meta:'Selection 9 (SL9) \u00b7 washed',notes:'Brown sugar, green apple, nutty',price:9.5,lb:397},
+{id:'hr',site:'mysore-honey-robusta',name:'Honey Robusta',estate:'Mysore Plantations',meta:'Robusta \u00b7 honey, sun-dried',notes:'Honey, yellow stone fruit, brown sugar',price:7,lb:265},
+{id:'wr',site:'mysore-washed-robusta',name:'Washed Robusta',estate:'Mysore Plantations',meta:'Robusta \u00b7 washed',notes:'Brown sugar, red apple, walnut, cinnamon',price:7,lb:132}];
+try{var A=window.KUYIL_AVAILABILITY&&window.KUYIL_AVAILABILITY.coffees;if(A)COFFEES.forEach(function(c){var p=A[c.site]&&A[c.site].pricePerLb;if(typeof p==='number'&&p>0)c.price=p;});}catch(e){}
+function money(n){return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function pl(p){return Number.isInteger(p)?'$'+p:'$'+p.toFixed(2);}
+var cards=document.getElementById('cards'),rows=document.getElementById('rows');
+COFFEES.forEach(function(c){
+ var d=document.createElement('div');d.className='card';
+ d.innerHTML='<div><div class="name"></div><div class="estate"></div></div><div class="price"><span class="p"></span><small>per lb</small></div><div class="meta"></div><div class="notes"></div><div class="stock"></div>';
+ d.querySelector('.name').textContent=c.name;d.querySelector('.estate').textContent=c.estate;d.querySelector('.p').textContent=pl(c.price);
+ d.querySelector('.meta').textContent=c.meta;d.querySelector('.notes').textContent=c.notes;d.querySelector('.stock').textContent=c.lb.toLocaleString('en-US')+' lb available, green';
+ cards.appendChild(d);
+ var r=document.createElement('div');r.className='row';
+ r.innerHTML='<div class="lab"><b></b><span></span></div><input type="number" inputmode="numeric" min="0" value="0" id="in-'+c.id+'"><output></output>';
+ r.querySelector('b').textContent=c.name;r.querySelector('span').textContent=pl(c.price)+' per lb \u00b7 '+c.lb.toLocaleString('en-US')+' lb';
+ r.querySelector('input').setAttribute('aria-label','Pounds of '+c.name);rows.appendChild(r);
+});
+function calc(){
+ var lb=0,sub=0,lines=[],over=false;
+ COFFEES.forEach(function(c){var el=document.getElementById('in-'+c.id),v=Math.max(0,Math.round(parseFloat(el.value)||0)),out=el.parentNode.querySelector('output');
+  if(v>c.lb)over=true;lb+=v;sub+=v*c.price;out.textContent=v?money(v*c.price):'';if(v)lines.push(v+' lb '+c.name+' @ '+pl(c.price)+' = '+money(v*c.price));});
+ var pct=lb>=135?0.08:(lb>=50?0.05:0),disc=sub*pct,tot=sub-disc;
+ document.getElementById('tLb').textContent=lb.toLocaleString('en-US');document.getElementById('tSub').textContent=money(sub);
+ document.getElementById('discLabel').textContent='Volume discount'+(pct?' ('+(pct*100)+'%)':'');
+ document.getElementById('tDisc').textContent=pct?'\u2212'+money(disc):money(0);document.getElementById('tTot').textContent=money(tot);
+ var h='Minimum order 5 lb. 5% off at 50 lb, 8% off at 135 lb, on the whole order.';
+ if(lb>0&&lb<5)h='Minimum order is 5 lb.';else if(over)h='One line is above the pounds available from this shipment.';
+ else if(lb>=40&&lb<50)h=(50-lb)+' lb more reaches the 5% tier.';else if(lb>=120&&lb<135)h=(135-lb)+' lb more reaches the 8% tier.';
+ document.getElementById('hint').textContent=h;window._quote={lines:lines,sub:sub,pct:pct,disc:disc,tot:tot};
+}
+document.querySelectorAll('input[type=number]').forEach(function(i){i.addEventListener('input',calc);});
+document.getElementById('copyBtn').addEventListener('click',function(){
+ var q=window._quote,msg=document.getElementById('copyMsg');
+ if(!q||!q.lines.length){msg.textContent='Add pounds to a coffee first.';return;}
+ var t='Kuyil Origins green coffee quote (estimate)\n'+q.lines.join('\n')+'\nSubtotal '+money(q.sub)+(q.pct?'\nVolume discount '+(q.pct*100)+'%: -'+money(q.disc):'')+'\nTotal '+money(q.tot)+'\nPrices per lb. Availability, ship date, payment and delivery are confirmed in the written quote.';
+ function fb(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');msg.textContent='Copied.';}catch(e){msg.textContent='Select and copy the numbers above.';}document.body.removeChild(ta);}
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){msg.textContent='Copied.';},fb);}else{fb();}
+});
+calc();
+</script>
+</body></html>
