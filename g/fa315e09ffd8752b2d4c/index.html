@@ -42,6 +42,12 @@ dt,dd{margin:0;padding:9px 0;border-bottom:1px solid var(--line)}
 dt{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);padding-right:10px}
 dd{font-size:15px}
 .foot{font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;overflow-wrap:anywhere}
+details{grid-column:1/-1;margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+summary{cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+details p{margin:8px 0 6px;font-size:14px}
+.spec{display:grid;grid-template-columns:minmax(0,110px) minmax(0,1fr);gap:2px 10px;font-size:13px;margin-top:6px}
+.spec span:nth-child(odd){font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.gap{font-size:13px;color:var(--muted);margin-top:8px;font-style:italic}
 </style>
 </head><body>
 <div class="wrap">
@@ -76,12 +82,31 @@ var COFFEES=[
 try{var A=window.KUYIL_AVAILABILITY&&window.KUYIL_AVAILABILITY.coffees;if(A)COFFEES.forEach(function(c){var p=A[c.site]&&A[c.site].pricePerLb;if(typeof p==='number'&&p>0)c.price=p;});}catch(e){}
 function money(n){return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function pl(p){return Number.isInteger(p)?'$'+p:'$'+p.toFixed(2);}
+
+var PROC={
+ hh:{story:'Processed with a honey-style method: the fruit mucilage is kept around the seed during drying. That builds sweetness, texture and layered fruit character while keeping the cup clear. Cup profile: bright, juicy, silky. Roast: light-medium to medium keeps the citrus, florals and sweetness.',specs:[['Variety','Catuai'],['Estate','Ratnagiri, Bababudangiri, Chikmagalur']],gaps:'Fermentation time, drying days and bed type.'},
+ l42:{story:'SLN 6 cherries from the GIRI Patte block are picked at 24.9 Brix. After floaters are removed, whole cherries go into stainless-steel fermenters for 54 hours in a CO\u2082-rich environment, then straight to raised beds and are dried slowly for about 30 days with constant stirring. Cup profile: intense fermentation-driven sweetness, medium-high acidity, medium-heavy body, silky dry wine-like finish. Roast: medium, enough development for juicy body and grape sweetness.',specs:[['Producer lot','RT-LOT-42-CARBONIC NATURALS'],['Block','GIRI Patte'],['Elevation','4,450 ft'],['Fermentation','54 hours, CO\u2082-rich, stainless steel'],['Cherry Brix','24.9'],['Drying','Raised beds, about 30 days, constant stirring']],gaps:'Fermentation temperature, harvest dates.'},
+ bbh:{story:'Ripe cherries are processed as a black honey, keeping a substantial amount of fruit mucilage on the seed. Banana is introduced during fermentation to create a fruit-associated co-fermentation, then the coffee is dried with the sticky mucilage still intact. The banana expression is gentle and does not overpower the cup. Cup profile: bright, sweet, syrupy. Roast: medium-light to medium.',specs:[['Variety','Chandragiri'],['Estate','Harley, Sakleshpur (Hassan)']],gaps:'Banana quantity and form, fermentation hours, drying days.'},
+ s9:{story:'A washed, variety-forward Selection 9 meant to show the character of the variety with clarity and structure. Cup profile: balanced, approachable, structured. Roast: medium to medium-dark; too light and the woody, nutty notes can overshadow the sweetness.',specs:[['Acidity','Mild malic'],['Body','Medium to thin'],['Finish','Dry, short'],['Estate','Balanoor / MS Estate, Chikmagalur']],gaps:'Fermentation hours, drying days, lot elevation (not yet confirmed).'},
+ hr:{story:'The skin and part of the pulp are removed while a layer of mucilage stays on the seed, and the coffee is sun-dried with that mucilage intact. This adds sweetness, fruit character and texture compared with a fully washed Robusta. Cup profile: sweet, fruity, chocolate finish. Roast: medium, enough to build sweetness and body.',specs:[['Species','Robusta (Coffea canephora)']],gaps:'Drying days, mucilage level (white, yellow or red honey).'},
+ wr:{story:'Cherries are pulped, fermented so the mucilage breaks down, washed clean and dried. The result is a cleaner, more structured Robusta with less fermentation-driven fruit than the honey lot. Cup profile: clean, structured, sweet-tart. Roast: medium-light to medium; slightly deeper for espresso or blends.',specs:[['Species','Robusta (Coffea canephora)']],gaps:'Fermentation hours, drying days.'}
+};
+var SHOW_GAPS=false;
 var cards=document.getElementById('cards'),rows=document.getElementById('rows');
 COFFEES.forEach(function(c){
  var d=document.createElement('div');d.className='card';
  d.innerHTML='<div><div class="name"></div><div class="estate"></div></div><div class="price"><span class="p"></span><small>per lb</small></div><div class="meta"></div><div class="notes"></div><div class="stock"></div>';
  d.querySelector('.name').textContent=c.name;d.querySelector('.estate').textContent=c.estate;d.querySelector('.p').textContent=pl(c.price);
  d.querySelector('.meta').textContent=c.meta;d.querySelector('.notes').textContent=c.notes;d.querySelector('.stock').textContent=c.lb.toLocaleString('en-US')+' lb available, green';
+
+ var P=PROC[c.id];
+ if(P){var det=document.createElement('details'),sm=document.createElement('summary');sm.textContent='How it is processed';det.appendChild(sm);
+  var pp=document.createElement('p');pp.textContent=P.story;det.appendChild(pp);
+  var sp=document.createElement('div');sp.className='spec';
+  P.specs.forEach(function(s){var a=document.createElement('span'),b=document.createElement('span');a.textContent=s[0];b.textContent=s[1];sp.appendChild(a);sp.appendChild(b);});
+  det.appendChild(sp);
+  if(SHOW_GAPS&&P.gaps){var g=document.createElement('div');g.className='gap';g.textContent='Still to confirm with the estate: '+P.gaps;det.appendChild(g);}
+  d.appendChild(det);}
  cards.appendChild(d);
  var r=document.createElement('div');r.className='row';
  r.innerHTML='<div class="lab"><b></b><span></span></div><input type="number" inputmode="numeric" min="0" value="0" id="in-'+c.id+'"><output></output>';
