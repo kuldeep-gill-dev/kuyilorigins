@@ -252,8 +252,8 @@ window.KUYIL_CATALOG = {
           process: 'Washed', variety: 'Selection 9 (SL9 / Sln.9)', region: 'Chikmagalur, Karnataka',
           notes: ['Brown sugar', 'Green apple', 'Nutty'],
           cupProfile: 'Balanced · Approachable · Structured',
-          story: 'A washed Selection 9 from one of Karnataka’s long-standing coffee estates. Brown-sugar sweetness and green-apple acidity meet a gentle nutty character in an approachable, structured cup.',
-          processStory: 'A washed, variety-forward coffee intended to show the character of Selection 9 with clarity and structure.',
+          story: 'A washed Selection 9 (SL 9) from Balanoor Plantations, one of ten Arabica varieties the estate harvests and processes separately. Brown-sugar sweetness and green-apple acidity meet a gentle nutty character in an approachable, structured cup.',
+          processStory: 'A washed, variety-forward coffee intended to show the character of Selection 9 with clarity and structure. It is harvested and processed separately from the estate’s other varieties, then rests and matures at Balanoor’s own dry mill before sample approval and shipping.',
           roastDirection: '',
           specs: {
             'Acidity': 'Mild malic',
