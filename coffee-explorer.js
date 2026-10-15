@@ -16,7 +16,7 @@
         c.roaster.lbsAvailable = a.lbsAvailable;
         if (a.pricePerLb != null) c.roaster.pricePerLb = a.pricePerLb;
         c.status = a.status;
-        if (c.roaster.forward && av.terms) c.roaster.forward.minimum = av.terms.forwardMinLb + ' lb (about 60 kg)';
+        if (c.roaster.forward && av.terms) c.roaster.forward.minimum = (av.terms.forwardMinBags || 2) + ' bags (about ' + Math.round((av.terms.forwardMinBags || 2) * 60) + ' kg)';
         if (c.formats) {
           if (c.formats.green) {
             c.formats.green.status = a.status;
@@ -212,7 +212,7 @@
     if (TERMS) {
       var tr = row('Pricing', 'TBD') + row('Minimum order', TERMS.minOrderLb + ' lb') +
         row('Volume pricing', TERMS.tier1Pct != null ? TERMS.tier1Pct + '% off orders of ' + TERMS.tier1FromLb + ' lb or more, ' + TERMS.tier2Pct + '% off orders of ' + TERMS.tier2FromLb + ' lb or more' + (TERMS.mixLots ? ', mixing any of our coffees' : '') : 'TBD') +
-        row('Forward orders', 'Negotiable, from ' + TERMS.forwardMinLb + ' lb') + (TERMS.customSourcing ? row('Custom sourcing', 'Special coffees can be sourced and forward-ordered for individual roasters. Contact us for more information.') : '');
+        row('Forward orders', 'Negotiable, minimum ' + (TERMS.forwardMinBags || 2) + ' bags (about ' + Math.round((TERMS.forwardMinBags || 2) * 60) + ' kg)') + (TERMS.customSourcing ? row('Custom sourcing', 'Special coffees can be sourced and forward-ordered for individual roasters. Contact us for more information.') : '');
       html += '<div class="cx-fmt"><div class="cx-fmt-top"><div class="cx-fmt-h">Ordering terms</div></div><dl class="cx-rows">' + tr + '</dl></div>';
     }
 

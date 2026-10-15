@@ -5,7 +5,8 @@ window.KUYIL_AVAILABILITY = {
     "minOrderLb": 5,
     "stepLb": 5,
     "mixLots": true,
-    "forwardMinLb": 132,
+    "forwardMinLb": 265,
+    "forwardMinBags": 2,
     "customSourcing": true
   },
   "coffees": {
