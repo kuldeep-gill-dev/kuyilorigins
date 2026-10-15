@@ -49,7 +49,7 @@
   function badge(status) {
     return STATUS[status] ? '<span class="cx-badge cx-' + esc(status) + '">' + STATUS[status] + '</span>' : '';
   }
-  function money(p) { return p == null ? 'Price to be announced' : '$' + p; }
+  function money(p) { return p == null ? 'TBD' : '$' + p; }
   function findEstate(id) { return cat.estates.filter(function (e) { return e.id === id; })[0]; }
   function findCoffee(e, id) { return e.coffees.filter(function (c) { return c.id === id; })[0]; }
   function orderable(s) { return s !== 'soldout' && s !== 'soon'; }
@@ -210,8 +210,8 @@
 
     /* ordering terms */
     if (TERMS) {
-      var tr = row('Pricing', 'Available on request. Contact us.') + row('Minimum order', TERMS.minOrderLb + ' lb') +
-        row('Volume pricing', TERMS.tier1Pct + '% off orders of ' + TERMS.tier1FromLb + ' lb or more, ' + TERMS.tier2Pct + '% off orders of ' + TERMS.tier2FromLb + ' lb or more' + (TERMS.mixLots ? ', mixing any of our coffees' : '')) +
+      var tr = row('Pricing', 'TBD') + row('Minimum order', TERMS.minOrderLb + ' lb') +
+        row('Volume pricing', TERMS.tier1Pct != null ? TERMS.tier1Pct + '% off orders of ' + TERMS.tier1FromLb + ' lb or more, ' + TERMS.tier2Pct + '% off orders of ' + TERMS.tier2FromLb + ' lb or more' + (TERMS.mixLots ? ', mixing any of our coffees' : '') : 'TBD') +
         row('Forward orders', 'Negotiable, from ' + TERMS.forwardMinLb + ' lb') + (TERMS.customSourcing ? row('Custom sourcing', 'Special coffees can be sourced and forward-ordered for individual roasters. Contact us for more information.') : '');
       html += '<div class="cx-fmt"><div class="cx-fmt-top"><div class="cx-fmt-h">Ordering terms</div></div><dl class="cx-rows">' + tr + '</dl></div>';
     }
@@ -221,7 +221,7 @@
       var conf = fw.confirmed === true ? 'Confirmed with producer' : fw.confirmed === false ? 'Pending producer confirmation' : '';
       var frows = row('Crop', fw.crop) + row('Expected U.S. arrival', fw.arrival) + row('Minimum quantity', fw.minimum) +
         row('Estimated available', fw.estimatedLbs != null && fw.estimatedLbs !== '' ? fw.estimatedLbs + ' lb' : '') +
-        row('Indicative price', fw.indicativePrice) + row('Commitment deadline', fw.deadline) +
+        row('Indicative price', fw.indicativePrice ? 'TBD' : '') + row('Commitment deadline', fw.deadline) +
         row('Deposit', fw.deposit) + row('Producer status', conf);
       var fhead = open_ ? 'Need more? Planning ahead?' : st === 'soldout' ? 'Forward availability' : 'Forward order';
       var fp = open_ ? 'Interested in a larger volume, or the next shipment? Forward order this coffee.'

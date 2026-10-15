@@ -4,10 +4,6 @@ window.KUYIL_AVAILABILITY = {
   "terms": {
     "minOrderLb": 5,
     "stepLb": 5,
-    "tier1FromLb": 50,
-    "tier1Pct": 5.0,
-    "tier2FromLb": 135,
-    "tier2Pct": 8.0,
     "mixLots": true,
     "forwardMinLb": 132,
     "customSourcing": true
@@ -16,41 +12,33 @@ window.KUYIL_AVAILABILITY = {
     "ratnagiri-hydro-honey": {
       "status": "soon",
       "lbsAvailable": null,
-      "pricePerLb": 14,
       "roasted": {
         "status": "soon",
-        "bagsAvailable": null,
-        "price": 27
+        "bagsAvailable": null
       }
     },
     "ratnagiri-lot-42-carbonic-natural": {
       "status": "soon",
-      "lbsAvailable": null,
-      "pricePerLb": 14
+      "lbsAvailable": null
     },
     "harley-banana-black-honey": {
       "status": "soon",
-      "lbsAvailable": null,
-      "pricePerLb": 12
+      "lbsAvailable": null
     },
     "balanoor-selection-9": {
       "status": "soon",
-      "lbsAvailable": null,
-      "pricePerLb": 9.5
+      "lbsAvailable": null
     },
     "mysore-honey-robusta": {
       "status": "soon",
-      "lbsAvailable": null,
-      "pricePerLb": 7
+      "lbsAvailable": null
     },
     "mysore-washed-robusta": {
       "status": "soon",
       "lbsAvailable": null,
-      "pricePerLb": 7,
       "roasted": {
         "status": "soon",
-        "bagsAvailable": null,
-        "price": 22
+        "bagsAvailable": null
       }
     }
   }
