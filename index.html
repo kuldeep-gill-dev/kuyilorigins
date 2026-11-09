@@ -19,7 +19,7 @@
 <body>
 
 <!-- ===== NAV ===== -->
-<nav class="nav nav-overlay">
+<nav class="nav nav-home">
   <div class="nav-in">
     <a class="nav-brand" href="index.html">
       <span class="nb-logo">
@@ -37,18 +37,6 @@
       <li><a href="producers.html">Our Producers</a></li>
       <li><a href="index.html#story">Our Story</a></li>
       <li><a href="journal/">Journal</a></li>
-      <li class="nav-peek">
-        <button class="nav-peek-toggle" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-peek-menu">
-          <li><a href="roasted.html">For Home Brewers</a></li>
-          <li><a href="wholesale.html">For Roasters</a></li>
-          <li><a href="producers.html">Our Producers</a></li>
-          <li><a href="index.html#story">Our Story</a></li>
-          <li><a href="journal/">Journal</a></li>
-        </ul>
-      </li>
       <li><a class="nav-contact" href="#" onclick="openModal();return false;">Contact</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
@@ -57,25 +45,14 @@
   </div>
 </nav>
 
-<!-- ===== HERO: cinematic, full-bleed ===== -->
-<section class="hero">
-  <video class="hero-bg" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
-    <source src="assets/hero-cherries.mp4" type="video/mp4">
-  </video>
-  <div class="hero-scrim"></div>
-  <div class="hero-in">
-    <div class="hero-txt rise">
-      <h1>Telling stories of India through its specialty coffee.</h1>
-      <div class="split-rule"></div>
-      <p>From India&rsquo;s coffee-growing landscapes to a community in Atlanta, we share
-        coffees shaped by place, people, and care.</p>
-      <div class="hero-actions">
-        <a class="btn btn-solid" href="#coffees">Explore the Coffees</a>
-        <a class="btn btn-inv" href="producers.html">Meet the Producers</a>
-      </div>
-    </div>
+<!-- ===== HERO: clean cover. Logo, one line, one button. ===== -->
+<section class="hero-clean">
+  <div class="hc-in rise">
+    <h1><img class="hc-logo" src="assets/kuyil-lockup-centered.svg" alt="Kuyil Origins"><span class="hc-tag">Specialty Indian Coffee</span></h1>
+    <div class="hc-rule"></div>
+    <p>From India&rsquo;s coffee-growing landscapes to a community in Atlanta, we share coffee shaped by place, people, and care.</p>
+    <div class="hc-actions"><a class="btn btn-solid" href="#coffees">Shop Coffee</a></div>
   </div>
-  <div class="hero-credit">Coffee in fruit &middot; Harley Estate</div>
 </section>
 
 <!-- ===== TWO COFFEE PATHWAYS ===== -->
