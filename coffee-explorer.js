@@ -47,6 +47,7 @@
     });
   }
   function badge(status) {
+    if (ROASTER) return '';
     return STATUS[status] ? '<span class="cx-badge cx-' + esc(status) + '">' + STATUS[status] + '</span>' : '';
   }
   function money(p) { return p == null ? 'TBD' : '$' + p; }
@@ -56,13 +57,13 @@
 
   /* ---- intro + producer cards ---- */
   var intro = document.getElementById('estateIntro');
-  if (intro && cat.intro) {
+  if (intro && cat.intro && !ROASTER) {
     intro.innerHTML = '<div class="eyebrow">' + esc(cat.intro.eyebrow) + '</div>' +
-      '<h2>' + esc(cat.intro.title) + '</h2><p>' + esc(cat.intro.body) + '</p>';
+      '<h2 class="sr-only">' + esc(cat.intro.title) + '</h2><p>' + esc(cat.intro.body) + '</p>';
   }
 
   var upd = document.getElementById('catUpdated');
-  if (upd && cat.updated) upd.textContent = 'Inventory and availability updated ' + cat.updated;
+  if (upd && cat.updated && !ROASTER) upd.textContent = 'Inventory and availability updated ' + cat.updated;
 
   grid.innerHTML = cat.estates.map(function (e) {
     var n = e.coffees.length;
@@ -185,57 +186,10 @@
     var r = c.roaster || {}, fw = r.forward || {}, st = r.status || 'inquire';
     var html = detailHead(e, c) + '<div class="cx-choose">';
 
-    /* current availability */
-    var open_ = st === 'available' || st === 'limited';
-    var head = { available: 'Available now', limited: 'Limited — available now', soldout: 'Current availability', soon: 'Coming soon', inquire: 'Current availability' }[st];
-    var rows = '';
-    if (open_) {
-      rows += row('U.S. inventory', r.lbsAvailable != null && r.lbsAvailable !== '' ? r.lbsAvailable + ' lb remaining' : '');
-      rows += row('Bag size', r.bagSize);
-    }
-    html += '<div class="cx-fmt"><div class="cx-fmt-top"><div class="cx-fmt-h">' + head + '</div>' + badge(st) + '</div>';
-    if (st === 'soldout') html += '<p class="cx-fmt-p"><strong>Current lot sold out.</strong></p>';
-    if (st === 'inquire') html += '<p class="cx-fmt-p">Ask us for current U.S. inventory, pricing and bag sizes.</p>';
-    if (st === 'soon') html += '<p class="cx-fmt-p">This coffee is on its way. Tell us if you’d like it reserved for you.</p>';
-    if (rows) html += '<dl class="cx-rows">' + rows + '</dl>';
-    if (r.note) html += '<p class="cx-fmt-p">' + esc(r.note) + '</p>';
-    if (open_ || st === 'inquire') {
-      html += '<button type="button" class="cx-btn cx-cart" data-req="inventory">' + (open_ ? 'Request this coffee' : 'Ask about availability') + ' →</button>';
-    } else {
-      html += '<div class="cx-wantnext"><div class="cx-fmt-h">Want this coffee in the next shipment?</div>' +
-        '<p class="cx-fmt-p">If you’re interested in this coffee, tell us what quantity you may need. Your interest helps us plan future shipments with the producer.</p>' +
-        '<button type="button" class="cx-btn cx-cart" data-req="interest">Request this coffee →</button></div>';
-    }
-    html += '</div>';
-
-    /* ordering terms */
-    if (TERMS) {
-      var tr = row('Pricing', 'TBD') + row('Minimum order', TERMS.minOrderLb + ' lb') +
-        row('Volume pricing', TERMS.tier1Pct != null ? TERMS.tier1Pct + '% off orders of ' + TERMS.tier1FromLb + ' lb or more, ' + TERMS.tier2Pct + '% off orders of ' + TERMS.tier2FromLb + ' lb or more' + (TERMS.mixLots ? ', mixing any of our coffees' : '') : 'TBD') +
-        row('Forward orders', 'Negotiable, minimum ' + (TERMS.forwardMinBags || 2) + ' bags (about ' + Math.round((TERMS.forwardMinBags || 2) * 60) + ' kg)') + (TERMS.customSourcing ? row('Custom sourcing', 'Special coffees can be sourced and forward-ordered for individual roasters. Contact us for more information.') : '');
-      html += '<div class="cx-fmt"><div class="cx-fmt-top"><div class="cx-fmt-h">Ordering terms</div></div><dl class="cx-rows">' + tr + '</dl></div>';
-    }
-
-    /* forward order */
-    if (fw.available) {
-      var conf = fw.confirmed === true ? 'Confirmed with producer' : fw.confirmed === false ? 'Pending producer confirmation' : '';
-      var frows = row('Crop', fw.crop) + row('Expected U.S. arrival', fw.arrival) + row('Minimum quantity', fw.minimum) +
-        row('Estimated available', fw.estimatedLbs != null && fw.estimatedLbs !== '' ? fw.estimatedLbs + ' lb' : '') +
-        row('Indicative price', fw.indicativePrice ? 'TBD' : '') + row('Commitment deadline', fw.deadline) +
-        row('Deposit', fw.deposit) + row('Producer status', conf);
-      var fhead = open_ ? 'Need more? Planning ahead?' : st === 'soldout' ? 'Forward availability' : 'Forward order';
-      var fp = open_ ? 'Interested in a larger volume, or the next shipment? Forward order this coffee.'
-        : 'Forward interest is open. Tell us how much you may need so we can include your interest when planning our next purchase with ' + e.name + '.';
-      html += '<div class="cx-fmt"><div class="cx-fmt-top"><div class="cx-fmt-h">' + fhead + '</div><span class="cx-badge">Forward order</span></div>' +
-        '<p class="cx-fmt-p">' + fp + '</p>' + (frows ? '<dl class="cx-rows">' + frows + '</dl>' : '') +
-        (fw.notes ? '<p class="cx-fmt-p">' + esc(fw.notes) + '</p>' : '') +
-        '<button type="button" class="cx-btn cx-cart" data-req="forward">Discuss a forward order →</button></div>';
-    }
-
     /* samples */
     if (r.samples && r.samples.available) {
       html += '<div class="cx-fmt"><div class="cx-fmt-top"><div class="cx-fmt-h">Samples</div></div>' +
-        '<p class="cx-fmt-p">' + esc(r.samples.note || 'Cup it before you commit — we’ll send a sample.') + '</p>' +
+        '<p class="cx-fmt-p">' + esc(r.samples.note || 'Cup it and see how it fits your menu. We’ll send a sample.') + '</p>' +
         '<button type="button" class="cx-btn cx-cart" data-req="sample">Request a sample →</button></div>';
     }
     html += '</div>';

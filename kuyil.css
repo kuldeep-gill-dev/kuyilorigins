@@ -774,19 +774,26 @@ img{max-width:100%}
 
 
 /* ---------------- home: clean cover ----------------
-   One screen on every device: logo, one line, one button. The cover fills the screen
-   below the top bar; the logo shrinks on short screens so the button is always in view. */
+   One screen on every device: logo, one line, one button, nothing else. The menu bar is
+   hidden on arrival and slides in once the visitor scrolls a little. The logo is sized to
+   the screen height so the button is always in view. */
+.nav.nav-home{position:fixed;top:0;left:0;right:0;
+  transform:translateY(-110%);opacity:0;pointer-events:none;
+  transition:transform .45s ease,opacity .35s ease}
+.nav.nav-home.is-visible{transform:none;opacity:1;pointer-events:auto}
+@media(prefers-reduced-motion:reduce){.nav.nav-home{transition:none}}
 .nav.nav-home .nav-brand{display:none}
 .nav.nav-home .nav-in{justify-content:center}
 @media(max-width:1000px){.nav.nav-home .nav-in{justify-content:flex-end}}
+#coffees{scroll-margin-top:var(--nav-h)}
 .hero-clean{display:flex;align-items:center;justify-content:center;text-align:center;background:var(--paper);
-  min-height:calc(100vh - var(--nav-h) - 1px);min-height:calc(100svh - var(--nav-h) - 1px);
-  padding:clamp(16px,3.5vh,48px) 24px clamp(24px,5vh,64px)}
+  min-height:100vh;min-height:100svh;
+  padding:clamp(24px,5vh,64px) 24px clamp(24px,5vh,64px)}
 .hc-in{width:100%;max-width:760px}
 .hc-in h1{margin:0;font-weight:400}
 .hc-logo{display:block;margin:0 auto;height:auto;max-width:70vw;
-  width:clamp(130px,calc((100vh - 480px) * .94),420px);
-  width:clamp(130px,calc((100svh - 480px) * .94),420px)}
+  width:clamp(130px,calc((100vh - 390px) * .94),440px);
+  width:clamp(130px,calc((100svh - 390px) * .94),440px)}
 .hc-tag{display:block;font-family:'Rokkitt',Georgia,serif;font-weight:500;font-size:clamp(15px,2.4vh,22px);
   letter-spacing:.14em;text-indent:.14em;text-transform:uppercase;color:var(--maroon);
   margin-top:clamp(8px,1.6vh,14px)}
@@ -794,3 +801,141 @@ img{max-width:100%}
 .hero-clean p{font-size:clamp(16px,2.5vh,21px);font-weight:300;line-height:1.75;color:var(--ink);
   max-width:620px;margin:0 auto}
 .hc-actions{margin-top:clamp(20px,4vh,40px)}
+
+/* ---------------- roasters page: full-width photographs ---------------- */
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* 14px under the top bar, 14px between the photo and its caption, edge to edge */
+.hero-photo{padding:14px 0 clamp(36px,6vh,64px);text-align:center}
+.hp-frame{position:relative;width:100%;overflow:hidden;background:var(--paper-2);
+  height:calc(100vh - var(--nav-h) - 14px - 190px);height:calc(100svh - var(--nav-h) - 14px - 190px);
+  min-height:300px;max-height:840px}
+.hp-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.3s ease}
+.hp-slide.is-active{opacity:1}
+.hp-cap{margin-top:14px;font-size:10px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--ink);opacity:.62;transition:opacity .35s ease;min-height:14px;padding:0 24px}
+.hp-cap.swap{opacity:0}
+.hp-dots{display:flex;justify-content:center;gap:12px;margin-top:16px}
+.hp-dot{width:7px;height:7px;border-radius:50%;border:0;padding:0;background:var(--kraft);opacity:.5;cursor:pointer;
+  transition:opacity .3s,background .3s}
+.hp-dot.on{opacity:1;background:var(--maroon)}
+.hp-actions{margin-top:clamp(16px,3vh,28px)}
+@media(prefers-reduced-motion:reduce){.hp-slide{transition:none}}
+.expect{padding-top:clamp(24px,5vh,56px)}
+.expect-in{max-width:740px;margin:0 auto;text-align:center}
+.expect-in .split-rule{margin:0 auto 30px}
+.expect-in p{font-size:15px;font-weight:300;line-height:2;color:var(--body);margin-bottom:18px}
+.e-grid.e-grid-2{grid-template-columns:repeat(2,1fr);gap:46px 56px}
+.e-grid-2 .est p{font-size:15px;line-height:1.95;margin-bottom:14px}
+.e-grid-2 .est p:last-child{margin-bottom:0}
+@media(max-width:700px){.e-grid.e-grid-2{grid-template-columns:1fr;gap:38px}}
+/* coffee picker inside the inquiry form */
+.fp{margin-bottom:22px}
+.fp-h{display:block;font-size:9.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--maroon);margin-bottom:12px}
+.fp .pick{display:grid;grid-template-columns:1fr 1fr;gap:2px 22px}
+.fp .pk{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:13.5px;font-weight:300;color:var(--ink);cursor:pointer}
+.fp .pk input{width:16px;height:16px;margin:0;accent-color:var(--maroon);flex-shrink:0}
+.fp .pk-wide{grid-column:1/-1}
+@media(max-width:600px){.fp .pick{grid-template-columns:1fr}}
+
+/* home: the two coffee cards end in a solid button (the whole card is still the link) */
+.paths .path .go{align-self:flex-start;display:inline-block;margin-top:28px;padding:15px 34px;
+  background:var(--maroon);color:var(--cream);border:1px solid var(--maroon);
+  font-size:10.5px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;
+  transition:background .25s,border-color .25s}
+.paths .path .go::after{content:none}
+.paths .path:hover .go{background:var(--maroon-dk);border-color:var(--maroon-dk)}
+
+
+/* home: Care, In Practice */
+.care h3{font-size:25px;font-weight:500;letter-spacing:.05em;line-height:1.4;color:var(--ink);margin-bottom:22px}
+@media(max-width:600px){.care h3{font-size:21px}}
+
+/* home: slimmer burgundy statement band */
+.statement{padding:70px 32px}
+@media(max-width:600px){.statement{padding:54px 24px}}
+
+
+/* ---------------- one heading voice across the site ----------------
+   Medium weight with a little air between the letters. Colors and sizes are as before
+   (dark ink stays dark, maroon headings stay maroon). */
+.phead h1,.split-txt h1,.art-head h1,.cx-head h2,.sec h2,.article h2,.m-top h2,
+.split-txt h3,.mark-head h3,.mark-txt h4,.pcard h3,.est h3,.path h3,.coffee h3,
+.notice h3,.b-cell h3,.cx-ccard h4,.ok h3,.care h3{font-weight:500}
+.phead h1,.split-txt h1,.art-head h1,.cx-head h2,.sec h2,.article h2,.m-top h2{letter-spacing:.02em}
+.split-txt h3,.mark-head h3,.mark-txt h4,.pcard h3,.est h3,.path h3,.coffee h3,
+.notice h3,.b-cell h3,.cx-ccard h4,.ok h3,.care h3{letter-spacing:.05em}
+/* Our Story: the three moments */
+.story-moment .split-txt h3,.mark-head h3{font-size:26px;line-height:1.35}
+
+
+/* top bar: the dotted-circle bird with the wordmark beside it, in maroon on the solid bar
+   (cream over a photograph, as before) */
+.nb-maroon{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nb-maroon img{display:block}
+.nb-maroon img:first-child{height:56px}
+.nb-maroon .nb-word-light{height:24px}
+.nav.nav-overlay:not(.is-scrolled):not(.menu-open) .nb-maroon{display:none}
+@media(min-width:1240px){.nav-brand .nb-tag{white-space:nowrap}}
+@media(max-width:1000px){.nb-maroon img:first-child{height:40px}.nb-maroon .nb-word-light{height:18px}}
+@media(max-width:600px){.nb-maroon{gap:9px}.nb-maroon img:first-child{height:32px}.nb-maroon .nb-word-light{height:15px}}
+
+/* roasters: "Start with a sample" uses the small eyebrow voice */
+.split-txt h2.eyebrow{font-family:inherit;font-size:12.5px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;line-height:1.6;color:var(--maroon);margin-bottom:20px}
+
+/* shop coffee: three photographs side by side */
+.hp-trip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%;
+  height:calc(100vh - var(--nav-h) - 14px - 150px);height:calc(100svh - var(--nav-h) - 14px - 150px);
+  min-height:300px;max-height:760px;background:var(--paper)}
+.hp-trip img{width:100%;height:100%;object-fit:cover;display:block;min-width:0}
+@media(max-width:700px){.hp-trip{grid-template-columns:1fr;height:58svh}.hp-trip img:nth-child(n+2){display:none}}
+
+/* home: The Mark as a mood board */
+.mark-board .moodboard{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:6px}
+.mb{position:relative;margin:0;overflow:hidden;background:var(--paper-2)}
+.mb img{display:block;width:100%;height:100%;object-fit:cover}
+.mb figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 11px;font-size:9.5px;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--cream);
+  background:linear-gradient(to top,rgba(36,16,18,.66),rgba(36,16,18,0))}
+.mb-bird{grid-column:1/6;height:300px}
+.mb-figures{grid-column:6/10;height:300px}
+.mb-quote{grid-column:10/13;height:300px;background:var(--maroon);display:flex;align-items:center;padding:28px 24px}
+.mb-quote p{font-family:'Rokkitt',Georgia,serif;font-size:23px;line-height:1.38;color:var(--cream);font-style:italic}
+.mb-plan{grid-column:1/6;height:350px}
+.mb-plan img{object-fit:cover;object-position:28% 50%;padding:0;background:none;filter:sepia(.45) saturate(.7) contrast(.95) brightness(1.02)}
+.mb-aerial{grid-column:6/13;height:350px}
+.mb-aerial img{object-position:center 40%}
+.mark-story{max-width:680px;margin:64px auto 0}
+.mark-story h4{font-size:19px;font-weight:500;letter-spacing:.07em;color:var(--ink);margin:0 0 10px;line-height:1.4}
+.mark-story p{font-size:15.5px;font-weight:300;line-height:2;color:var(--body);margin:0 0 34px}
+.mark-arrive{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:72px;align-items:center;max-width:900px;margin:34px auto 0;padding-top:56px;border-top:1px solid var(--line)}
+.mark-arrive .mark-img-final{aspect-ratio:4/5;padding:44px;background:var(--paper-2)}
+.mark-arrive .mark-txt h4{font-size:25px;font-weight:500;letter-spacing:.05em;margin-bottom:18px;color:var(--ink)}
+.mark-arrive .mark-txt p{font-size:15px;font-weight:300;line-height:1.95;color:var(--body);margin-bottom:16px}
+@media(max-width:800px){
+  .mark-board .moodboard{grid-template-columns:1fr 1fr}
+  .mb-bird,.mb-figures{grid-column:auto;height:190px}
+  .mb-quote{grid-column:1/-1;height:auto}
+  .mb-plan,.mb-aerial{grid-column:auto;height:210px}
+  .mark-arrive{grid-template-columns:1fr;gap:34px;justify-items:center}
+  .mark-arrive .mark-img-final{max-width:240px;width:100%}
+}
+
+/* Shop Coffee: the line under "Discover Coffee Through Its Origin" is smaller */
+#estateIntro h2{font-size:22px;font-weight:400;letter-spacing:.05em;line-height:1.5;margin-bottom:14px}
+@media(max-width:600px){#estateIntro h2{font-size:19px}}
+
+
+/* Our Producers: jump buttons under the intro */
+.estate-jump{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:34px}
+#ratnagiri,#mysore,#harley,#balanoor{scroll-margin-top:var(--nav-h)}
+@media(max-width:600px){.estate-jump{gap:10px}.estate-jump .btn{flex:1 1 calc(50% - 10px);padding-left:12px;padding-right:12px}}
+
+/* Journal: the page title uses the small label voice, like the other pages */
+.phead h1.eyebrow{font-family:inherit;font-size:12.5px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;line-height:1.6;color:var(--maroon);margin-bottom:20px}
+
+/* Reach Us page */
+.contact-head{padding-bottom:6px}
+.contact-card{max-width:640px;margin:0 auto;background:var(--paper-2);padding:44px 48px 48px;border:1px solid rgba(183,152,110,.4)}
+.contact-card .f textarea{height:130px}
+.contact-card .priv a{color:var(--maroon);text-decoration:none;border-bottom:1px solid rgba(129,20,41,.35)}
+@media(max-width:600px){.contact-card{padding:30px 22px 34px}}

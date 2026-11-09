@@ -35,9 +35,9 @@ window.KUYIL_CATALOG = {
   updated: '',   /* e.g. 'October 2026' \u2014 shown on the roaster page when set */
 
   intro: {
-    eyebrow: 'Discover Coffee Through Its Origin',
-    title: 'Every Kuyil coffee begins with a producer.',
-    body: 'Explore the estates we work with, discover the coffees they grow, and choose how you want to experience them — roasted for your cup, green for your home roaster, or through one of the roasting partners bringing these coffees to life across the U.S.'
+    eyebrow: 'Know Where It Comes From',
+    title: 'Get to know the estates behind our coffee.',
+    body: 'Before you buy a bag, spend a little time with the estates behind it. Learn about the land, the people, and how each coffee is grown and processed, so you know exactly where your coffee comes from.'
   },
 
   estates: [
@@ -45,8 +45,8 @@ window.KUYIL_CATALOG = {
       id: 'ratnagiri',
       name: 'Ratnagiri Estate',
       location: 'Bababudangiri, Chikmagalur, Karnataka, India',
-      image: 'assets/ratnagiri-fermentation-tanks.jpg',
-      imagePos: '50% 38%',
+      image: 'assets/ratnagiri-tanks-close.jpg',
+      imagePos: '50% 50%',
       imageAlt: 'Stainless-steel fermentation tanks inside the processing hall at Ratnagiri Estate',
       summary: 'Experimental by instinct, with processing decisions made lot by lot and the people behind those trials driving what the coffee becomes.',
       description: 'Ratnagiri turns a heritage plantation into a laboratory for Indian specialty coffee. Carbonic maceration, honey, anaerobic and yeast-fermented lots are handled one at a time, always in service of a clean, expressive cup that still tastes of place.',

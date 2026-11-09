@@ -18,11 +18,11 @@
 <body>
 
 <!-- ===== NAV ===== -->
-<nav class="nav nav-overlay">
+<nav class="nav">
   <div class="nav-in">
     <a class="nav-brand" href="index.html">
       <span class="nb-logo">
-        <img class="nb-lockup" src="assets/kuyil-lockup.svg" alt="Kuyil Origins">
+        <span class="nb-maroon"><img src="assets/label-mark-maroon.svg" alt=""><img class="nb-word-light" src="assets/label-word-maroon.svg" alt="Kuyil Origins"></span>
         <span class="nb-lockup-light">
           <img src="assets/label-mark-cream.svg" alt="">
           <img class="nb-word-light" src="assets/label-word-cream.svg" alt="">
@@ -57,18 +57,23 @@
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="hero hero-page">
-  <img class="hero-bg" fetchpriority="high" src="assets/roasted-cup-beans.jpg" alt="A white cup filled with roasted coffee beans on a rustic wooden table">
-  <div class="hero-scrim"></div>
-  <div class="hero-in">
-    <div class="hero-txt rise">
-      <h1>Shop Coffee</h1>
-      <p>A small selection of coffees from the same estates we work with at origin, roasted in
-        Atlanta for your cup or sold green if you roast at home, with the estate, process, and
-        people behind each lot kept visible.</p>
-    </div>
+<section class="hero-photo">
+  <div class="hp-trip">
+    <img fetchpriority="high" src="assets/shop-bag-hand.jpg" alt="A hand holding up a Kuyil Origins coffee bag in front of dark forest trees" style="object-position:50% 45%">
+    <img src="assets/shop-green-beans.jpg" alt="Green coffee beans in a white shell-shaped dish on a weathered wooden table">
+    <img src="assets/shop-sample-bags.jpg" alt="Two Kuyil Origins coffee bags with cream labels lying on a weathered wooden table">
   </div>
-  <div class="hero-credit">Freshly roasted</div>
+  <div class="hp-cap">From green bean to bag</div>
+</section>
+
+<section class="sec sec-sm">
+  <div class="sec-head" style="margin-bottom:0">
+    <div class="eyebrow">Shop Coffee</div>
+    <h1 class="sr-only">Shop Coffee</h1>
+    <p>A small selection of coffees from the same estates we work with at origin, roasted in
+      Atlanta for your cup or sold green if you roast at home, with the estate, process, and
+      people behind each lot kept visible.</p>
+  </div>
 </section>
 
 <!-- ===== ORDERING ===== -->
@@ -85,15 +90,13 @@
 <section class="sec sec-alt">
   <div class="wrap">
     <div class="sec-head" id="estateIntro">
-      <div class="eyebrow">Discover Coffee Through Its Origin</div>
-      <h2>Every Kuyil coffee begins with a producer.</h2>
-      <p>Explore the estates we work with, discover the coffees they grow, and choose how you want to experience them.</p>
+      <div class="eyebrow">Know Where It Comes From</div>
+      <h2 class="sr-only">Get to know the estates behind our coffee.</h2>
+      <p>Before you buy a bag, spend a little time with the estates behind it. Learn about the land, the people, and how each coffee is grown and processed, so you know exactly where your coffee comes from.</p>
     </div>
 
     <div class="prod-grid" id="estateGrid">
       <article class="pcard">
-        <div class="fr"><img src="assets/ratnagiri-shade-pruning.jpg"
-          alt="A worker high in a shade tree at Ratnagiri Estate, managing the canopy over the coffee" loading="lazy" decoding="async"></div>
         <h3>Ratnagiri Estate</h3>
         <div class="region">Karnataka, India</div>
         <p>Experimental by instinct, with processing decisions made lot by lot and the people
@@ -102,8 +105,6 @@
       </article>
 
       <article class="pcard">
-        <div class="fr"><img src="assets/mysore-cherries-farm.jpg"
-          alt="A Robusta coffee bush heavy with ripening cherries growing in the field at Mysore Plantations" loading="lazy" decoding="async"></div>
         <h3>Mysore Plantations</h3>
         <div class="region">Karnataka, India</div>
         <p>Women-owned, and treating Robusta as a specialty coffee in its own right rather than
@@ -112,8 +113,6 @@
       </article>
 
       <article class="pcard">
-        <div class="fr"><img src="assets/harley-estate-path.jpg"
-          alt="A shaded path through palms and coffee at Harley Estate" loading="lazy" decoding="async"></div>
         <h3>Harley Estate</h3>
         <div class="region">Karnataka, India</div>
         <p>Women-led, with conservation shaping how the land is managed and a clear estate
@@ -122,51 +121,12 @@
       </article>
 
       <article class="pcard">
-        <div class="fr"><img src="assets/balanoor-picking.jpg"
-          alt="A picker in a blue headscarf selecting ripe cherries at Balanoor Plantations" loading="lazy" decoding="async"></div>
         <h3>Balanoor Plantations</h3>
         <div class="region">Karnataka, India</div>
         <p>A long estate history in Karnataka, with sustainability practices that shape the
           coffees it produces today.</p>
         <a class="go" href="balanoor.html">Learn about the estate</a>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- ===== WHAT STAYS WITH EVERY COFFEE ===== -->
-<section class="sec">
-  <div class="split">
-    <div class="split-txt">
-      <div class="eyebrow">What Stays With Every Coffee</div>
-      <h2>The estate name. The process. The people behind it.</h2>
-      <div class="split-rule"></div>
-      <p>We want you to know more than the country on the label. Each coffee stays connected to
-        the estate it came from and the decisions that shaped it.</p>
-    </div>
-    <figure class="figure split-img focus-low">
-      <div class="fr"><img src="assets/harley-drying-beds.jpg"
-        alt="Parchment coffee drying in thin layers on raised mesh beds at Harley Estate" loading="lazy" decoding="async"></div>
-      <figcaption>Parchment drying on raised beds &middot; Harley Estate</figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- ===== COFFEE WITH A SENSE OF PLACE ===== -->
-<section class="sec sec-alt">
-  <div class="split">
-    <figure class="figure split-img focus-low">
-      <div class="fr"><img src="assets/ratnagiri-coffee-rows.jpg"
-        alt="Rows of coffee bushes growing beneath tall shade trees on a hillside at Ratnagiri Estate" loading="lazy" decoding="async"></div>
-      <figcaption>Coffee rows under shade &middot; Ratnagiri Estate</figcaption>
-    </figure>
-    <div class="split-txt">
-      <div class="eyebrow">Our Approach</div>
-      <h2>Coffee with a sense of place</h2>
-      <div class="split-rule"></div>
-      <p>We spend time with the estates we source from and choose lots with their own character.
-        That means every coffee can be traced back to the people, landscape, and process behind
-        it, rather than stopping at a country name.</p>
     </div>
   </div>
 </section>
@@ -208,6 +168,7 @@
             <li><a href="producers.html">Our Producers</a></li>
             <li><a href="index.html#story">Our Story</a></li>
             <li><a href="journal/">Journal</a></li>
+            <li><a href="contact.html">Reach Us</a></li>
           </ul>
         </div>
         <div class="foot-col">

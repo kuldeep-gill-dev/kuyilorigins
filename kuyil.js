@@ -16,6 +16,10 @@
       line.textContent = ctx ? [ctx.request, ctx.coffee, ctx.estate].filter(Boolean).join(' \u00b7 ') : '';
       line.style.display = ctx ? 'block' : 'none';
     }
+    var picks = ov.querySelectorAll('.pk input');
+    Array.prototype.forEach.call(picks, function (p) {
+      p.checked = !!(ctx && ctx.coffee && p.getAttribute('data-name') === ctx.coffee);
+    });
     var msgEl = document.getElementById('i-msg');
     if (msgEl && ctx && ctx.message != null) msgEl.value = ctx.message;
     document.body.style.overflow = 'hidden';
@@ -40,7 +44,13 @@
   if (!form) return;
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    var hid = form.querySelector('#coffeesField');
+    if (hid) {
+      hid.value = Array.prototype.filter.call(form.querySelectorAll('.pk input'), function (i) { return i.checked; })
+        .map(function (i) { return i.value; }).join(', ');
+    }
     var btn = form.querySelector('.send');
+    if (btn && !btn.getAttribute('data-label')) btn.setAttribute('data-label', btn.textContent);
     if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
     fetch(form.action, {
       method: 'POST',
@@ -57,7 +67,7 @@
   });
 
   function fail(btn) {
-    if (btn) { btn.disabled = false; btn.textContent = 'Send Inquiry'; }
+    if (btn) { btn.disabled = false; btn.textContent = btn.getAttribute('data-label') || 'Send Inquiry'; }
     alert('Something went wrong. Please try again, or email hello@kuyilorigins.com directly.');
   }
 })();
@@ -177,3 +187,53 @@ initEditorialCarousel({
   viewport: 'markViewport', track: 'markTrack',
   prev: 'markPrev', next: 'markNext', counter: 'markCounter'
 });
+
+
+/* Home page: the menu bar appears once the visitor scrolls a little */
+(function () {
+  var nav = document.querySelector('.nav.nav-home');
+  if (!nav) return;
+  function update() { nav.classList.toggle('is-visible', window.scrollY > 40); }
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+})();
+
+
+/* Roasters page: the photograph carousel rotates by itself */
+(function () {
+  var stage = document.getElementById('hpStage');
+  if (!stage) return;
+  var slides = stage.querySelectorAll('.hp-slide');
+  if (slides.length < 2) return;
+  var cap = document.getElementById('hpCap');
+  var dotsEl = document.getElementById('hpDots');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var i = 0, timer = null, dots = [];
+  function load() {
+    Array.prototype.forEach.call(slides, function (s) {
+      var d = s.getAttribute('data-src');
+      if (d) { s.src = d; s.removeAttribute('data-src'); }
+    });
+  }
+  function show(n) {
+    i = (n + slides.length) % slides.length;
+    Array.prototype.forEach.call(slides, function (s, k) { s.classList.toggle('is-active', k === i); });
+    dots.forEach(function (d, k) { d.classList.toggle('on', k === i); d.setAttribute('aria-selected', k === i); });
+    cap.classList.add('swap');
+    setTimeout(function () { cap.innerHTML = slides[i].getAttribute('data-cap'); cap.classList.remove('swap'); }, 350);
+  }
+  function start() { if (reduce || timer) return; timer = setInterval(function () { show(i + 1); }, 6500); }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  Array.prototype.forEach.call(slides, function (s, k) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'hp-dot' + (k === 0 ? ' on' : ''); b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', 'Photograph ' + (k + 1));
+    b.addEventListener('click', function () { stop(); show(k); start(); });
+    dotsEl.appendChild(b); dots.push(b);
+  });
+  stage.addEventListener('mouseenter', stop);
+  stage.addEventListener('mouseleave', start);
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+  if (document.readyState === 'complete') load(); else window.addEventListener('load', load);
+  start();
+})();

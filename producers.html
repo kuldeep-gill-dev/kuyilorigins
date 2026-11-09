@@ -19,11 +19,11 @@
 <body>
 
 <!-- ===== NAV ===== -->
-<nav class="nav nav-overlay">
+<nav class="nav">
   <div class="nav-in">
     <a class="nav-brand" href="index.html">
       <span class="nb-logo">
-        <img class="nb-lockup" src="assets/kuyil-lockup.svg" alt="Kuyil Origins">
+        <span class="nb-maroon"><img src="assets/label-mark-maroon.svg" alt=""><img class="nb-word-light" src="assets/label-word-maroon.svg" alt="Kuyil Origins"></span>
         <span class="nb-lockup-light">
           <img src="assets/label-mark-cream.svg" alt="">
           <img class="nb-word-light" src="assets/label-word-cream.svg" alt="">
@@ -58,32 +58,42 @@
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="hero hero-page">
-  <img class="hero-bg" fetchpriority="high" src="assets/producers-cherries-hero.jpg" alt="Two workers pouring sacks of ripe red coffee cherries beneath tall shade trees">
-  <div class="hero-scrim"></div>
-  <div class="hero-in">
-    <div class="hero-txt rise">
-      <h1>The people behind the coffee.</h1>
-      <p>Our current coffees come from four estates in Karnataka. We choose them through time
-        spent at origin, estate visits, cuppings, and direct conversations with the people who
-        grow and process the coffee.</p>
-    </div>
+<section class="hero-photo">
+  <div class="hp-frame">
+    <img class="hp-slide is-active" fetchpriority="high" src="assets/producers-cherries-hero.jpg" alt="Two workers pouring sacks of ripe red coffee cherries beneath tall shade trees" style="object-position:50% 45%">
+  </div>
+  <div class="hp-cap">Freshly picked cherry</div>
+</section>
+
+<section class="sec sec-sm">
+  <div class="sec-head" style="margin-bottom:0">
+    <div class="eyebrow">The people behind the coffee</div>
+    <h1 class="sr-only">The people behind the coffee.</h1>
+    <p>Our current coffees come from four estates in Karnataka. We choose them through time
+      spent at origin, estate visits, cuppings, and direct conversations with the people who
+      grow and process the coffee.</p>
   </div>
 </section>
 
 <!-- ===== INTRO ===== -->
 <section class="sec sec-alt">
   <div class="sec-head">
-    <h2>Four estates. Four very different stories.</h2>
+    <div class="eyebrow">Four estates. Four very different stories.</div>
     <p>Each estate approaches coffee in its own way. Some are pushing processing in new
       directions, some are rethinking what specialty Robusta can be, and others carry
       generations of farming knowledge into the present. What connects them is the care behind
       the coffee and the people making those decisions.</p>
+    <div class="estate-jump">
+      <a class="btn btn-sm" href="#ratnagiri">Ratnagiri Estate</a>
+      <a class="btn btn-sm" href="#mysore">Mysore Plantations</a>
+      <a class="btn btn-sm" href="#harley">Harley Estate</a>
+      <a class="btn btn-sm" href="#balanoor">Balanoor Plantations</a>
+    </div>
   </div>
 </section>
 
 <!-- ===== RATNAGIRI ESTATE ===== -->
-<section class="sec">
+<section id="ratnagiri" class="sec">
   <div class="split">
     <div class="split-txt">
       <h2>Ratnagiri Estate</h2>
@@ -125,7 +135,7 @@
 </section>
 
 <!-- ===== MYSORE PLANTATIONS ===== -->
-<section class="sec sec-alt">
+<section id="mysore" class="sec sec-alt">
   <div class="split flip">
     <div class="split-txt">
       <h2>Mysore Plantations</h2>
@@ -177,7 +187,7 @@
 </section>
 
 <!-- ===== HARLEY ESTATE ===== -->
-<section class="sec">
+<section id="harley" class="sec">
   <div class="split">
     <div class="split-txt">
       <h2>Harley Estate</h2>
@@ -226,7 +236,7 @@
 </section>
 
 <!-- ===== BALANOOR PLANTATIONS ===== -->
-<section class="sec sec-alt">
+<section id="balanoor" class="sec sec-alt">
   <div class="split flip">
     <div class="split-txt">
       <h2>Balanoor Plantations</h2>
@@ -276,50 +286,6 @@
   </div>
 </section>
 
-<!-- ===== MORE STORIES ===== -->
-<section class="sec">
-  <p class="e-note">More of their stories are coming. We are building fuller profiles for each
-    estate, including the people, landscapes, varieties, processing, and farming practices
-    behind the coffees we share.</p>
-</section>
-
-<!-- ===== FIND THEIR COFFEE ===== -->
-<section class="sec sec-alt">
-  <div class="sec-head">
-    <div class="eyebrow">Their Coffee</div>
-    <h2>Find these estates in our coffees.</h2>
-    <p>For roasters, we share green coffees with full lot information and samples on request.
-      For coffee drinkers, we offer a small roasted selection from the same estates.</p>
-  </div>
-  <div class="paths">
-    <a class="path" href="wholesale.html">
-      <div class="fr"><img src="assets/green-coffee.jpg"
-        alt="A large heap of freshly milled green coffee beans at the estate mill" loading="lazy" decoding="async"></div>
-      <div class="pnum">For Roasters</div>
-      <h3>Green Coffee</h3>
-      <p>Current green coffees from our Karnataka estates, with estate, variety, process,
-        harvest, and altitude listed for every lot.</p>
-      <div class="go">Explore Green Coffee</div>
-    </a>
-    <a class="path" href="roasted.html">
-      <div class="fr"><img src="assets/roasted-coffee-beans.jpg"
-        alt="Freshly roasted coffee beans cooling after the roast" loading="lazy" decoding="async"></div>
-      <div class="pnum">Coffee</div>
-      <h3>Roasted Coffee</h3>
-      <p>A small rotating selection of the same estate coffees, roasted in Atlanta and shared
-        while our online shop is being prepared.</p>
-      <div class="go">Explore Coffee</div>
-    </a>
-  </div>
-</section>
-
-<!-- ===== CLOSING ===== -->
-<figure class="closing-band">
-  <img src="assets/ratnagiri-shade-pruning.jpg"
-    alt="A worker high in a shade tree at Ratnagiri Estate, managing the canopy over the coffee" loading="lazy" decoding="async">
-  <h2>Every coffee begins with people, decisions, and a place we know.</h2>
-</figure>
-
 <!-- ===== FOOTER ===== -->
 <footer class="foot">
   <div class="foot-in">
@@ -343,6 +309,7 @@
             <li><a href="index.html#care">Our Approach</a></li>
             <li><a href="index.html#story">Our Story</a></li>
             <li><a href="journal/">Journal</a></li>
+            <li><a href="contact.html">Reach Us</a></li>
           </ul>
         </div>
         <div class="foot-col">
