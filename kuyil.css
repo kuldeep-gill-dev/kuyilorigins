@@ -939,3 +939,9 @@ img{max-width:100%}
 .contact-card .f textarea{height:130px}
 .contact-card .priv a{color:var(--maroon);text-decoration:none;border-bottom:1px solid rgba(129,20,41,.35)}
 @media(max-width:600px){.contact-card{padding:30px 22px 34px}}
+
+/* estate cards: quiet "learn more" link above "Explore coffees" */
+.pcard .pc-learn{align-self:flex-start;margin-top:14px;font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(36,16,18,.35);padding-bottom:2px;opacity:.75}
+.pcard .pc-learn:hover{color:var(--maroon);border-bottom-color:var(--maroon);opacity:1}
+.pcard .pc-learn + .go{margin-top:16px}

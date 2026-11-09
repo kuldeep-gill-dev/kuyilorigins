@@ -70,8 +70,9 @@
     return '<article class="pcard pcard-open" tabindex="0" role="button" data-estate="' + esc(e.id) + '" aria-label="' + esc(e.name) + ' — explore coffees">' +
       '<div class="fr"><img' + (e.imagePos ? ' style="object-position:' + esc(e.imagePos) + '"' : '') + ' src="' + esc(ROASTER && e.roasterImage || e.image) + '" alt="' + esc(ROASTER && e.roasterImageAlt || e.imageAlt) + '" loading="lazy" decoding="async"></div>' +
       '<h3>' + esc(e.name) + '</h3><div class="region">' + esc(e.location) + '</div>' +
-      '<p>' + esc(e.summary) + '</p>' +
+      '<p>' + esc(e.description || e.summary) + '</p>' +
       (ROASTER ? '<div class="cx-count">' + (n ? n + (n === 1 ? ' coffee' : ' coffees') : 'Ask what\u2019s coming') + '</div>' : '') +
+      '<a class="pc-learn" href="producers.html#' + esc(e.id) + '">Learn more about the estate</a>' +
       '<span class="go">Explore coffees</span></article>';
   }).join('');
 
@@ -110,13 +111,17 @@
     setBack('All estates', close);
     var cards = e.coffees.length ? '<div class="cx-coffees">' + e.coffees.map(function (c) {
       return '<button type="button" class="cx-ccard" data-coffee="' + esc(c.id) + '">' +
-        '<div class="cx-cc-top"><h4>' + esc(c.name) + '</h4>' + badge(ROASTER ? (c.roaster || {}).status : c.status) + '</div>' +
+        '<div class="cx-cc-top"><h4>' + esc(c.name) + '</h4>' + (ROASTER ? badge((c.roaster || {}).status) : '') + '</div>' +
         '<div class="cx-meta">' + [c.variety, c.process].filter(Boolean).map(esc).join(' &middot; ') + '</div>' +
         (c.notes.length ? '<ul class="cx-notes">' + c.notes.slice(0, 4).map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>' : '') +
         '<span class="cx-more">Explore this coffee</span></button>';
     }).join('') + '</div>' :
       '<p class="cx-empty">We’re still selecting coffees from ' + esc(e.name) + '. <a href="#" data-ask="' + esc(e.name) + '">Ask what’s coming</a>.</p>';
 
+    if (!ROASTER) {
+      show('<header class="cx-head"><div class="cx-kicker" id="cxTitle">' + esc(e.name) + '</div></header>' + cards);
+      return;
+    }
     show('<header class="cx-head"><div class="cx-kicker">' + esc(e.name) + '</div>' +
       '<h2 id="cxTitle">' + esc(e.name) + '</h2>' +
       '<div class="cx-loc">' + esc(e.location) + '</div>' +
@@ -149,33 +154,7 @@
     state.coffee = c;
     setBack('Back to ' + e.name.replace(/ (Estate|Plantations)$/, '') + ' coffees', function () { estateView(e); });
     if (ROASTER) return roasterView(e, c);
-    var f = c.formats || {};
-    var html = detailHead(e, c);
-
-    var blocks = '';
-    if (f.roasted) blocks += formatBlock('roasted', 'Roasted coffee', f.roasted.blurb || 'Roasted in small batches for Kuyil Origins.', f.roasted, c, 'Add to Cart');
-    if (f.green) blocks += formatBlock('green', 'Green coffee — for home roasters', f.green.blurb || 'Unroasted coffee for home roasters and coffee enthusiasts who want to roast the coffee themselves.', f.green, c, 'Add Green Coffee to Cart');
-    var partners = (f.partners || []).filter(function (p) { return p.available; });
-
-    html += '<div class="cx-choose"><div class="cx-kicker">Choose how you want to experience this coffee</div>';
-    html += blocks || (partners.length ? '' : '<p class="cx-empty">Formats for this coffee are coming soon. <a href="#" data-ask="' + esc(c.name) + '">Ask us about it</a>.</p>');
-    if (partners.length) {
-      html += '<div class="cx-fmt cx-partners"><div class="cx-fmt-h">Prefer it roasted?</div>' +
-        '<p class="cx-fmt-p">Try a partner roaster’s interpretation.</p>' +
-        partners.map(function (p) {
-          return '<div class="cx-partner">' +
-            (p.logo ? '<img class="cx-plogo" src="' + esc(p.logo) + '" alt="">' : '') +
-            '<div class="cx-pbody"><div class="cx-pname">' + esc(p.roaster) + '</div>' +
-            (p.product ? '<div class="cx-pprod">' + esc(p.product) + '</div>' : '') +
-            (p.description ? '<p>' + esc(p.description) + '</p>' : '') +
-            (p.roast ? '<p class="cx-roast">' + esc(p.roast) + '</p>' : '') +
-            (p.url ? '<a class="cx-btn" href="' + esc(p.url) + '" target="_blank" rel="noopener">Buy roasted from ' + esc(p.roaster) + ' →</a>'
-                   : '<span class="cx-btn cx-off">Link coming soon</span>') +
-            '</div></div>';
-        }).join('') + '</div>';
-    }
-    html += '</div>';
-    show(html);
+    show(detailHead(e, c));
   }
 
 
@@ -265,6 +244,7 @@
   }
 
   grid.addEventListener('click', function (ev) {
+    if (ev.target.closest('a.pc-learn')) return;
     var card = ev.target.closest('.pcard-open');
     if (card) open(card.getAttribute('data-estate'));
   });
