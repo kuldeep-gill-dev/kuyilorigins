@@ -279,3 +279,59 @@ window.KUYIL_CATALOG = {
     }
   ]
 };
+
+
+/* ------------------------------------------------------------------------------------
+ * SHOP (Shop Coffee page, the "Explore Our Current Selection of Coffees" tiles)
+ * One entry per coffee. Tiles are drawn from the coffee details above (name, estate,
+ * process, tasting notes), so only the selling details live here.
+ *
+ *   order          which coffees show, and in what order (coffee ids from KUYIL_CATALOG)
+ *   products[id]
+ *     photo / card the postcard-style picture on the tile: a photo, plus the short lines printed
+ *                  on it (place, spec, notes, feel). Swap in `image: 'assets/....jpg'` instead to
+ *                  show a single picture (e.g. a bag photo) whenever you have one.
+ *     options[]    the ways to buy THIS coffee. Each coffee can have different ones:
+ *                  keep only what is really offered, delete the rest.
+ *       type         'roasted'  a Kuyil roasted bag (e.g. 12 oz)
+ *                    'green'    green coffee (e.g. 5 lb)
+ *                    'partner'  a partner roaster's roasted version; the button sends the
+ *                               customer to their site (use this where Kuyil does not roast it)
+ *       label        what the customer sees, e.g. '12 oz roasted', '5 lb green', 'Roasted by Kin Coffee'
+ *       price        number in dollars, or null while it is still to be set (not used for partners)
+ *       status       'soon' (button says Coming Soon) or 'available' (button goes live)
+ *       checkoutUrl  roasted/green: paste the Stripe Payment Link here
+ *                    partner: paste the partner roaster's product page link here
+ *       roaster      partner only: the roaster's name, shown on the button
+ *       stripePriceId (optional) the price_... id, if you later build a cart
+ *
+ * Connecting Stripe the simple way: create a Payment Link per option in Stripe, paste it into
+ * checkoutUrl, set price, and change status to 'available'. That option's button then opens
+ * Stripe checkout. Nothing else on the page needs to change.
+ * ---------------------------------------------------------------------------------- */
+(function () {
+  function roasted() { return { type: 'roasted', label: '12 oz roasted', price: null, status: 'soon', checkoutUrl: '', stripePriceId: '' }; }
+  function green()   { return { type: 'green',   label: '5 lb green',    price: null, status: 'soon', checkoutUrl: '', stripePriceId: '' }; }
+  function partner(name) { return { type: 'partner', label: 'Roasted by ' + name, roaster: name, status: 'soon', checkoutUrl: '' }; }
+
+  window.KUYIL_SHOP = {
+    order: [
+      'ratnagiri-hydro-honey',
+      'ratnagiri-lot-42-carbonic-natural',
+      'harley-banana-black-honey',
+      'balanoor-selection-9',
+      'mysore-honey-robusta',
+      'mysore-washed-robusta'
+    ],
+    /* Placeholders: every coffee starts with roasted and green marked "coming soon".
+       Remove an option a coffee will not have, or add partner('Name') where a partner roasts it. */
+    products: {
+      'ratnagiri-hydro-honey':             { photo: 'assets/shop-photo-hydro-honey.jpg', card: { place: 'Bababudangiri, Chikmagalur · India', spec: 'Catuai · 1,350 masl · Harvest 2026', notes: 'Peach · Florals · Lemon · Brown sugar', feel: 'Honey sweetness · Bright acidity' }, options: [roasted(), green()] },
+      'ratnagiri-lot-42-carbonic-natural': { photo: 'assets/shop-photo-lot-42.jpg', card: { place: 'Bababudangiri, Chikmagalur · India', spec: 'SLN 6 · 1,355 masl · Harvest 2026', notes: 'Ripe fruit · Jammy sweetness · Cocoa', feel: 'Rounded acidity · Fruit-led cup' }, options: [roasted(), green()] },
+      'harley-banana-black-honey':         { photo: 'assets/shop-photo-banana-black-honey.jpg', card: { place: 'Sakleshpur, Karnataka · India', spec: 'Chandragiri · 945–1,035 masl · Harvest 2026', notes: 'Banana · Dark fruit · Brown sugar', feel: 'Rounded sweetness · Gentle acidity' }, options: [green(), partner('Kin Coffee')] },
+      'balanoor-selection-9':              { photo: 'assets/shop-photo-selection-9.jpg', card: { place: 'Chikmagalur, Karnataka · India', spec: 'Selection 9 · 900–1,400 masl · Harvest 2026', notes: 'Brown sugar · Green apple · Nutty', feel: 'Mild sweetness · Gentle malic acidity' }, options: [roasted(), green()] },
+      'mysore-honey-robusta':              { photo: 'assets/shop-photo-honey-robusta.jpg', card: { place: 'Western Ghats, Karnataka · India', spec: 'Robusta · 850–915 masl · Harvest 2026', notes: 'Honey · Yellow stone fruit · Brown sugar', feel: 'Medium sweetness · Hint of citrus' }, options: [roasted(), green()] },
+      'mysore-washed-robusta':             { photo: 'assets/shop-photo-washed-robusta.jpg', card: { place: 'Western Ghats, Karnataka · India', spec: 'Robusta · 850–915 masl · Harvest 2026', notes: 'Brown sugar · Red apple · Walnut · Cinnamon', feel: 'Medium sweetness · Sweet-tart acidity' }, options: [roasted(), green()] }
+    }
+  };
+})();

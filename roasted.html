@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://kuyilorigins.com/roasted.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Rokkitt:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Rokkitt:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="kuyil.css">
 </head>
 <body>
@@ -56,78 +56,28 @@
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
-<section class="hero-photo">
-  <div class="hp-trip">
-    <img fetchpriority="high" src="assets/shop-bag-hand.jpg" alt="A hand holding up a Kuyil Origins coffee bag in front of dark forest trees" style="object-position:50% 45%">
-    <img src="assets/shop-green-beans.jpg" alt="Green coffee beans in a white shell-shaped dish on a weathered wooden table">
-    <img src="assets/shop-sample-bags.jpg" alt="Two Kuyil Origins coffee bags with cream labels lying on a weathered wooden table">
+<!-- ===== FIRST SCREEN: photos + shop heading; the coffees come in as you scroll ===== -->
+<div class="shop-first">
+  <section class="hero-photo">
+    <div class="hp-trip">
+      <img fetchpriority="high" src="assets/shop-bag-hand.jpg" alt="A hand holding up a Kuyil Origins coffee bag in front of dark forest trees" style="object-position:50% 45%">
+      <img src="assets/shop-green-beans.jpg" alt="Green coffee beans in a white shell-shaped dish on a weathered wooden table">
+      <img src="assets/shop-sample-bags.jpg" alt="Two Kuyil Origins coffee bags with cream labels lying on a weathered wooden table">
+    </div>
+  </section>
+  <div class="shop-head">
+    <div class="eyebrow">Explore Our Current Selection of Coffees</div>
+    <h2 class="sr-only">Our coffees, bag by bag</h2>
+    <p>A small selection of coffees from four estates in Karnataka, each with its own character and story. Our online shop is opening soon.</p>
   </div>
-  <div class="hp-cap">From green bean to bag</div>
-</section>
+</div>
 
-<section class="sec sec-sm">
-  <div class="sec-head" style="margin-bottom:0">
-    <div class="eyebrow">Shop Coffee</div>
-    <h1 class="sr-only">Shop Coffee</h1>
-    <p>A small selection of coffees from the same estates we work with at origin, roasted in
-      Atlanta for your cup or sold green if you roast at home, with the estate, process, and
-      people behind each lot kept visible.</p>
-  </div>
-</section>
-
-<!-- ===== ORDERING ===== -->
-<section class="sec sec-sm">
-  <div class="notice">
-    <h3>Ordering, for now</h3>
-    <p>Our online shop is still being built. Until then, you can reach out directly for current
-      coffees, availability, and local pickup or delivery around Atlanta.</p>
-    <a class="btn btn-sm" href="#" onclick="openModal('Roasted coffee');return false;">Ask About Current Coffees</a>
-  </div>
-</section>
-
-<!-- ===== CURRENT COFFEES ===== -->
-<section class="sec sec-alt">
+<!-- ===== SHOP ===== -->
+<section class="sec" id="shop">
   <div class="wrap">
-    <div class="sec-head" id="estateIntro">
-      <div class="eyebrow">Know Where It Comes From</div>
-      <h2 class="sr-only">Get to know the estates behind our coffee.</h2>
-      <p>Before you buy a bag, spend a little time with the estates behind it. Learn about the land, the people, and how each coffee is grown and processed, so you know exactly where your coffee comes from.</p>
-    </div>
-
-    <div class="prod-grid" id="estateGrid">
-      <article class="pcard">
-        <h3>Ratnagiri Estate</h3>
-        <div class="region">Karnataka, India</div>
-        <p>Experimental by instinct, with processing decisions made lot by lot and the people
-          behind those trials driving what the coffee becomes.</p>
-        <a class="go" href="ratnagiri.html">Learn about the estate</a>
-      </article>
-
-      <article class="pcard">
-        <h3>Mysore Plantations</h3>
-        <div class="region">Karnataka, India</div>
-        <p>Women-owned, and treating Robusta as a specialty coffee in its own right rather than
-          a commodity to be blended away.</p>
-        <a class="go" href="mysore.html">Learn about the estate</a>
-      </article>
-
-      <article class="pcard">
-        <h3>Harley Estate</h3>
-        <div class="region">Karnataka, India</div>
-        <p>Women-led, with conservation shaping how the land is managed and a clear estate
-          identity behind the coffee we selected.</p>
-        <a class="go" href="harley.html">Learn about the estate</a>
-      </article>
-
-      <article class="pcard">
-        <h3>Balanoor Plantations</h3>
-        <div class="region">Karnataka, India</div>
-        <p>A long estate history in Karnataka, with sustainability practices that shape the
-          coffees it produces today.</p>
-        <a class="go" href="balanoor.html">Learn about the estate</a>
-      </article>
-    </div>
+    <div class="shop-grid" id="shopGrid"></div>
+    <p class="shop-note">Until then, ask us about current coffees, availability, and local pickup or delivery around Atlanta.
+      <a href="#" onclick="openModal('Roasted coffee');return false;">Ask about current coffees</a></p>
   </div>
 </section>
 
@@ -233,5 +183,6 @@
 <script src="coffee-data.js"></script>
 <script src="availability.js"></script>
 <script src="coffee-explorer.js"></script>
+<script src="shop.js"></script>
 </body>
 </html>

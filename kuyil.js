@@ -237,3 +237,14 @@ initEditorialCarousel({
   if (document.readyState === 'complete') load(); else window.addEventListener('load', load);
   start();
 })();
+
+
+/* Links like page.html#section: once images and cards have settled, re-align to the section */
+(function () {
+  if (!location.hash || location.hash.length < 2) return;
+  window.addEventListener('load', function () {
+    var el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (!el) return;
+    setTimeout(function () { el.scrollIntoView({ behavior: 'instant', block: 'start' }); }, 120);
+  });
+})();
