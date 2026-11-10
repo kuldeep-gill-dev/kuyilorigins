@@ -310,8 +310,10 @@ window.KUYIL_CATALOG = {
  * Stripe checkout. Nothing else on the page needs to change.
  * ---------------------------------------------------------------------------------- */
 (function () {
-  function roasted() { return { type: 'roasted', label: '12 oz roasted', price: null, status: 'soon', checkoutUrl: '', stripePriceId: '' }; }
-  function green()   { return { type: 'green',   label: '5 lb green',    price: null, status: 'soon', checkoutUrl: '', stripePriceId: '' }; }
+  /* SANDBOX TEST LINKS (buy.stripe.com/test_...): they cannot take real payments. Before going live, replace each with the
+     live Payment Link, set price, and change status to 'available'. See Stripe-Go-Live-Checklist.md. */
+  function roasted(url) { return { type: 'roasted', label: '12 oz roasted', price: null, status: 'soon', checkoutUrl: url || '', stripePriceId: '' }; }
+  function green(url)   { return { type: 'green',   label: '5 lb green',    price: null, status: 'soon', checkoutUrl: url || '', stripePriceId: '' }; }
   function partner(name) { return { type: 'partner', label: 'Roasted by ' + name, roaster: name, status: 'soon', checkoutUrl: '' }; }
 
   window.KUYIL_SHOP = {
@@ -326,12 +328,12 @@ window.KUYIL_CATALOG = {
     /* Placeholders: every coffee starts with roasted and green marked "coming soon".
        Remove an option a coffee will not have, or add partner('Name') where a partner roasts it. */
     products: {
-      'ratnagiri-hydro-honey':             { photo: 'assets/shop-photo-hydro-honey.jpg', card: { place: 'Bababudangiri, Chikmagalur · India', spec: 'Catuai · 1,350 masl · Harvest 2026', notes: 'Peach · Florals · Lemon · Brown sugar', feel: 'Honey sweetness · Bright acidity' }, options: [roasted(), green()] },
-      'ratnagiri-lot-42-carbonic-natural': { photo: 'assets/shop-photo-lot-42.jpg', card: { place: 'Bababudangiri, Chikmagalur · India', spec: 'SLN 6 · 1,355 masl · Harvest 2026', notes: 'Ripe fruit · Jammy sweetness · Cocoa', feel: 'Rounded acidity · Fruit-led cup' }, options: [roasted(), green()] },
-      'harley-banana-black-honey':         { photo: 'assets/shop-photo-banana-black-honey.jpg', card: { place: 'Sakleshpur, Karnataka · India', spec: 'Chandragiri · 945–1,035 masl · Harvest 2026', notes: 'Banana · Dark fruit · Brown sugar', feel: 'Rounded sweetness · Gentle acidity' }, options: [green(), partner('Kin Coffee')] },
-      'balanoor-selection-9':              { photo: 'assets/shop-photo-selection-9.jpg', card: { place: 'Chikmagalur, Karnataka · India', spec: 'Selection 9 · 900–1,400 masl · Harvest 2026', notes: 'Brown sugar · Green apple · Nutty', feel: 'Mild sweetness · Gentle malic acidity' }, options: [roasted(), green()] },
-      'mysore-honey-robusta':              { photo: 'assets/shop-photo-honey-robusta.jpg', card: { place: 'Western Ghats, Karnataka · India', spec: 'Robusta · 850–915 masl · Harvest 2026', notes: 'Honey · Yellow stone fruit · Brown sugar', feel: 'Medium sweetness · Hint of citrus' }, options: [roasted(), green()] },
-      'mysore-washed-robusta':             { photo: 'assets/shop-photo-washed-robusta.jpg', card: { place: 'Western Ghats, Karnataka · India', spec: 'Robusta · 850–915 masl · Harvest 2026', notes: 'Brown sugar · Red apple · Walnut · Cinnamon', feel: 'Medium sweetness · Sweet-tart acidity' }, options: [roasted(), green()] }
+      'ratnagiri-hydro-honey':             { photo: 'assets/shop-photo-hydro-honey.jpg', card: { place: 'Bababudangiri, Chikmagalur · India', spec: 'Catuai · 1,350 masl · Harvest 2026', notes: 'Peach · Florals · Lemon · Brown sugar', feel: 'Honey sweetness · Bright acidity' }, options: [roasted('https://buy.stripe.com/test_eVq8wIcVm4rYedI14FcbC06'), green('https://buy.stripe.com/test_00w00c3kM7Ea3z48x7cbC00')] },
+      'ratnagiri-lot-42-carbonic-natural': { photo: 'assets/shop-photo-lot-42.jpg', card: { place: 'Bababudangiri, Chikmagalur · India', spec: 'SLN 6 · 1,355 masl · Harvest 2026', notes: 'Ripe fruit · Jammy sweetness · Cocoa', feel: 'Rounded acidity · Fruit-led cup' }, options: [roasted(), green('https://buy.stripe.com/test_00w7sE2gIe2y4D85kVcbC01')] },
+      'harley-banana-black-honey':         { photo: 'assets/shop-photo-banana-black-honey.jpg', card: { place: 'Sakleshpur, Karnataka · India', spec: 'Chandragiri · 945–1,035 masl · Harvest 2026', notes: 'Banana · Dark fruit · Brown sugar', feel: 'Rounded sweetness · Gentle acidity' }, options: [green('https://buy.stripe.com/test_14A8wIf3u6A6glQ7t3cbC02'), partner('Kin Coffee')] },
+      'balanoor-selection-9':              { photo: 'assets/shop-photo-selection-9.jpg', card: { place: 'Chikmagalur, Karnataka · India', spec: 'Selection 9 · 900–1,400 masl · Harvest 2026', notes: 'Brown sugar · Green apple · Nutty', feel: 'Mild sweetness · Gentle malic acidity' }, options: [roasted(), green('https://buy.stripe.com/test_4gMbIU6wY4rYc5AbJjcbC03')] },
+      'mysore-honey-robusta':              { photo: 'assets/shop-photo-honey-robusta.jpg', card: { place: 'Western Ghats, Karnataka · India', spec: 'Robusta · 850–915 masl · Harvest 2026', notes: 'Honey · Yellow stone fruit · Brown sugar', feel: 'Medium sweetness · Hint of citrus' }, options: [roasted(), green('https://buy.stripe.com/test_dRmcMYf3ucYuedIdRrcbC04')] },
+      'mysore-washed-robusta':             { photo: 'assets/shop-photo-washed-robusta.jpg', card: { place: 'Western Ghats, Karnataka · India', spec: 'Robusta · 850–915 masl · Harvest 2026', notes: 'Brown sugar · Red apple · Walnut · Cinnamon', feel: 'Medium sweetness · Sweet-tart acidity' }, options: [roasted('https://buy.stripe.com/test_5kQbIU9JabUq1qWeVvcbC07'), green('https://buy.stripe.com/test_9B6bIUg7y7Eac5AaFfcbC05')] }
     }
   };
 })();
