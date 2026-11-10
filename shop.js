@@ -88,7 +88,7 @@
         '<h2>' + esc(c.name) + '</h2>' +
         '<div class="spm-proc">' + esc(c.process) + (c.variety ? ' &middot; ' + esc(c.variety) : '') + '</div>' +
         (c.story ? '<p class="spm-story">' + esc(c.story) + '</p>' : '') +
-        (notes ? '<div class="spm-notes"><span>In the cup</span>' + esc(notes) + '</div>' : '') +
+        (c.processShort ? '<div class="spm-notes"><span>How it\u2019s processed</span>' + esc(c.processShort) + '</div>' : '') +
         (chips ? '<div class="spm-label">Choose your size</div><div class="sp-opts">' + chips + '</div>' : '') +
         '<div class="sp-buy">' + buy(options[cur.i]) + '</div>' +
         '<a class="sp-learn" href="producers.html#' + esc(f.e.id) + '">Learn more about the estate</a>' +
