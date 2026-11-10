@@ -1016,3 +1016,16 @@ img{max-width:100%}
 .sp-learn{align-self:flex-start;margin-top:14px;font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
   color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(36,16,18,.35);padding-bottom:2px;opacity:.75}
 .sp-learn:hover{color:var(--maroon);border-bottom-color:var(--maroon);opacity:1}
+
+/* ===== Home cover: dark maroon, plantation road in maroon tone ===== */
+.hero-dark{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;
+  min-height:100vh;min-height:100svh;padding:clamp(24px,5vh,64px) 24px;background:#811429;color:#F6F4EC}
+.hd-bg{position:absolute;inset:0;background:url(assets/home-cover-road.jpg) 50% 60%/cover;filter:grayscale(1) contrast(1.15)}
+.hero-dark::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(129,20,41,.84),rgba(60,8,20,.9))}
+.hd-in{position:relative;z-index:2;width:100%;max-width:760px}
+.hd-in h1{margin:0;font-weight:400}
+.hd-logo{display:block;margin:0 auto;height:auto;max-width:72vw;width:clamp(150px,calc((100svh - 330px) * 1.05),520px)}
+.hd-tag{display:block;font-family:'Rokkitt',Georgia,serif;font-weight:500;font-size:clamp(15px,2.4vh,22px);letter-spacing:.14em;text-indent:.14em;text-transform:uppercase;color:#F6F4EC;margin-top:clamp(10px,2vh,20px)}
+.hd-rule{width:64px;height:2px;background:var(--kraft-lt,#d8c3a0);margin:clamp(16px,3.2vh,32px) auto}
+.hero-dark p{font-size:clamp(16px,2.5vh,21px);font-weight:300;line-height:1.75;color:#F6F4EC;max-width:620px;margin:0 auto}
+.hd-actions{margin-top:clamp(20px,4vh,40px)}
