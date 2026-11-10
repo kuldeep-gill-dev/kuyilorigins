@@ -195,7 +195,7 @@ img{max-width:100%}
 .split-txt .owner-note p{font-size:14px;line-height:1.9;margin-bottom:0}
 .split-txt .btn{margin-top:28px}
 /* journal */
-.j-list{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:26px}
+.j-list{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:26px}
 .art-head{padding-bottom:0;text-align:center}
 .art-head h1{font-size:44px;font-weight:600;color:var(--ink);letter-spacing:-.014em;line-height:1.18;
   max-width:860px;margin:0 auto 26px}
