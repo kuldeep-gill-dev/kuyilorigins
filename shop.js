@@ -33,6 +33,12 @@
       : '<span class="btn btn-sm sp-off" aria-disabled="true">Coming Soon</span>');
   }
 
+  function hasLive(p) {
+    var o = (p && p.options) || [];
+    for (var i = 0; i < o.length; i++) if (o[i].status === 'available' && o[i].checkoutUrl) return true;
+    return false;
+  }
+
   function cardHTML(f, p) {
     if (p.card && p.photo) {
       var k = p.card;
@@ -61,7 +67,7 @@
       '<div class="sp-kicker">' + esc(f.e.name) + '</div>' +
       '<h3>' + esc(f.c.name) + '</h3>' +
       '<div class="sp-proc">' + esc(f.c.process) + '</div>' +
-      '<button type="button" class="sp-view" data-open="' + esc(id) + '">View details &amp; buy</button>' +
+      '<button type="button" class="sp-view" data-open="' + esc(id) + '">' + (hasLive(p) ? 'View details &amp; buy' : 'View details') + '</button>' +
       '<a class="sp-learn" href="producers.html#' + esc(f.e.id) + '">Learn more about the estate</a>' +
       '</article>';
   }).join('');
